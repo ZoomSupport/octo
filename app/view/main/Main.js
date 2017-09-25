@@ -101,7 +101,7 @@ Ext.define('Rambox.view.main.Main', {
 							,store: 'ServicesList'
 							,itemSelector: 'div.service'
 							,tpl: [
-								'<h1>Messaging</h1>'
+								'<h1 class="typeTitle">Messaging</h1>'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'messaging\'">'
 										,'<div class="service" data-qtip="{description}">'
@@ -111,7 +111,7 @@ Ext.define('Rambox.view.main.Main', {
 									,'</tpl>'
 								,'</tpl>'
 
-								,'<h1>Email</h1>'
+								,'<h1 class="typeTitle">Email</h1>'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'email\'">'
 										,'<div class="service" data-qtip="{description}">'
