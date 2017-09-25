@@ -50,7 +50,7 @@ Ext.define('Rambox.view.main.Main', {
 							,items: [
 								{
 									 xtype: 'checkbox'
-									,boxLabel: locale['app.main[1]']
+									,boxLabel: locale['app.main[1]'] // Messaging
 									,name: 'messaging'
 									,checked: true
 									,uncheckedValue: false
@@ -58,7 +58,7 @@ Ext.define('Rambox.view.main.Main', {
 								}
 								,{
 									 xtype: 'checkbox'
-									,boxLabel: locale['app.main[2]']
+									,boxLabel: locale['app.main[2]'] // Email
 									,margin: '0 10 0 10'
 									,name: 'email'
 									,checked: true
@@ -101,7 +101,7 @@ Ext.define('Rambox.view.main.Main', {
 							,store: 'ServicesList'
 							,itemSelector: 'div.service'
 							,tpl: [
-								'<h1 class="typeTitle">Messaging</h1>'
+								'<h1 class="typeTitle">'+locale['app.main[1]']+'</h1>'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'messaging\'">'
 										,'<div class="service" data-qtip="{description}">'
@@ -111,7 +111,7 @@ Ext.define('Rambox.view.main.Main', {
 									,'</tpl>'
 								,'</tpl>'
 
-								,'<h1 class="typeTitle">Email</h1>'
+								,'<h1 class="typeTitle">'+locale['app.main[2]']+'</h1>'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'email\'">'
 										,'<div class="service" data-qtip="{description}">'
