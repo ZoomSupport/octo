@@ -33,15 +33,15 @@ Ext.define('Rambox.view.add.Add',{
 			{
 				 xtype: 'form'
 				,items: [
-					{
-						 xtype: 'textfield'
-						,fieldLabel: locale['app.window[2]']
-						,labelWidth: 40
-						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
-						,name: 'serviceName'
-						,allowBlank: true
-						,listeners: { specialkey: 'onEnter' }
-					}
+					// {
+					// 	 xtype: 'textfield'
+					// 	,fieldLabel: locale['app.window[2]']
+					// 	,labelWidth: 40
+					// 	,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
+					// 	,name: 'serviceName'
+					// 	,allowBlank: true
+					// 	,listeners: { specialkey: 'onEnter' }
+					// }
 					,{
 						 xtype: 'container'
 						,layout: 'hbox'
@@ -141,6 +141,7 @@ Ext.define('Rambox.view.add.Add',{
 						 xtype: 'fieldset'
 						,title: locale['app.window[3]']
 						,margin: '10 0 0 0'
+						,hidden: true
 						,items: [
 							{
 								 xtype: 'checkboxgroup'
@@ -203,6 +204,7 @@ Ext.define('Rambox.view.add.Add',{
 						 xtype: 'fieldset'
 						,title: 'Unread counter'
 						,margin: '10 0 0 0'
+						,hidden: true
 						,items: [
 							{
 								 xtype: 'checkboxgroup'
@@ -232,8 +234,9 @@ Ext.define('Rambox.view.add.Add',{
 						 xtype: 'fieldset'
 						,title: locale['app.window[7]']
 						,margin: '10 0 0 0'
-						,collapsible: true
-						,collapsed: true
+						// ,collapsible: true
+						// ,collapsed: true
+						,hidden: true
 						,items: [
 							{
 								 xtype: 'textarea'
