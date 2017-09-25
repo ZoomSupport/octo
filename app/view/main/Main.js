@@ -45,31 +45,31 @@ Ext.define('Rambox.view.main.Main', {
 					,flex: 1
 					,header: { height: 50 }
 					,tools: [
-						// {
-						// 	 xtype: 'checkboxgroup'
-						// 	,items: [
-						// 		{
-						// 			 xtype: 'checkbox'
-						// 			,boxLabel: locale['app.main[1]']
-						// 			,name: 'messaging'
-						// 			,checked: true
-						// 			,uncheckedValue: false
-						// 			,inputValue: true
-						// 		}
-						// 		,{
-						// 			 xtype: 'checkbox'
-						// 			,boxLabel: locale['app.main[2]']
-						// 			,margin: '0 10 0 10'
-						// 			,name: 'email'
-						// 			,checked: true
-						// 			,uncheckedValue: false
-						// 			,inputValue: true
-						// 		}
-						// 	]
-						// 	,listeners: {
-						// 		change: 'doTypeFilter'
-						// 	}
-						// },
+						{
+							 xtype: 'checkboxgroup'
+							,items: [
+								{
+									 xtype: 'checkbox'
+									,boxLabel: locale['app.main[1]']
+									,name: 'messaging'
+									,checked: true
+									,uncheckedValue: false
+									,inputValue: true
+								}
+								,{
+									 xtype: 'checkbox'
+									,boxLabel: locale['app.main[2]']
+									,margin: '0 10 0 10'
+									,name: 'email'
+									,checked: true
+									,uncheckedValue: false
+									,inputValue: true
+								}
+							]
+							,listeners: {
+								change: 'doTypeFilter'
+							}
+						},
 						{
 							 xtype: 'textfield'
 							,grow: true
@@ -94,17 +94,31 @@ Ext.define('Rambox.view.main.Main', {
 							}
 						}
 					]
+					// Renders messages 
 					,items: [
 						{
 							 xtype: 'dataview'
 							,store: 'ServicesList'
 							,itemSelector: 'div.service'
 							,tpl: [
-								 '<tpl for=".">'
-									,'<div class="service" data-qtip="{description}">'
-										,'<img src="resources/icons/{logo}" width="48" />'
-										,'<span>{name}</span>'
-									,'</div>'
+								'<h1>Messaging</h1>'
+								,'<tpl for=".">'
+								 	,'<tpl if="type == \'messaging\'">'
+										,'<div class="service" data-qtip="{description}">'
+											,'<img src="resources/icons/{logo}" width="48" />'
+											,'<span>{name}</span>'
+										,'</div>'
+									,'</tpl>'
+								,'</tpl>'
+
+								,'<h1>Email</h1>'
+								,'<tpl for=".">'
+								 	,'<tpl if="type == \'email\'">'
+										,'<div class="service" data-qtip="{description}">'
+											,'<img src="resources/icons/{logo}" width="48" />'
+											,'<span>{name}</span>'
+										,'</div>'
+									,'</tpl>'
 								,'</tpl>'
 							]
 							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
@@ -113,6 +127,7 @@ Ext.define('Rambox.view.main.Main', {
 							}
 						}
 					]
+					
 				}
 				// ,{
 				// 	 xtype: 'grid'
