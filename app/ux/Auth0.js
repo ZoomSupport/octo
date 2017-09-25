@@ -7,6 +7,7 @@ Ext.define('Rambox.ux.Auth0', {
 	,backupCurrent: false
 
 	,init: function() {
+	 	return ;
 		var me = this;
 
 		// Auth0 Config
@@ -50,7 +51,7 @@ Ext.define('Rambox.ux.Auth0', {
 				Ext.Msg.wait(locale['app.window[29]'], locale['app.window[28]']);
 
 				// Google Analytics Event
-				ga_storage._trackEvent('Users', 'loggedIn');
+				// ga_storage._trackEvent('Users', 'loggedIn');
 
 				// Set cookies to help Tooltip.io messages segmentation
 				Ext.util.Cookies.set('auth0', true);

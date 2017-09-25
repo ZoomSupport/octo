@@ -11,6 +11,9 @@ Ext.define('Rambox.view.main.Main', {
 
 	,xtype: 'app-main'
 
+    ,tabPosition: 'left'
+    ,tabRotation: 0
+
 	,controller: 'main'
 	,viewModel: {
 		type: 'main'

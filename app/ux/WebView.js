@@ -230,7 +230,7 @@ Ext.define('Rambox.ux.WebView',{
 		var webview = me.down('component').el.dom;
 
 		// Google Analytics Event
-		ga_storage._trackEvent('Services', 'load', me.type, 1, true);
+		// ga_storage._trackEvent('Services', 'load', me.type, 1, true);
 
 		// Notifications in Webview
 		me.setNotifications(localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ? false : me.record.get('notifications'));
