@@ -8,7 +8,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		// Set Google Analytics event
-		ga_storage._trackPageview('/index.html', 'main');
+		// ga_storage._trackPageview('/index.html', 'main');
 
 		if ( newTab.id === 'ramboxTab' ) {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
@@ -230,7 +230,7 @@ Ext.define('Rambox.view.main.MainController', {
 		console.info('Dont Disturb:', btn.pressed ? 'Enabled' : 'Disabled');
 
 		// Google Analytics Event
-		if ( !called ) ga_storage._trackEvent('Usability', 'dontDisturb', ( btn.pressed ? 'on' : 'off' ));
+		// if ( !called ) ga_storage._trackEvent('Usability', 'dontDisturb', ( btn.pressed ? 'on' : 'off' ));
 
 		Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 			// Get Tab
@@ -309,7 +309,7 @@ Ext.define('Rambox.view.main.MainController', {
 			localStorage.setItem('locked', text);
 
 			// Google Analytics Event
-			ga_storage._trackEvent('Usability', 'locked');
+			// ga_storage._trackEvent('Usability', 'locked');
 
 			me.lookupReference('disturbBtn').setPressed(true);
 			me.dontDisturb(me.lookupReference('disturbBtn'), false, true);
@@ -409,7 +409,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.Msg.wait(locale['app.window[37]'], locale['app.main[21]']);
 
 			// Google Analytics Event
-			ga_storage._trackEvent('Users', 'loggedOut');
+			// ga_storage._trackEvent('Users', 'loggedOut');
 
 			// Logout from Auth0
 			Rambox.ux.Auth0.logout();
