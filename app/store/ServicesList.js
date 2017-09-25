@@ -370,15 +370,15 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://tweetdeck.twitter.com/'
 			,type: 'messaging'
 		},
-		{
-			 id: 'custom'
-			,logo: 'custom.png'
-			,name: '_Custom Service'
-			,description: locale['services[38]']
-			,url: '___'
-			,type: 'custom'
-			,allow_popups: true
-		},
+		// {
+		// 	 id: 'custom'
+		// 	,logo: 'custom.png'
+		// 	,name: '_Custom Service'
+		// 	,description: locale['services[38]']
+		// 	,url: '___'
+		// 	,type: 'custom'
+		// 	,allow_popups: true
+		// },
 		{
 			 id: 'zinc'
 			,logo: 'zinc.png'
