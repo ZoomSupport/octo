@@ -100,7 +100,7 @@ Ext.define('Rambox.view.main.MainController', {
 		const maxServices = 3 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
 
-		if (serviceCnt > maxServices) {
+		if (serviceCnt >= maxServices) {
 			return;
 		}
 

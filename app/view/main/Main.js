@@ -129,6 +129,8 @@ Ext.define('Rambox.view.main.Main', {
 					]
 					
 				}
+				
+				// Settings sidebar menu
 				// ,{
 				// 	 xtype: 'grid'
 				// 	,title: locale['app.main[4]']
