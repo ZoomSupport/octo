@@ -101,6 +101,7 @@ Ext.define('Rambox.view.main.MainController', {
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
 
 		if (serviceCnt >= maxServices) {
+			Ext.create('Rambox.view.popup.Popup', {})
 			return;
 		}
 

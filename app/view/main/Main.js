@@ -6,7 +6,9 @@ Ext.define('Rambox.view.main.Main', {
 		,'Rambox.ux.WebView'
 		,'Rambox.ux.mixin.Badge'
 		,'Rambox.view.add.Add'
-		,'Ext.ux.TabReorderer'
+		,'Rambox.view.popup.Popup'
+		,'Ext.ux.TabReorderer',
+
 	]
 
 	,xtype: 'app-main'
