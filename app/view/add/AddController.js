@@ -139,7 +139,20 @@ Ext.define('Rambox.view.add.AddController', {
 
 		const urlHidden = win.down('container[name="urlContainer"]').hidden
 
-		if (urlHidden) {
+		console.log(win.record)
+
+		let trigger = false
+		Ext.getStore('Services').each(function (data) {
+			console.log(win.record.type, data.data.type);
+			if (win.record.id === data.data.type) {
+				trigger = true
+				return false
+			}
+		})
+
+		console.log(trigger)
+
+		if (urlHidden && !trigger) {
 			me.doSave()
 		}
 
