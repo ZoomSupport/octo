@@ -138,7 +138,6 @@ Ext.define('Rambox.view.add.AddController', {
 		var me = this;
 
 		const urlHidden = win.down('container[name="urlContainer"]').hidden
-		console.log(urlHidden)
 
 		if (urlHidden) {
 			me.doSave()
