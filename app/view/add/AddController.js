@@ -138,9 +138,9 @@ Ext.define('Rambox.view.add.AddController', {
 		var me = this;
 
 		const urlHidden = win.down('container[name="urlContainer"]').hidden
+		const nHint = win.down('container[name="nHint"]').hidden
 
-		console.log(win.record)
-
+		// Checks if messenger of same type already exists
 		let trigger = false
 		Ext.getStore('Services').each(function (data) {
 			console.log(win.record.type, data.data.type);
@@ -152,7 +152,7 @@ Ext.define('Rambox.view.add.AddController', {
 
 		console.log(trigger)
 
-		if (urlHidden && !trigger) {
+		if (urlHidden && !trigger && /*nHint*/) {
 			me.doSave()
 		}
 

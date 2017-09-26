@@ -253,6 +253,7 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'container'
+						,name: "nHint"
 						,hidden: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') === '' : me.record.get('note') === '')
 						,data: { note: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') : me.record.get('note')) }
 						,margin: '10 0 0 0'
