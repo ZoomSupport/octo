@@ -44,11 +44,6 @@ Ext.define('Rambox.Application', {
 		// Check for updates
 		if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);
 
-		ipc.send('getSysInfo')
-		ipc.on('sysInfo', function (e, data) {
-			console.log(e, data)
-		})
-
 		// Add shortcuts to switch services using CTRL + Number
 		var map = new Ext.util.KeyMap({
 			 target: document

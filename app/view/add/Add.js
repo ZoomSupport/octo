@@ -40,7 +40,7 @@ Ext.define('Rambox.view.add.Add',{
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
 						,name: 'serviceName'
 						,allowBlank: true
-						,hidden: true
+						,hidden: false 
 						,listeners: { specialkey: 'onEnter' }
 					}
 					,{
