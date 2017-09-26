@@ -33,15 +33,16 @@ Ext.define('Rambox.view.add.Add',{
 			{
 				 xtype: 'form'
 				,items: [
-					// {
-					// 	 xtype: 'textfield'
-					// 	,fieldLabel: locale['app.window[2]']
-					// 	,labelWidth: 40
-					// 	,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
-					// 	,name: 'serviceName'
-					// 	,allowBlank: true
-					// 	,listeners: { specialkey: 'onEnter' }
-					// }
+					{
+						 xtype: 'textfield'
+						,fieldLabel: locale['app.window[2]']
+						,labelWidth: 40
+						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
+						,name: 'serviceName'
+						,allowBlank: true
+						,hidden: true
+						,listeners: { specialkey: 'onEnter' }
+					}
 					,{
 						 xtype: 'container'
 						,layout: 'hbox'

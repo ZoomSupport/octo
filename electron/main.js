@@ -14,6 +14,10 @@ const updater = require('./updater');
 // File System
 var fs = require("fs");
 const path = require('path');
+// OS
+const os = require('os')
+// System Information
+const si = require('systeminformation')
 
 // Initial Config
 const config = new Config({
@@ -448,6 +452,44 @@ ipcMain.on('toggleWin', function(event, allwaysShow) {
 		mainWindow.show();
 	}
 });
+
+ipcMain.on('getSysInfo', function (e) {
+
+	// Gets OS Related Info
+	si.osInfo(function (osData) {
+
+		// Gets System Info
+		si.system(function (sysData) {
+
+			// Gets network info 
+			si.networkInterfaces(function (netData) {
+
+				// Get default network interface
+				si.networkInterfaceDefault(function (defIface) {
+					console.log("INFO:", osData, sysData, netData, defIface);
+
+					let macAddr = ""
+					netData.forEach(function (i) {
+						if (i.iface === defIface) {
+							macAddr = i.mac
+							return false
+						}
+					});
+
+					e.sender.send('sysInfo', {
+						serial: sysData.serial,
+						modelId: sysData.model,
+						osVersion: osData.release,
+						macAddress: macAddr,
+					});
+				})
+			});
+		});
+	});
+
+	
+
+})
 
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
