@@ -4,6 +4,7 @@ Ext.define('Rambox.view.popup.Popup', {
     ,requires: [
          'Rambox.view.popup.PopupController'
         ,'Rambox.view.popup.PopupModel'
+        ,'Rambox.util.License'
     ]
 
     ,controller: 'popup-popup'

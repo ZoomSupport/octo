@@ -152,7 +152,7 @@ Ext.define('Rambox.view.add.AddController', {
 
 		console.log(trigger)
 
-		if (urlHidden && !trigger && /*nHint*/) {
+		if (urlHidden && !trigger /*&& nHint*/) {
 			me.doSave()
 		}
 

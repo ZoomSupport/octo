@@ -97,16 +97,16 @@ Ext.define('Rambox.view.main.MainController', {
 	,onNewServiceSelect: function( view, record, item, index, e ) {
 		// console.log("Element Click", view, record, item, index, e)
 		
-		const maxServices = 3 // Maximum ammount of non premium services
+		const maxServices = 2 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
 
 		/**
 		 * Check if exceded messanger limits
 		 */
-		// if (serviceCnt >= maxServices) {
-		// 	Ext.create('Rambox.view.popup.Popup', {})
-		// 	return;
-		// }
+		if (serviceCnt >= maxServices) {
+			Ext.create('Rambox.view.popup.Popup', {})
+			return;
+		}
 
 		const rec_id = item.getAttribute('id').split('_')[1]
 
