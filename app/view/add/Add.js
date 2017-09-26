@@ -45,6 +45,8 @@ Ext.define('Rambox.view.add.Add',{
 					,{
 						 xtype: 'container'
 						,layout: 'hbox'
+						// ,class: 'url_dsp'
+						,name: 'urlContainer'
 						,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain') : me.record.get('url').indexOf('___') === -1 && !me.record.get('custom_domain')
 						,items: [
 							{

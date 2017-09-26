@@ -137,7 +137,16 @@ Ext.define('Rambox.view.add.AddController', {
 	,onShow: function(win) {
 		var me = this;
 
+		const urlHidden = win.down('container[name="urlContainer"]').hidden
+		console.log(urlHidden)
+
+		if (urlHidden) {
+			me.doSave()
+		}
+
 		// Make focus to the name field
-		win.down('textfield[name="serviceName"]').focus(true, 100);
+		// win.down('textfield[name="serviceName"]').focus(true, 100);
+
+		
 	}
 });
