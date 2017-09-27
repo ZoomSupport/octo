@@ -26,6 +26,7 @@ Ext.define('Rambox.view.add.Add',{
 	,bodyPadding: "40px 20px"
 
 	,titleAlign: 'center'
+	// ,iconAlign: 'right'
 
 	,initComponent: function() {
 		var me = this;
@@ -279,12 +280,16 @@ Ext.define('Rambox.view.add.Add',{
 				 text: locale['button[1]']
 				,ui: 'decline'
 				,handler: 'doCancel'
+				,cls: 'main-cancel'
+				,padding: '5 10'
 			}
 			,'->'
 			,{
 				 text: me.title
 				,itemId: 'submit'
 				,handler: 'doSave'
+				,cls: 'main-submit'
+				,padding: '5 10'
 			}
 		];
 

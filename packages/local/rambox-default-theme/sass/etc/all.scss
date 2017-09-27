@@ -297,6 +297,34 @@ body {
 	font-family: "Helvetica Neue";
 }
 
+.x-toolbar-footer {
+	background-color: #F0F7FD !important;
+}
+
+.main-cancel {
+	border-color: #657892 !important;
+	border-width: 1px !important;
+}
+.main-cancel .x-btn-inner {
+	color: #657892;
+}
+.main-cancel .x-btn-inner:hover {
+	text-decoration: none;
+}
+
+.main-submit .x-btn-inner, .main-cancel .x-btn-inner {
+	font-size: 10pt;
+	font-family: "Helvetica Neue";
+	font-weight: 500;
+}
+// .main-submit .x-btn-inner:hover {
+// 	text-decoration: none;
+// }
+.main-submit {
+	background-color: #20A2E6 !important;
+	border: none !important;
+}
+
 .urlLabel {
 	font-weight: bold;
 	color: #4F5357;
