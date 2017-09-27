@@ -3,7 +3,8 @@ Ext.define('Rambox.view.add.Add',{
 
 	,requires: [
 		 'Rambox.view.add.AddController'
-		,'Rambox.view.add.AddModel'
+		,'Rambox.view.add.AddModel',
+		,'Rambox.util.License'
 	]
 
 	,controller: 'add-add'

@@ -34,6 +34,7 @@ Ext.define('Rambox.view.main.Main', {
 		{
 			 icon: 'resources/IconTray@2x.png'
 			,id: 'ramboxTab'
+			,cls: 'main-panel'
 			,closable: false
 			,reorderable: false
 			,autoScroll: true
@@ -42,10 +43,10 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
-					,title: locale['app.main[0]']
-					,margin: '0 5 0 0'
+					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' //locale['app.main[0]']
+					,margin: '0 20'
 					,flex: 1
-					,header: { height: 50 }
+					,header: { padding: "20 0" }
 					,tools: [
 						{
 							 xtype: 'checkboxgroup'
@@ -57,6 +58,7 @@ Ext.define('Rambox.view.main.Main', {
 									,checked: true
 									,uncheckedValue: false
 									,inputValue: true
+									,hidden: true
 								}
 								,{
 									 xtype: 'checkbox'
@@ -66,6 +68,7 @@ Ext.define('Rambox.view.main.Main', {
 									,checked: true
 									,uncheckedValue: false
 									,inputValue: true
+									,hidden: true
 								}
 							]
 							,listeners: {

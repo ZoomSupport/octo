@@ -1,6 +1,6 @@
 'use strict';
 
-const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session} = require('electron');
+const {app, protocol, BrowserWindow, dialog, shell, Menu, ipcMain, nativeImage, session, Notification} = require('electron');
 // Tray
 const tray = require('./tray');
 // AutoLaunch
@@ -162,6 +162,7 @@ function createWindow () {
 			,plugins: true
 			,partition: 'persist:rambox'
 		}
+		// ,titleBarStyle: 'hiddenInset'
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();
@@ -218,6 +219,23 @@ function createWindow () {
 		// Navigate the window forward when the user hits their mouse forward button
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
+
+	let spamN = null;
+
+	// mainWindow.on('blur', function(e) {
+	// 	console.log('Focus Lost')
+
+	// 	spamN = setInterval(function () {
+	// 		const n = new Notification({
+	// 			title: "Hello",
+	// 			body: "Nice to see you :P"
+	// 		})
+	// 		n.show()
+	// 	}, 10000);
+	// });
+	// mainWindow.on('focus', function(e) {
+	// 	clearInterval(spamN)
+	// });
 
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {
