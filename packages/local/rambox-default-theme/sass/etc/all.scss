@@ -283,3 +283,28 @@ body {
 		color: #FFF !important;
 	}
 }
+
+
+// Modal Windows
+.x-window-header-default-top {
+	padding: 10px !important;
+	border-color: #DDE4EA !important;
+	
+	background-color: #fff !important;
+}
+
+.x-window-header-title-default {
+	font-family: "Helvetica Neue";
+}
+
+.urlLabel {
+	font-weight: bold;
+	color: #4F5357;
+}
+
+.urlField .x-form-trigger-wrap-default{
+	// border: none;
+	// border-bottom: 1px solid black;
+
+	border-bottom: 1px solid #cecece;
+}

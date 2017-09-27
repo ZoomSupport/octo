@@ -161,6 +161,7 @@ function createWindow () {
 			,nodeIntegration: true
 			,plugins: true
 			,partition: 'persist:rambox'
+			,experimentalFeatures: true
 		}
 		// ,titleBarStyle: 'hiddenInset'
 	});

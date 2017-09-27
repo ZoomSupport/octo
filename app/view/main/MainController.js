@@ -103,10 +103,10 @@ Ext.define('Rambox.view.main.MainController', {
 		/**
 		 * Check if exceded messanger limits
 		 */
-		if (serviceCnt >= maxServices) {
-			Ext.create('Rambox.view.popup.Popup', {})
-			return;
-		}
+		// if (serviceCnt >= maxServices) {
+		// 	Ext.create('Rambox.view.popup.Popup', {})
+		// 	return;
+		// }
 
 		const rec_id = item.getAttribute('id').split('_')[1]
 

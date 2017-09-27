@@ -23,7 +23,9 @@ Ext.define('Rambox.view.add.Add',{
 	,autoShow: true
 	,resizable: false
 	,draggable: false
-	,bodyPadding: 20
+	,bodyPadding: "40px 20px"
+
+	,titleAlign: 'center'
 
 	,initComponent: function() {
 		var me = this;
@@ -41,7 +43,7 @@ Ext.define('Rambox.view.add.Add',{
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
 						,name: 'serviceName'
 						,allowBlank: true
-						,hidden: false 
+						,hidden: true 
 						,listeners: { specialkey: 'onEnter' }
 					}
 					,{
@@ -52,17 +54,20 @@ Ext.define('Rambox.view.add.Add',{
 						,items: [
 							{
 								 xtype: 'label'
+								,cls: 'urlLabel'
 								,text: locale['app.window[17]']+':'
-								,width: 45
+								,width: 30
 							}
 							,{
-								 xtype: 'button'
+								//  xtype: 'button'
+								 xtype: 'label'
 								,text: me.edit ? me.service.get('url').split('___')[0] : me.record.get('url').split('___')[0]
-								,style: 'border-top-right-radius:0;border-bottom-right-radius:0;'
+								// ,style: 'border-top-right-radius:0;border-bottom-right-radius:0;'
 								,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___'
 							}
 							,{
 								 xtype: 'textfield'
+								,cls: "urlField"
 								,name: 'url'
 								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
@@ -75,6 +80,7 @@ Ext.define('Rambox.view.add.Add',{
 							}
 							,{
 								 xtype: 'cycle'
+								,cls: "domainField"
 								,showText: true
 								,style: 'border-top-left-radius:0;border-bottom-left-radius:0;'
 								,hidden: me.edit ? me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('type') === 'custom' || me.record.get('url') === '___'
