@@ -78,8 +78,10 @@ Ext.define('Rambox.view.main.Main', {
 						{
 							 xtype: 'textfield'
 							,grow: true
-							,growMin: 120
-							,growMax: 170
+							,cls: "header-search"
+							,growMin: 250
+							,growMax: 250
+							,emptyText: "Search"
 							,triggers: {
 								 clear: {
 									 weight: 0
