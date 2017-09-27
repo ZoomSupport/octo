@@ -323,6 +323,9 @@ body {
 	font-family: "Helvetica Neue";
 	font-weight: 500;
 }
+.x-btn-inner-default-small {
+	font-family: "Helvetica Neue" !important;
+}
 // .main-submit .x-btn-inner:hover {
 // 	text-decoration: none;
 // }
@@ -334,16 +337,23 @@ body {
 .urlLabel {
 	font-weight: bold;
 	color: #4F5357;
+	font-size: 12pt;
 }
 
 .urlField .x-form-trigger-wrap-default{
-	// border: none;
+	border: none;
 	// border-bottom: 1px solid black;
 
 	border-bottom: 1px solid #cecece;
 }
 
 .domainField {
-	background-color: none !important;
+	background: none !important;
 	border: none !important;
+}
+
+.domainField .x-btn-inner-default-small, .httpLabel {
+	color: #65696C;
+	font-size: 12pt;
+	font-weight: 500;
 }

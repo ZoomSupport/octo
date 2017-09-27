@@ -57,11 +57,12 @@ Ext.define('Rambox.view.add.Add',{
 								 xtype: 'label'
 								,cls: 'urlLabel'
 								,text: locale['app.window[17]']+':'
-								,width: 30
+								,width: 40
 							}
 							,{
 								//  xtype: 'button'
 								 xtype: 'label'
+								,cls: 'httpLabel' 
 								,text: me.edit ? me.service.get('url').split('___')[0] : me.record.get('url').split('___')[0]
 								// ,style: 'border-top-right-radius:0;border-bottom-right-radius:0;'
 								,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___'
@@ -282,7 +283,7 @@ Ext.define('Rambox.view.add.Add',{
 				,handler: 'doCancel'
 				,cls: 'main-cancel'
 				,padding: '5 10'
-				,margin: '5'
+				,margin: '4'
 			}
 			,'->'
 			,{
@@ -291,7 +292,7 @@ Ext.define('Rambox.view.add.Add',{
 				,handler: 'doSave'
 				,cls: 'main-submit'
 				,padding: '5 10'
-				,margin: '5'
+				,margin: '4'
 			}
 		];
 
