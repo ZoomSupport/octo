@@ -240,17 +240,28 @@ body {
 //.x-box-scroller-tab-bar { z-index: 9999; }
 
 .service {
-	width: 230px;
+	width: 160px;
 	display: inline-block;
 	padding: 10px;
 	cursor: pointer;
+
+	text-align: center;
 	img {
-		float: left;
+		// fwloat: left;
+		width: 50%;
 	}
-	span {
-		margin-left: 10px;
-		line-height: 48px;
+	// span {
+	// 	margin-left: 10px;
+	// 	line-height: 48px;
+	// }
+
+	.title {
+		font-weight: 400;
+		color: #787B7E;
+
+		font-family: "Helvetica Neue";
 	}
+
 	&:hover {
 		background-color: lighten($base-color, 55%);
 	}
