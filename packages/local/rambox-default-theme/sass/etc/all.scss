@@ -293,7 +293,7 @@ body {
 	background-color: #fff !important;
 }
 
-.x-title-text-default {
+.x-window-header-default-top .x-title-text-default {
 	font-family: "Helvetica Neue" !important;
 	font-weight: 500;
 	color: #A9A9A9;
@@ -341,4 +341,9 @@ body {
 	// border-bottom: 1px solid black;
 
 	border-bottom: 1px solid #cecece;
+}
+
+.domainField {
+	background-color: none !important;
+	border: none !important;
 }
