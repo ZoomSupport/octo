@@ -138,6 +138,8 @@ Ext.define('Rambox.view.add.AddController', {
 		var me = this;
 
 		const urlHidden = win.down('container[name="urlContainer"]').hidden
+
+		// Checks if hint message is displayed
 		const nHint = win.down('container[name="nHint"]').hidden
 
 		// Rambox.util.License.check()
@@ -152,9 +154,9 @@ Ext.define('Rambox.view.add.AddController', {
 			}
 		})
 
-		console.log(trigger, urlHidden)
+		console.log(!trigger, urlHidden)
 
-		if (urlHidden && !trigger /*&& nHint*/) {
+		if (urlHidden /*&& !trigger && nHint*/) {
 			me.doSave()
 		}
 
