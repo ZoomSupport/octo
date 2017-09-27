@@ -60,9 +60,9 @@ Ext.define('Rambox.view.add.Add',{
 								,width: 40
 							}
 							,{
-								//  xtype: 'button'
-								 xtype: 'label'
-								,cls: 'httpLabel' 
+								 xtype: 'button'
+								//  xtype: 'label'
+								,cls: 'domainField' 
 								,text: me.edit ? me.service.get('url').split('___')[0] : me.record.get('url').split('___')[0]
 								// ,style: 'border-top-right-radius:0;border-bottom-right-radius:0;'
 								,hidden: me.edit ? me.service.get('url').indexOf('___') === -1 ? true : me.service.get('type') === 'custom' || me.service.get('url') === '___' : me.record.get('url').indexOf('___') === -1 ? true : me.record.get('type') === 'custom' || me.record.get('url') === '___'

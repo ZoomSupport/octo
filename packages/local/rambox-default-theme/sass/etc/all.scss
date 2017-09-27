@@ -338,6 +338,8 @@ body {
 	font-weight: bold;
 	color: #4F5357;
 	font-size: 12pt;
+
+	line-height: 24px;
 }
 
 .urlField .x-form-trigger-wrap-default{
@@ -347,12 +349,24 @@ body {
 	border-bottom: 1px solid #cecece;
 }
 
-.domainField {
+.urlField .x-form-text-default {
+	font-family: "Helvetica Neue" !important;
+
+	color: #3F4244;
+	font-size: 12pt;
+	font-weight: 500;
+}
+.urlField .x-form-text {
+	height: 20px !important;
+	padding: 4px 0;
+}
+
+.domainField, {
 	background: none !important;
 	border: none !important;
 }
 
-.domainField .x-btn-inner-default-small, .httpLabel {
+.domainField .x-btn-inner-default-small {
 	color: #65696C;
 	font-size: 12pt;
 	font-weight: 500;
