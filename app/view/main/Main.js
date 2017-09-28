@@ -142,8 +142,6 @@ Ext.define('Rambox.view.main.Main', {
 					
 				}
 				
-				// Settings sidebar menu
-				
 			]
 			// ,tbar: {
 			// 	 xtype: 'toolbar'
@@ -294,18 +292,20 @@ Ext.define('Rambox.view.main.Main', {
 			// 	}
 			// ]
 		}
-		
-		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 
 		,{
 			icon: 'resources/tools/settings.png'
-			// ,title: 'Welcome'
+
 			,id: 'settingsTab'
 			,cls: 'settings-panel'
 			,closable: false
 			,reorderable: false 
 			,layout: 'hbox'
-			// ,hidden: true
+
+			,tabConfig: {
+				cls: 'settings-tab',
+				handler: 'testButton',
+			}
 			,items: [
 				{
 					 xtype: 'grid'
@@ -416,6 +416,10 @@ Ext.define('Rambox.view.main.Main', {
 				}
 			]
 		}
+		
+		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
+
+		
 	]
 
 	,listeners: {
@@ -423,5 +427,6 @@ Ext.define('Rambox.view.main.Main', {
 		,add: 'updatePositions'
 		,remove: 'updatePositions'
 		,childmove: 'updatePositions'
+		// ,beforetabchange: 'setActiveTab'
 	}
 });

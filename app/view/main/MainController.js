@@ -10,6 +10,9 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 		// ga_storage._trackPageview('/index.html', 'main');
 
+
+		if (newTab.id === 'settingsTab') return;
+
 		if ( newTab.id === 'ramboxTab' ) {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
@@ -460,5 +463,16 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,showDonate: function( btn ) {
 		Tooltip.API.show('zxzKWZfcmgRtHXgth');
+	},
+
+
+	testButton: function (btn) {
+
+		console.log('Settings Click')
+	},
+
+	setActiveTab: function (panel, tab, oldTab) {
+
+		if (tab.id === "settingsTab") return false;
 	}
 });
