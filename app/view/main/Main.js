@@ -323,7 +323,7 @@ Ext.define('Rambox.view.main.Main', {
 			layout: 'hbox',
 
 			tabConfig: {
-				cls: 'b-icon',
+				cls: 'b-icon n-opacity',
 				handler: 'notButton'
 			},
 
