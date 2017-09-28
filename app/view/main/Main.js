@@ -40,11 +40,12 @@ Ext.define('Rambox.view.main.Main', {
 			,id: 'ramboxTab'
 			,cls: 'main-panel'
 			,closable: false
-			,reorderable: false
+			,reorderable: false 
 			,autoScroll: true
 			,layout: 'hbox'
 			,tabConfig: {} // Created empty for Keyboard Shortcuts
 			,dock: 'bottom'
+			,tabIndex: 2
 			,items: [
 				{
 					 xtype: 'panel'
@@ -403,15 +404,18 @@ Ext.define('Rambox.view.main.Main', {
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 	]
 	
-	// ,dockedItems: [
-	// 	{
-	// 		xtype: 'toolbar',
-	// 		dock: 'bottom',
-	// 		items: [{
-	// 			text: "Hell World"
-	// 		}]
-	// 	}
-	// ]
+	,dockedItems: [
+		
+	]
+
+	,tabBar: {
+
+		bbar: [
+			{
+				text: "Hell World"
+			}
+		]
+	}
 
 	,listeners: {
 		 tabchange: 'onTabChange'

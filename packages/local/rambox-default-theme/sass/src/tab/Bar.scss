@@ -7,3 +7,34 @@
 		margin-top: -10px;
 	}
 }
+
+.x-tab-button-center {
+	text-align: left !important;
+	font-family: "Helvetica Neue";
+}
+
+.x-badge[data-badge-text]:after {
+	box-shadow: none;
+	background: none;
+	text-shadow: none;
+
+	top: 15px;
+	right: 8px;
+
+	font-size: 8pt;
+	border-radius: 20px;
+
+	padding: 2px 5px;
+
+	background-color: #E4714A;
+}
+
+.x-tab-inner {
+	font-family: "Helvetica Neue" !important;
+	font-weight: 400;
+	font-size: 12pt;
+}
+
+.x-tab-icon-el-default {
+	margin-right: 10px !important;
+}

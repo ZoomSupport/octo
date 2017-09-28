@@ -156,6 +156,7 @@ function createWindow () {
 		,skipTaskbar: config.get('window_display_behavior') === 'show_trayIcon'
 		,show: !config.get('start_minimized')
 		,acceptFirstMouse: true
+		// ,transparent: true
 		,webPreferences: {
 			 webSecurity: false
 			,nodeIntegration: true
