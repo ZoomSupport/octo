@@ -14,7 +14,10 @@ Ext.define('Rambox.view.main.Main', {
 	,xtype: 'app-main'
 
     ,tabPosition: 'left'
-    ,tabRotation: 0
+	,tabRotation: 0
+	
+	// ,padding: 0
+	// ,border: 0
 
 	,controller: 'main'
 	,viewModel: {
@@ -32,7 +35,8 @@ Ext.define('Rambox.view.main.Main', {
 	,deferredRender: false
 	,items: [
 		{
-			 icon: 'resources/IconTray@2x.png'
+			 icon: 'resources/tools/add.png'
+			,title: 'Add Service'
 			,id: 'ramboxTab'
 			,cls: 'main-panel'
 			,closable: false
@@ -40,6 +44,7 @@ Ext.define('Rambox.view.main.Main', {
 			,autoScroll: true
 			,layout: 'hbox'
 			,tabConfig: {} // Created empty for Keyboard Shortcuts
+			,dock: 'bottom'
 			,items: [
 				{
 					 xtype: 'panel'
@@ -397,6 +402,16 @@ Ext.define('Rambox.view.main.Main', {
 		}
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 	]
+	
+	// ,dockedItems: [
+	// 	{
+	// 		xtype: 'toolbar',
+	// 		dock: 'bottom',
+	// 		items: [{
+	// 			text: "Hell World"
+	// 		}]
+	// 	}
+	// ]
 
 	,listeners: {
 		 tabchange: 'onTabChange'
