@@ -11,7 +11,8 @@ Ext.define('Rambox.view.main.MainController', {
 		// ga_storage._trackPageview('/index.html', 'main');
 
 
-		if (newTab.id === 'settingsTab') return;
+		if (newTab.id === 'settingsTab' || newTab.id === 'notificationsTab' || newTab.id === 'upgradeTab') return;
+		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
@@ -38,14 +39,14 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,updatePositions: function(tabPanel, tab) {
-		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' || tab.id === 'settingsTab' ) return true;
+		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' || tab.id === 'settingsTab' || tab.id === 'upgradeTab' || tab.id === 'notificationsTab' ) return true;
 
 		console.log('Updating Tabs positions...');
 
 		var store = Ext.getStore('Services');
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.id !== 'settingsTab' && t.record.get('enabled') ) {
+			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.id !== 'settingsTab' && tab.id === 'upgradeTab' && t.id !== 'notificationsTab' && t.record.get('enabled') ) {
 				var rec = store.getById(t.record.get('id'));
 				if ( rec.get('align') === 'right' ) i--;
 				rec.set('position', i);
@@ -466,13 +467,13 @@ Ext.define('Rambox.view.main.MainController', {
 	},
 
 
-	testButton: function (btn) {
+	notButton: function (btn) {
 
 		console.log('Settings Click')
 	},
 
 	setActiveTab: function (panel, tab, oldTab) {
 
-		if (tab.id === "settingsTab") return false;
+		if (tab.id === "notificationsTab" || tab.id === "upgradeTab") return false;
 	}
 });

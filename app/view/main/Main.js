@@ -34,6 +34,7 @@ Ext.define('Rambox.view.main.Main', {
 	,autoShow: true
 	,deferredRender: false
 	,items: [
+		
 		{
 			 icon: 'resources/tools/add.png'
 			,title: 'Add Service'
@@ -293,6 +294,42 @@ Ext.define('Rambox.view.main.Main', {
 			// ]
 		}
 
+		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
+
+		,{
+			icon: 'resources/tools/upgrade.png',
+
+			id: 'upgradeTab',
+			cls: 'settings-panel',
+			closable: false,
+			reorderable: false,
+			layout: 'hbox',
+
+			tabConfig: {
+				cls: 'b-icon',
+				handler: 'notButton'
+			},
+
+			items: [],
+		}
+		
+		,{
+			icon: 'resources/tools/notifications.png',
+
+			id: 'notificationsTab',
+			cls: 'settings-panel',
+			closable: false,
+			reorderable: false,
+			layout: 'hbox',
+
+			tabConfig: {
+				cls: 'b-icon',
+				handler: 'notButton'
+			},
+
+			items: [],
+		}
+
 		,{
 			icon: 'resources/tools/settings.png'
 
@@ -303,8 +340,8 @@ Ext.define('Rambox.view.main.Main', {
 			,layout: 'hbox'
 
 			,tabConfig: {
-				cls: 'settings-tab',
-				handler: 'testButton',
+				cls: 'b-icon',
+				// handler: 'testButton',
 			}
 			,items: [
 				{
@@ -416,8 +453,24 @@ Ext.define('Rambox.view.main.Main', {
 				}
 			]
 		}
+
+		// ,{
+		// 	id: 'settingsTab'
+		//    ,cls: 'welcome-panel'
+		//    ,closable: false
+		//    ,reorderable: false 
+		//    ,hidden: true
+		//    ,layout: 'hbox'
+
+		//    ,items: [
+		// 	   {
+		// 		   xtype: "header",
+		// 		   title: "Hello and welcome to this awesome messenger"
+		// 	   }
+		//    ]
+		// }
 		
-		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
+		
 
 		
 	]
@@ -427,6 +480,6 @@ Ext.define('Rambox.view.main.Main', {
 		,add: 'updatePositions'
 		,remove: 'updatePositions'
 		,childmove: 'updatePositions'
-		// ,beforetabchange: 'setActiveTab'
+		,beforetabchange: 'setActiveTab'
 	}
 });

@@ -42,3 +42,17 @@
 .x-tab-default {
 	padding: 13px 20px !important;
 }
+
+.b-icon {
+	// bottom: 0 !important;
+}
+.b-icon.x-tab-default {
+	border: none;
+	background: none;
+
+	width: 65px !important;
+}
+.b-icon.x-tab-active {
+	border: none !important;
+	background: none !important;
+}
