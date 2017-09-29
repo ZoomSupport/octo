@@ -294,6 +294,10 @@ Ext.define('Rambox.Application', {
 				document.title = 'Rambox';
 			}
 		}
+
+		if (newValue >= 50) {
+			console.log("Add 3rd Messenger Notifications")
+		}
 	}
 
 	,checkUpdate: function(silence) {

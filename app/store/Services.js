@@ -214,7 +214,8 @@ Ext.define('Rambox.store.Services', {
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
 
 			if (store.data.length > 1) {
-				Ext.cq1('app-main').add(upgrade)
+				if (!localStorage.getItem('activated') && localStorage.getItem('premiumToggle')) Ext.cq1('app-main').add(upgrade)
+
 				Ext.cq1('app-main').add(notifications)
 				Ext.cq1('app-main').add(settings)
 			}
@@ -234,8 +235,8 @@ Ext.define('Rambox.store.Services', {
 			if (store.data.length > 1) {
 				console.log(Ext.cq1('app-main').getComponent('upgradeTab'));
 
-				if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)
-					Ext.cq1('app-main').add(upgrade)
+				// if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)
+				// 	Ext.cq1('app-main').add(upgrade)
 
 				if (Ext.cq1('app-main').getComponent('notificationsTab') === undefined)
 					Ext.cq1('app-main').add(notifications)

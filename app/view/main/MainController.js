@@ -127,13 +127,6 @@ Ext.define('Rambox.view.main.MainController', {
 		const maxServices = 2 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
 
-		/**
-		 * Check if exceded messanger limits
-		 */
-		// if (serviceCnt >= maxServices) {
-		// 	Ext.create('Rambox.view.popup.Popup', {})
-		// 	return;
-		// }
 
 		const rec_id = item.getAttribute('id').split('_')[1]
 
@@ -144,6 +137,17 @@ Ext.define('Rambox.view.main.MainController', {
 				return false
 			}
 		})
+
+
+		/**
+		 * Check if exceded messanger limits
+		 */
+		if (serviceCnt >= maxServices && !localStorage.getItem('activated')) {
+			Ext.create('Rambox.view.popup.Popup', {
+				record: rc
+			})
+			return;
+		}
 
 		Ext.create('Rambox.view.add.Add', {
 			record: rc

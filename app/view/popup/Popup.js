@@ -14,7 +14,8 @@ Ext.define('Rambox.view.popup.Popup', {
 
     // defaults
 	,modal: true
-	,width: 500
+    ,width: 500
+    ,height: 500
 	,autoShow: true
 	,resizable: false
 	,draggable: false
@@ -28,7 +29,6 @@ Ext.define('Rambox.view.popup.Popup', {
             src: "resources/popup/premium.png",
             width: 500,
         }
-        
 
         this.buttons = [
              '->'
@@ -40,5 +40,9 @@ Ext.define('Rambox.view.popup.Popup', {
         ]
 
         this.callParent(this)
+    }
+
+    ,listeners: {
+        close: 'onClose'
     }
 })
