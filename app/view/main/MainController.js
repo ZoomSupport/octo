@@ -11,7 +11,12 @@ Ext.define('Rambox.view.main.MainController', {
 		// ga_storage._trackPageview('/index.html', 'main');
 
 
-		if (newTab.id === 'settingsTab' || newTab.id === 'notificationsTab' || newTab.id === 'upgradeTab') return;
+		if (
+			newTab.id === 'settingsTab' || 
+			newTab.id === 'notificationsTab' || 
+			newTab.id === 'upgradeTab' ||
+			newTab.id === 'welcomeTab'
+		) return;
 		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
@@ -39,14 +44,29 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,updatePositions: function(tabPanel, tab) {
-		if ( tab.id === 'ramboxTab' || tab.id === 'tbfill' || tab.id === 'settingsTab' || tab.id === 'upgradeTab' || tab.id === 'notificationsTab' ) return true;
+		if ( 
+			tab.id === 'ramboxTab' || 
+			tab.id === 'tbfill' || 
+			tab.id === 'settingsTab' || 
+			tab.id === 'upgradeTab' || 
+			tab.id === 'notificationsTab' ||
+			tab.id === 'welcomeTab'
+		) return true;
 
 		console.log('Updating Tabs positions...');
 
 		var store = Ext.getStore('Services');
 		store.suspendEvent('remove');
 		Ext.each(tabPanel.items.items, function(t, i) {
-			if ( t.id !== 'ramboxTab' && t.id !== 'tbfill' && t.id !== 'settingsTab' && tab.id === 'upgradeTab' && t.id !== 'notificationsTab' && t.record.get('enabled') ) {
+			if ( 
+				t.id !== 'ramboxTab' && 
+				t.id !== 'tbfill' && 
+				t.id !== 'settingsTab' && 
+				t.id !== 'upgradeTab' && 
+				t.id !== 'notificationsTab' && 
+				t.id !== 'welcomeTab' &&
+				t.record.get('enabled') 
+			) {
 				var rec = store.getById(t.record.get('id'));
 				if ( rec.get('align') === 'right' ) i--;
 				rec.set('position', i);

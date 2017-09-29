@@ -462,21 +462,21 @@ Ext.define('Rambox.view.main.Main', {
 			]
 		}
 
-		// ,{
-		// 	id: 'settingsTab'
-		//    ,cls: 'welcome-panel'
-		//    ,closable: false
-		//    ,reorderable: false 
-		//    ,hidden: true
-		//    ,layout: 'hbox'
+		,{
+			id: 'welcomeTab'
+		   ,cls: 'welcome-panel'
+		   ,closable: false
+		   ,reorderable: false 
+		   ,hidden: true
+		   ,layout: 'hbox'
 
-		//    ,items: [
-		// 	   {
-		// 		   xtype: "header",
-		// 		   title: "Hello and welcome to this awesome messenger"
-		// 	   }
-		//    ]
-		// }
+		   ,items: [
+			   {
+				   xtype: "header",
+				   title: "Hello and welcome to this awesome messenger. \n This is just a placeholder for future welcome screen"
+			   }
+		   ]
+		}
 		
 		
 

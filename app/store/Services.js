@@ -67,7 +67,7 @@ Ext.define('Rambox.store.Services', {
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
 
 			if (store.data.length === 0) {
-				const settingsTab = Ext.cq1('app-main').getComponent('settingsTab')
+				const settingsTab = Ext.cq1('app-main').getComponent('welcomeTab')
 				Ext.cq1('app-main').setActiveTab(settingsTab)
 			}
 
