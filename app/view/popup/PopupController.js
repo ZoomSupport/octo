@@ -19,12 +19,33 @@ Ext.define('Rambox.view.popup.PopupController', {
 
     doUpgrade: function (btn) {
 
+        this.upgradeSuccess();
+
         console.log("TIME TO UPGRADE");
+    },
+
+    upgradeSuccess: function() {
+        var win = this.getView();
+
+        // Save activation
+        localStorage.setItem('activated', true)
+
+        // Remove activation pin
+        const upTab = Ext.cq1('app-main').getComponent('upgradeTab') 
+        Ext.cq1('app-main').remove(upTab)
+
+        win.close();
+
+        if (win.record)
+            Ext.create('Rambox.view.add.Add', {
+                record: win.record 
+            });
+        
     },
 
     onClose: function(btn) {
         
-        if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined) {
+        if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined && !localStorage.getItem('activated')) {
             Ext.cq1('app-main').add(upgrade)
             localStorage.setItem('premiumToggle', true)
         }

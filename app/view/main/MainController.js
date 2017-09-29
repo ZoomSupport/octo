@@ -506,6 +506,19 @@ Ext.define('Rambox.view.main.MainController', {
 	setActiveTab: function (panel, tab, oldTab) {
 		console.log("[EVENT] setActiveTab")
 
+		switch (tab.id) {
+			case 'upgradeTab':
+				Ext.create('Rambox.view.popup.Popup', {})
+				return false
+			break;
+
+			case 'notificationsTab':
+				return false
+			break;
+		}
+
 		if (tab.id === "notificationsTab" || tab.id === "upgradeTab") return false;
+
+		
 	}
 });

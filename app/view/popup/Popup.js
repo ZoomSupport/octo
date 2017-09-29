@@ -23,6 +23,8 @@ Ext.define('Rambox.view.popup.Popup', {
 
     ,initComponent: function() {
 
+        console.log(this.record)
+
         this.title = "Upgrade To Premium";
         this.items = {
             xtype: "image",
