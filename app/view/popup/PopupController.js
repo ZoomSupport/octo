@@ -37,10 +37,7 @@ Ext.define('Rambox.view.popup.PopupController', {
         win.close();
 
         if (win.record)
-            Ext.create('Rambox.view.add.Add', {
-                record: win.record 
-            });
-        
+            Ext.create('Rambox.view.add.Add', { record: win.record });
     },
 
     onClose: function(btn) {
