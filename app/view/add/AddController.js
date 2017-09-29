@@ -15,10 +15,12 @@ Ext.define('Rambox.view.add.AddController', {
 	,doSave: function( btn ) {
 		var me = this;
 
+
 		var win = me.getView();
 		if ( !win.down('form').isValid() ) return false;
 
 		var formValues = win.down('form').getValues();
+
 
 		if ( win.edit ) {
 			// Format data
@@ -76,10 +78,13 @@ Ext.define('Rambox.view.add.AddController', {
 
 			view.refreshUnreadCount();
 		} else {
+			
 			// Format data
 			if ( win.record.get('url').indexOf('___') >= 0 ) {
 				formValues.url = formValues.cycleValue === '1' ? win.record.get('url').replace('___', formValues.url) : formValues.url;
 			}
+
+			console.log('Do Save!')
 
 			var service = Ext.create('Rambox.model.Service', {
 				 type: win.record.get('id')
@@ -157,7 +162,7 @@ Ext.define('Rambox.view.add.AddController', {
 		console.log(!trigger, urlHidden)
 
 		if (urlHidden /*&& !trigger && nHint*/) {
-			me.doSave()
+			// me.doSave()
 		}
 
 		// Make focus to the name field

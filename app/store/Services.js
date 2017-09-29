@@ -73,6 +73,11 @@ Ext.define('Rambox.store.Services', {
 
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');
+		},
+
+		add: function (store, records, i) {
+			console.log('Adding service');
+			Ext.cq1('app-main').suspendEvent('add');
 		}
 	}
 });

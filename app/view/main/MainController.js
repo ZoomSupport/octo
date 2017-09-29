@@ -10,6 +10,8 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 		// ga_storage._trackPageview('/index.html', 'main');
 
+		console.log('[EVENT] onTabChange');
+
 
 		if (
 			newTab.id === 'settingsTab' || 
@@ -44,6 +46,7 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,updatePositions: function(tabPanel, tab) {
+		console.log('[EVENT] updatePositions')
 		if ( 
 			tab.id === 'ramboxTab' || 
 			tab.id === 'tbfill' || 
@@ -497,6 +500,7 @@ Ext.define('Rambox.view.main.MainController', {
 	},
 
 	setActiveTab: function (panel, tab, oldTab) {
+		console.log("[EVENT] setActiveTab")
 
 		if (tab.id === "notificationsTab" || tab.id === "upgradeTab") return false;
 	}
