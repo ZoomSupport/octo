@@ -162,7 +162,7 @@ Ext.define('Rambox.view.add.AddController', {
 		console.log(!trigger, urlHidden)
 
 		if (urlHidden /*&& !trigger && nHint*/) {
-			// me.doSave()
+			me.doSave()
 		}
 
 		// Make focus to the name field
