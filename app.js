@@ -125,7 +125,7 @@ ipc.on('setBadge', function(event, messageCount) {
 // Reload Current Service
 ipc.on('reloadCurrentService', function(e) {
 	var tab = Ext.cq1('app-main').getActiveTab();
-	if ( tab.id !== 'ramboxTab' ) tab.reloadService();
+	if ( tab.id !== 'ramboxTab' && t.id !== 'settingsTab' && tab.id === 'upgradeTab' && t.id !== 'notificationsTab') tab.reloadService();
 });
 // Focus the current service when Alt + Tab or click in webviews textfields
 window.addEventListener('focus', function() {

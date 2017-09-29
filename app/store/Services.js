@@ -23,6 +23,7 @@ Ext.define('Rambox.store.Services', {
 		load: function( store, records, successful ) {
 			Ext.cq1('app-main').suspendEvent('add');
 
+
 			var servicesLeft = [];
 			var servicesRight = [];
 			store.each(function(service) {
@@ -64,6 +65,11 @@ Ext.define('Rambox.store.Services', {
 
 			if ( !Ext.isEmpty(servicesLeft) ) Ext.cq1('app-main').insert(1, servicesLeft);
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
+
+			if (store.data.length === 0) {
+				const settingsTab = Ext.cq1('app-main').getComponent('settingsTab')
+				Ext.cq1('app-main').setActiveTab(settingsTab)
+			}
 
 			store.suspendEvent('load');
 			Ext.cq1('app-main').resumeEvent('add');

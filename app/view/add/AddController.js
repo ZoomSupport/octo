@@ -117,12 +117,12 @@ Ext.define('Rambox.view.add.AddController', {
 				}
 			};
 
-			if ( formValues.align === 'left' ) {
-				var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
-				Ext.cq1('app-main').insert(Ext.cq1('app-main').getTabBar().items.indexOf(tbfill), tabData).show();
-			} else {
-				Ext.cq1('app-main').add(tabData).show();
-			}
+			// if ( formValues.align === 'left' ) {
+			var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
+			Ext.cq1('app-main').insert(Ext.cq1('app-main').getTabBar().items.indexOf(tbfill), tabData).show();
+			// } else {
+				// Ext.cq1('app-main').add(tabData).show();
+			// }
 		}
 
 		win.close();

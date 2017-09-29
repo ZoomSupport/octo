@@ -30,6 +30,14 @@ Ext.define('Rambox.view.main.Main', {
 		}
 	]
 
+	// ,add: function () {
+	// 	// console.log('TAB INIT NOW', this);
+	// 	// Rambox.view.main.Main.add.call(this)
+
+	// 	const serviceCnt = Ext.getStore('Services').data // Current service number
+	// 	console.log(serviceCnt)
+	// }
+
 	,autoRender: true
 	,autoShow: true
 	,deferredRender: false
@@ -296,39 +304,39 @@ Ext.define('Rambox.view.main.Main', {
 
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 
-		,{
-			icon: 'resources/tools/upgrade.png',
+		// ,{
+		// 	icon: 'resources/tools/upgrade.png',
 
-			id: 'upgradeTab',
-			cls: 'settings-panel',
-			closable: false,
-			reorderable: false,
-			layout: 'hbox',
+		// 	id: 'upgradeTab',
+		// 	cls: 'settings-panel',
+		// 	closable: false,
+		// 	reorderable: false,
+		// 	layout: 'hbox',
 
-			tabConfig: {
-				cls: 'b-icon',
-				handler: 'notButton'
-			},
+		// 	tabConfig: {
+		// 		cls: 'b-icon',
+		// 		handler: 'notButton'
+		// 	},
 
-			items: [],
-		}
+		// 	items: [],
+		// }
 		
-		,{
-			icon: 'resources/tools/notifications.png',
+		// ,{
+		// 	icon: 'resources/tools/notifications.png',
 
-			id: 'notificationsTab',
-			cls: 'settings-panel',
-			closable: false,
-			reorderable: false,
-			layout: 'hbox',
+		// 	id: 'notificationsTab',
+		// 	cls: 'settings-panel',
+		// 	closable: false,
+		// 	reorderable: false,
+		// 	layout: 'hbox',
 
-			tabConfig: {
-				cls: 'b-icon n-opacity',
-				handler: 'notButton'
-			},
+		// 	tabConfig: {
+		// 		cls: 'b-icon n-opacity',
+		// 		handler: 'notButton'
+		// 	},
 
-			items: [],
-		}
+		// 	items: [],
+		// }
 
 		,{
 			icon: 'resources/tools/settings.png'
@@ -481,5 +489,6 @@ Ext.define('Rambox.view.main.Main', {
 		,remove: 'updatePositions'
 		,childmove: 'updatePositions'
 		,beforetabchange: 'setActiveTab'
+		// ,added: 'onShow'
 	}
 });

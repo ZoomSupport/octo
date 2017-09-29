@@ -135,6 +135,10 @@ Ext.define('Rambox.view.main.MainController', {
 		// Get Record
 		var rec = Ext.getStore('Services').getById(serviceId);
 
+		if (!tab) return false;
+
+		// console.log(tab)
+
 		// Clear all trash data
 		if ( rec.get('enabled') && tab.down('component').el ) {
 			tab.down('component').el.dom.getWebContents().session.clearCache(Ext.emptyFn);
