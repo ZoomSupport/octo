@@ -15,6 +15,10 @@ Ext.define('Rambox.view.main.Main', {
 
     ,tabPosition: 'left'
 	,tabRotation: 0
+
+	// ,stores: [
+	//    'Services'
+	// ]
 	
 	// ,padding: 0
 	// ,border: 0
@@ -304,158 +308,162 @@ Ext.define('Rambox.view.main.Main', {
 
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 
-		,{
-			icon: 'resources/tools/upgrade.png',
+		// ,{
+		// 	icon: 'resources/tools/upgrade.png',
 
-			id: 'upgradeTab',
-			cls: 'settings-panel',
-			closable: false,
-			reorderable: false,
-			layout: 'hbox',
+		// 	id: 'upgradeTab',
+		// 	cls: 'settings-panel',
+		// 	closable: false,
+		// 	reorderable: false,
+		// 	layout: 'hbox',
 
-			tabConfig: {
-				cls: 'b-icon',
-				handler: 'notButton'
-			},
+		// 	tabConfig: {
+		// 		cls: 'b-icon',
+		// 		handler: 'notButton',
+		// 	},
 
-			items: [],
-		}
+		// 	items: [],
+		// }
 		
-		,{
-			icon: 'resources/tools/notifications.png',
+		// ,{
+		// 	icon: 'resources/tools/notifications.png',
 
-			id: 'notificationsTab',
-			cls: 'settings-panel',
-			closable: false,
-			reorderable: false,
-			layout: 'hbox',
+		// 	id: 'notificationsTab',
+		// 	cls: 'settings-panel',
+		// 	closable: false,
+		// 	reorderable: false,
+		// 	layout: 'hbox',
 
-			tabConfig: {
-				cls: 'b-icon n-opacity',
-				handler: 'notButton'
-			},
+		// 	hidden: false,
 
-			items: [],
-		}
+		// 	tabConfig: {
+		// 		cls: 'b-icon n-opacity',
+		// 		handler: 'notButton'
+		// 	},
 
-		,{
-			icon: 'resources/tools/settings.png'
+		// 	items: [],
+		// }
 
-			,id: 'settingsTab'
-			,cls: 'settings-panel'
-			,closable: false
-			,reorderable: false 
-			,layout: 'hbox'
+		// ,{
+		// 	icon: 'resources/tools/settings.png'
 
-			,tabConfig: {
-				cls: 'b-icon',
-				// handler: 'testButton',
-			}
-			,items: [
-				{
-					 xtype: 'grid'
-					,title: locale['app.main[4]']
-					,store: 'Services'
-					,hideHeaders: true
-					,margin: '0 0 0 5'
-					,flex: 1
+		// 	,id: 'settingsTab'
+		// 	,cls: 'settings-panel'
+		// 	,closable: false
+		// 	,reorderable: false 
+		// 	,layout: 'hbox'
+			
+		// 	,hidden: false 
 
-					,header: { height: 50 }
+		// 	,tabConfig: {
+		// 		cls: 'b-icon',
+		// 		// handler: 'testButton',
+		// 	}
+		// 	,items: [
+		// 		{
+		// 			 xtype: 'grid'
+		// 			,title: locale['app.main[4]']
+		// 			,store: 'Services'
+		// 			,hideHeaders: true
+		// 			,margin: '0 0 0 5'
+		// 			,flex: 1
 
-					,tools: [
-						{
-							 xtype: 'button'
-							,glyph: 'xf1f8@FontAwesome'
-							,baseCls: ''
-							,tooltip: locale['app.main[10]']
-							,handler: 'removeAllServices'
-						}
-					]
-					,columns: [
-						{
-							 xtype: 'templatecolumn'
-							,width: 50
-							,variableRowHeight: true
-							,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
-						}
-						,{
-							 dataIndex: 'name'
-							,variableRowHeight: true
-							,flex: 1
-							,editor: {
-								 xtype: 'textfield'
-								,allowBlank: true
-							}
-						}
-						,{
-							 xtype: 'actioncolumn'
-							,width: 60
-							,align: 'right'
-							,items: [
-								{
-									 glyph: 0xf1f7
-									,tooltip: locale['app.main[11]']
-									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-										if ( record.get('notifications') ) return 'x-hidden';
-									}
-								}
-								,{
-									 glyph: 0xf026
-									,tooltip: locale['app.main[12]']
-									,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-										if ( !record.get('muted') ) return 'x-hidden';
-									}
-								}
-							]
-						}
-						,{
-							xtype: 'checkcolumn',
-							width: 40,
-							dataIndex: 'notifications',
-						},
-						{
-							xtype: 'checkcolumn',
-							width: 40,
-							dataIndex: 'muted'
-						}
-						,{
-							xtype: 'actioncolumn'
-						   ,width: 40
-						   ,align: 'center'
-						   ,items: [
-							   {
-									glyph: 0xf1f8
-								   ,tooltip: locale['app.main[14]']
-								   ,handler: 'removeService'
-								   // ,getClass: function(){ return 'x-hidden-display'; }
-							   }
-						   ]
-					   }
-						// ,{
-						// 	 xtype: 'checkcolumn'
-						// 	,width: 40
-						// 	,dataIndex: 'enabled'
-						// 	,renderer: function(value, metaData) {
-						// 		metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
-						// 		return this.defaultRenderer(value, metaData);
-						// 	}
-						// 	,listeners: {
-						// 		checkchange: 'onEnableDisableService'
-						// 	}
-						// }
-					]
-					,viewConfig: {
-						 emptyText: locale['app.main[15]']
-						,forceFit: true
-						,stripeRows: true
-					}
-					,listeners: {
-						 edit: 'onRenameService'
-						,rowdblclick: 'showServiceTab'
-					}
-				}
-			]
-		}
+		// 			,header: { height: 50 }
+
+		// 			,tools: [
+		// 				{
+		// 					 xtype: 'button'
+		// 					,glyph: 'xf1f8@FontAwesome'
+		// 					,baseCls: ''
+		// 					,tooltip: locale['app.main[10]']
+		// 					,handler: 'removeAllServices'
+		// 				}
+		// 			]
+		// 			,columns: [
+		// 				{
+		// 					 xtype: 'templatecolumn'
+		// 					,width: 50
+		// 					,variableRowHeight: true
+		// 					,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
+		// 				}
+		// 				,{
+		// 					 dataIndex: 'name'
+		// 					,variableRowHeight: true
+		// 					,flex: 1
+		// 					,editor: {
+		// 						 xtype: 'textfield'
+		// 						,allowBlank: true
+		// 					}
+		// 				}
+		// 				,{
+		// 					 xtype: 'actioncolumn'
+		// 					,width: 60
+		// 					,align: 'right'
+		// 					,items: [
+		// 						{
+		// 							 glyph: 0xf1f7
+		// 							,tooltip: locale['app.main[11]']
+		// 							,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+		// 								if ( record.get('notifications') ) return 'x-hidden';
+		// 							}
+		// 						}
+		// 						,{
+		// 							 glyph: 0xf026
+		// 							,tooltip: locale['app.main[12]']
+		// 							,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+		// 								if ( !record.get('muted') ) return 'x-hidden';
+		// 							}
+		// 						}
+		// 					]
+		// 				}
+		// 				,{
+		// 					xtype: 'checkcolumn',
+		// 					width: 40,
+		// 					dataIndex: 'notifications',
+		// 				},
+		// 				{
+		// 					xtype: 'checkcolumn',
+		// 					width: 40,
+		// 					dataIndex: 'muted'
+		// 				}
+		// 				,{
+		// 					xtype: 'actioncolumn'
+		// 				   ,width: 40
+		// 				   ,align: 'center'
+		// 				   ,items: [
+		// 					   {
+		// 							glyph: 0xf1f8
+		// 						   ,tooltip: locale['app.main[14]']
+		// 						   ,handler: 'removeService'
+		// 						   // ,getClass: function(){ return 'x-hidden-display'; }
+		// 					   }
+		// 				   ]
+		// 			   }
+		// 				// ,{
+		// 				// 	 xtype: 'checkcolumn'
+		// 				// 	,width: 40
+		// 				// 	,dataIndex: 'enabled'
+		// 				// 	,renderer: function(value, metaData) {
+		// 				// 		metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
+		// 				// 		return this.defaultRenderer(value, metaData);
+		// 				// 	}
+		// 				// 	,listeners: {
+		// 				// 		checkchange: 'onEnableDisableService'
+		// 				// 	}
+		// 				// }
+		// 			]
+		// 			,viewConfig: {
+		// 				 emptyText: locale['app.main[15]']
+		// 				,forceFit: true
+		// 				,stripeRows: true
+		// 			}
+		// 			,listeners: {
+		// 				 edit: 'onRenameService'
+		// 				,rowdblclick: 'showServiceTab'
+		// 			}
+		// 		}
+		// 	]
+		// }
 
 		,{
 			id: 'welcomeTab'
@@ -472,9 +480,6 @@ Ext.define('Rambox.view.main.Main', {
 			   }
 		   ]
 		}
-		
-		
-
 		
 	]
 
