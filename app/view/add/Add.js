@@ -263,13 +263,19 @@ Ext.define('Rambox.view.add.Add',{
 					,{
 						 xtype: 'container'
 						,name: "nHint"
+						,cls: 'x-window-hint'
 						,hidden: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') === '' : me.record.get('note') === '')
 						,data: { note: (me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') : me.record.get('note')) }
-						,margin: '10 0 0 0'
-						,style: 'background-color:#93CFE0;color:#053767;border-radius:6px;'
+						,margin: '0 0 0 0'
+						// ,style: 'background-color:#93CFE0;color:#053767;border-radius:6px;'
+						,style: 'color: #4B4F53; font-size: 14pt; font-weight: 400;'
 						,tpl: [
-							 '<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
-							,'<span style="font-size: 15px;position: absolute;padding: 10px 10px 10px 0;">{note}</span>'
+							// ,'<div class="notice">'
+							,'<img class="hint-image" src="resources/tools/info.png">'
+							// ,'<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
+							,'<span class="hint-text" style="font-size: 15px; padding: 10px 10px 10px 0;">{note}</span>'
+							// ,'</div>'
+							,
 						]
 					}
 				]
