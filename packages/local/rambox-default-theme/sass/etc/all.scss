@@ -377,8 +377,21 @@ body {
 	font-weight: 500;
 }
 
-.n-opacity .x-tab-icon-el {
+// .n-opacity .x-tab-icon-el {
+.b-icon .x-tab-icon-el {
 	opacity: 0.5;
+}
+
+.x-tab.x-tab-over.x-tab-default.b-icon {
+	background: none !important;
+}
+
+.x-tab.x-tab-over.x-tab-default.b-icon .x-tab-icon-el {
+	opacity: 0.8;
+}
+
+.x-tab.x-tab-active.x-tab-default.b-icon .x-tab-icon-el {
+	opacity: 1;
 }
 
 .services {
@@ -398,4 +411,16 @@ body {
 	width: 80%;
 
 	margin-left: 20px;
+}
+
+
+
+// Table view
+
+.x-column-header {
+	border: none !important;
+	font-size: 12pt !important;
+	font-weight: 400 !important;
+
+	color: #081F37 !important;
 }

@@ -20,7 +20,8 @@ const notifications = {
 	reorderable: false,
 
 	tabConfig: {
-		cls: 'b-icon n-opacity',
+		// cls: 'b-icon n-opacity',
+		cls: 'b-icon',
 		handler: 'notButton'
 	},
 }
@@ -39,17 +40,20 @@ const settings = {
 	,tabConfig: {
 		cls: 'b-icon',
 	}
+
 	,items: [
 		{
 			 xtype: 'grid'
 			,title: '<h1 class="sel-main-title">Settings</h1> <h3 class="sel-sub-title">Preferences for your services</h3>'
 			,store: 'Services'
-			,hideHeaders: true
+			// ,hideHeaders: true
 			,margin: '0'
 			,flex: 1
 
 			// ,header: { height: 50 }
 			,header: { padding: "30 30" }
+			// ,headerBorders: false 
+			// ,height: 100
 
 			,tools: [
 				
@@ -63,14 +67,29 @@ const settings = {
 			]
 			,columns: [
 				{
-					xtype: 'templatecolumn'
+					 xtype: 'templatecolumn'
 					,width: 50
+					,height: 50
 					,variableRowHeight: true
 					,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
+
+					,menuDisabled: true
+					,sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
 				}
 				,{
-					dataIndex: 'name'
+					 dataIndex: 'name'
+					,header: 'YOUR SERVICES'
 					,variableRowHeight: true
+
+					,menuDisabled: true
+					,sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
+
 					,flex: 1
 					,editor: {
 						 xtype: 'textfield'
@@ -100,18 +119,40 @@ const settings = {
 				// }
 				,{
 					xtype: 'checkcolumn',
-					width: 40,
+					header: 'NOTIFICATIONS',
+					width: 150,
 					dataIndex: 'notifications',
+
+					menuDisabled: true,
+					sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
 				},
 				{
 					xtype: 'checkcolumn',
-					width: 40,
-					dataIndex: 'muted'
+					header: 'SOUND',
+					width: 100,
+					dataIndex: 'muted',
+
+					menuDisabled: true,
+					sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
 				}
 				,{
-					xtype: 'actioncolumn'
-					,width: 40
+					 xtype: 'actioncolumn'
+					,header: 'REMOVE'
+					,width: 100
 					,align: 'center'
+
+					,menuDisabled: true
+					,sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
+
 					,items: [
 						{
 							glyph: 0xf1f8
@@ -135,12 +176,14 @@ const settings = {
 				// }
 			]
 			,viewConfig: {
-					emptyText: locale['app.main[15]']
+				 emptyText: locale['app.main[15]']
 				,forceFit: true
-				,stripeRows: true
+				,stripeRows: false 
+				// ,height: 100
+				// ,itemHeight: 100
 			}
 			,listeners: {
-					edit: 'onRenameService'
+				 edit: 'onRenameService'
 				,rowdblclick: 'showServiceTab'
 			}
 		}
