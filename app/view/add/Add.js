@@ -282,8 +282,8 @@ Ext.define('Rambox.view.add.Add',{
 				,ui: 'decline'
 				,handler: 'doCancel'
 				,cls: 'main-cancel'
-				,padding: '5 10'
-				,margin: '4'
+				,padding: '10 20'
+				,margin: '15 20'
 			}
 			,'->'
 			,{
@@ -291,8 +291,8 @@ Ext.define('Rambox.view.add.Add',{
 				,itemId: 'submit'
 				,handler: 'doSave'
 				,cls: 'main-submit'
-				,padding: '5 10'
-				,margin: '4'
+				,padding: '10 20'
+				,margin: '15 20'
 			}
 		];
 

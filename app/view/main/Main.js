@@ -127,6 +127,7 @@ Ext.define('Rambox.view.main.Main', {
 							,itemSelector: 'div.service'
 							,tpl: [
 								'<h3 class="main-type-title">MESSAGING APPS</h3>'
+								,'<div class="services">'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'messaging\'">'
 										,'<div class="service" id="s_{id}" >'
@@ -135,8 +136,10 @@ Ext.define('Rambox.view.main.Main', {
 										,'</div>'
 									,'</tpl>'
 								,'</tpl>'
+								,'</div>'
 
 								,'<h3 class="main-type-title">EMAIL</h3>'
+								,'<div class="services">'
 								,'<tpl for=".">'
 								 	,'<tpl if="type == \'email\'">'
 										,'<div class="service" id="s_{id}" >'
@@ -145,6 +148,7 @@ Ext.define('Rambox.view.main.Main', {
 										,'</div>'
 									,'</tpl>'
 								,'</tpl>'
+								,'</div>'
 							]
 							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
 							,listeners: {

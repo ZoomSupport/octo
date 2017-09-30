@@ -313,11 +313,11 @@ body {
 }
 
 .main-cancel {
-	border-color: #657892 !important;
+	border-color: #2B4266 !important;
 	border-width: 1px !important;
 }
 .main-cancel .x-btn-inner {
-	color: #657892;
+	color: #2B4266;
 }
 .main-cancel .x-btn-inner:hover {
 	text-decoration: none;
@@ -335,12 +335,12 @@ body {
 // 	text-decoration: none;
 // }
 .main-submit {
-	background-color: #20A2E6 !important;
+	background-color: #191991 !important;
 	border: none !important;
 }
 
 .urlLabel {
-	font-weight: bold;
+	// font-weight: bold;
 	color: #4F5357;
 	font-size: 12pt;
 
@@ -379,4 +379,9 @@ body {
 
 .n-opacity .x-tab-icon-el {
 	opacity: 0.5;
+}
+
+.services {
+	padding-left: 30px;
+	padding-right: 30px;
 }
