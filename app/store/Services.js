@@ -41,61 +41,63 @@ const settings = {
 	}
 	,items: [
 		{
-				xtype: 'grid'
-			,title: locale['app.main[4]']
+			 xtype: 'grid'
+			,title: '<h1 class="sel-main-title">Settings</h1> <h3 class="sel-sub-title">Preferences for your services</h3>'
 			,store: 'Services'
 			,hideHeaders: true
-			,margin: '0 0 0 5'
+			,margin: '0'
 			,flex: 1
 
-			,header: { height: 50 }
+			// ,header: { height: 50 }
+			,header: { padding: "30 30" }
 
 			,tools: [
+				
 				{
-						xtype: 'button'
-					,glyph: 'xf1f8@FontAwesome'
-					,baseCls: ''
-					,tooltip: locale['app.main[10]']
-					,handler: 'removeAllServices'
+					xtype: 'container'
+				   ,margin: '0'
+				   ,tpl: [
+					   '<h3 class="sel-sub-title">Share app:</h3>'
+				   ]
 				}
 			]
 			,columns: [
 				{
-						xtype: 'templatecolumn'
+					xtype: 'templatecolumn'
 					,width: 50
 					,variableRowHeight: true
 					,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
 				}
 				,{
-						dataIndex: 'name'
+					dataIndex: 'name'
 					,variableRowHeight: true
 					,flex: 1
 					,editor: {
-							xtype: 'textfield'
+						 xtype: 'textfield'
 						,allowBlank: true
 					}
 				}
-				,{
-						xtype: 'actioncolumn'
-					,width: 60
-					,align: 'right'
-					,items: [
-						{
-								glyph: 0xf1f7
-							,tooltip: locale['app.main[11]']
-							,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-								if ( record.get('notifications') ) return 'x-hidden';
-							}
-						}
-						,{
-								glyph: 0xf026
-							,tooltip: locale['app.main[12]']
-							,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-								if ( !record.get('muted') ) return 'x-hidden';
-							}
-						}
-					]
-				}
+				// ,{
+				// 	xtype: 'actioncolumn'
+				// 	,width: 60
+				// 	,align: 'right'
+				// 	,items: [
+				// 		{
+				// 				glyph: 0xf1f7
+				// 			,tooltip: locale['app.main[11]']
+				// 			,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+				// 				if ( record.get('notifications') ) return 'x-hidden';
+				// 			}
+				// 		}
+				// 		,{
+				// 				glyph: 0xf026
+				// 			,tooltip: locale['app.main[12]']
+				// 			,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
+				// 				if ( !record.get('muted') ) return 'x-hidden';
+				// 			}
+				// 		}
+				// 	]
+				// }
 				,{
 					xtype: 'checkcolumn',
 					width: 40,
