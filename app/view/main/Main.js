@@ -61,10 +61,10 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
-					,title: '<h1 class="sel-main-title">SERVICES</h1> <h3 class="sel-sub-title">Select a service you need</h3>' //locale['app.main[0]']
-					,margin: '0 20'
+					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' //locale['app.main[0]']
+					// ,margin: '0 20'
 					,flex: 1
-					,header: { padding: "20 0" }
+					,header: { padding: "30 30" }
 					,tools: [
 						{
 							 xtype: 'checkboxgroup'
@@ -97,8 +97,8 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'textfield'
 							,grow: true
 							,cls: "header-search"
-							,growMin: 250
-							,growMax: 250
+							,growMin: 350
+							,growMax: 350
 							,emptyText: "Search"
 							,triggers: {
 								 clear: {

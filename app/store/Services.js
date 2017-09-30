@@ -210,7 +210,7 @@ Ext.define('Rambox.store.Services', {
 				service.get('align') === 'left' ? servicesLeft.push(cfg) : servicesRight.push(cfg);
 			});
 
-			if ( !Ext.isEmpty(servicesLeft) ) Ext.cq1('app-main').insert(1, servicesLeft);
+			if ( !Ext.isEmpty(servicesLeft) ) Ext.cq1('app-main').insert(0, servicesLeft);
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
 
 			if (store.data.length > 1) {
