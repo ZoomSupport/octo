@@ -4,7 +4,8 @@
 @import 'loadscreen';
 
 $base-color: #2E658E;
-$font-family: 'Roboto', sans-serif;
+// $font-family: 'Roboto', sans-serif;
+$font-family: 'Helvetica Neue';
 $include-ie: false;
 $include-ff: false;
 $include-safari: false;
@@ -13,8 +14,12 @@ $include-opera: false;
 // Spinner
 body {
 	margin: 0;
-	background-color: $base-color;
+	// background-color: $base-color;
 }
+.x-body {
+	background: none !important;
+}
+
 @-webkit-keyframes uil-ring-anim {
 	0% {
 		-ms-transform: rotate(0deg);

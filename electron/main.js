@@ -19,6 +19,8 @@ const os = require('os')
 // System Information
 const si = require('systeminformation')
 
+// const electronVibrancy = require('electron-vibrancy')
+
 // Initial Config
 const config = new Config({
 	 defaults: {
@@ -163,8 +165,9 @@ function createWindow () {
 			,partition: 'persist:rambox'
 			,experimentalFeatures: true
 		}
-		// ,titleBarStyle: 'hiddenInset'
-		// ,transparent: true
+		,titleBarStyle: 'hiddenInset'
+		,transparent: true
+		,vibrancy: 'dark'
 	});
 
 	if ( !config.get('start_minimized') && config.get('maximized') ) mainWindow.maximize();

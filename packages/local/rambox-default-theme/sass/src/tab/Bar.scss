@@ -1,3 +1,7 @@
+.x-tab-bar-default {
+	background: none !important;
+}
+
 .x-tab-bar-top {
 	.x-tab-bar-body {
 		padding: 8px 0 0 0 !important;
@@ -33,6 +37,8 @@
 	font-family: "Helvetica Neue" !important;
 	font-weight: 400;
 	font-size: 12pt;
+
+	color: white;
 }
 
 .x-tab-icon-el-default {
@@ -41,6 +47,10 @@
 
 .x-tab-default {
 	padding: 13px 20px !important;
+	border-radius: 0;
+}
+.x-tab-default-left {
+	background: none;
 }
 
 .b-icon {
@@ -55,4 +65,16 @@
 .b-icon.x-tab-active {
 	border: none !important;
 	background: none !important;
+}
+
+.x-tab.x-tab-active.x-tab-default {
+	border: none;
+	background-color: rgba(0,0,0,0.2);
+}
+.x-tab-over.x-tab-default {
+	border: none !important;
+	background-color: rgba(0,0,0,0.2) !important;
+}
+.x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
+	color: white;
 }
