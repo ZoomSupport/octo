@@ -128,7 +128,7 @@ Ext.define('Rambox.view.main.Main', {
 									tmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
 									tmp.push('<div class="services">')
 									tmp.push('<tpl for=".">')
-									tmp.push('<tpl if="type == \''+t.id+'\'">')
+									tmp.push('<tpl if="type == \''+t.id+'\' || type == \'custom\'">')
 									tmp.push('<div class="service" id="s_{id}">')
 									tmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
 									tmp.push('<h3 class="title">{name}</h3>')
