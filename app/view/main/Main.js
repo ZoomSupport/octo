@@ -16,13 +16,6 @@ Ext.define('Rambox.view.main.Main', {
     ,tabPosition: 'left'
 	,tabRotation: 0
 
-	// ,stores: [
-	//    'Services'
-	// ]
-	
-	// ,padding: 0
-	// ,border: 0
-
 	,controller: 'main'
 	,viewModel: {
 		type: 'main'
@@ -34,19 +27,11 @@ Ext.define('Rambox.view.main.Main', {
 		}
 	]
 
-	// ,add: function () {
-	// 	// console.log('TAB INIT NOW', this);
-	// 	// Rambox.view.main.Main.add.call(this)
-
-	// 	const serviceCnt = Ext.getStore('Services').data // Current service number
-	// 	console.log(serviceCnt)
-	// }
-
 	,autoRender: true
 	,autoShow: true
 	,deferredRender: false
+
 	,items: [
-		
 		{
 			 icon: 'resources/tools/add.png'
 			,title: 'Add Service'
@@ -61,7 +46,7 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
-					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' //locale['app.main[0]']
+					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' 
 					// ,margin: '0 20'
 					,flex: 1
 					,header: { padding: "30 30" }
@@ -125,31 +110,34 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'dataview'
 							,store: 'ServicesList'
 							,itemSelector: 'div.service'
-							,tpl: [
-								'<h3 class="main-type-title">MESSAGING APPS</h3>'
-								,'<div class="services">'
-								,'<tpl for=".">'
-								 	,'<tpl if="type == \'messaging\'">'
-										,'<div class="service" id="s_{id}" >'
-											,'<img src="resources/icons/{logo}" width="48" /><br />'
-											,'<h3 class="title">{name}</h3>'
-										,'</div>'
-									,'</tpl>'
-								,'</tpl>'
-								,'</div>'
+							,tpl: function () {
 
-								,'<h3 class="main-type-title">EMAIL</h3>'
-								,'<div class="services">'
-								,'<tpl for=".">'
-								 	,'<tpl if="type == \'email\'">'
-										,'<div class="service" id="s_{id}" >'
-											,'<img src="resources/icons/{logo}" width="48" /><br />'
-											,'<h3 class="title">{name}</h3>'
-										,'</div>'
-									,'</tpl>'
-								,'</tpl>'
-								,'</div>'
-							]
+								var tmp = []
+								const types = [
+									{
+										name: "MESSAGING APPS",
+										id: 'messaging'
+									},
+									{
+										name: "E-MAIL",
+										id: 'email'
+									}
+								]
+
+								types.forEach( function (t) {
+									tmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
+									tmp.push('<div class="services">')
+									tmp.push('<tpl for=".">')
+									tmp.push('<tpl if="type == \''+t.id+'\'">')
+									tmp.push('<div class="service" id="s_{id}">')
+									tmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
+									tmp.push('<h3 class="title">{name}</h3>')
+									tmp.push('</div></tpl></tpl></div>')
+
+								})
+
+								return tmp
+							}()
 							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
 							,listeners: {
 								itemclick: 'onNewServiceSelect'
@@ -184,11 +172,13 @@ Ext.define('Rambox.view.main.Main', {
 	]
 
 	,listeners: {
-		 tabchange: 'onTabChange'
-		,add: 'updatePositions'
-		,remove: 'updatePositions'
-		,childmove: 'updatePositions'
-		,beforetabchange: 'setActiveTab'
-		// ,added: 'onShow'
-	}
+		tabchange: 'onTabChange'
+	   ,add: 'updatePositions'
+	   ,remove: 'updatePositions'
+	   ,childmove: 'updatePositions'
+	   ,beforetabchange: 'setActiveTab'
+	   // ,added: 'onShow'
+   }
+
+	
 });
