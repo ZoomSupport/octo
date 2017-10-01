@@ -249,7 +249,7 @@ Ext.define('Rambox.store.Services', {
 					,enabled: service.get('enabled')
 					,record: service
 					,tabConfig: {
-						service: service
+						service: service,
 					}
 				};
 

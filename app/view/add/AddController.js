@@ -118,7 +118,7 @@ Ext.define('Rambox.view.add.AddController', {
 				*/
 				,record: service
 				,tabConfig: {
-					service: service
+					service: service,
 				}
 			};
 
