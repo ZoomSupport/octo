@@ -165,7 +165,7 @@ function createWindow () {
 			,partition: 'persist:rambox'
 			,experimentalFeatures: true
 		}
-		,titleBarStyle: 'hiddenInset'
+		,titleBarStyle: 'hidden'
 		,transparent: true
 		,vibrancy: 'dark'
 	});

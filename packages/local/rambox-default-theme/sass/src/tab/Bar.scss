@@ -1,6 +1,12 @@
 .x-tab-bar-default {
 	// background: none !important;
 	background-color: rgba(6,30,48,0.2);
+
+	-webkit-app-region: drag;
+}
+
+.x-tab {
+	-webkit-app-region: no-drag;
 }
 
 .x-tab-bar-top {
