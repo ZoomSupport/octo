@@ -284,8 +284,10 @@ Ext.define('Rambox.view.main.MainController', {
 		me.doTypeFilter(cg);
 	}
 
-	,dontDisturb: function(btn, e, called) {
-		console.info('Dont Disturb:', btn.pressed ? 'Enabled' : 'Disabled');
+	// ,dontDisturb: function(btn, e, called) {
+	,dontDisturb: function(enabled) {
+		// console.info('Dont Disturb:', btn.pressed ? 'Enabled' : 'Disabled');
+		console.info('Dont Disturb:', enabled ? 'Enabled' : 'Disabled');
 
 		// Google Analytics Event
 		// if ( !called ) ga_storage._trackEvent('Usability', 'dontDisturb', ( btn.pressed ? 'on' : 'off' ));
@@ -297,27 +299,31 @@ Ext.define('Rambox.view.main.MainController', {
 			if ( !tab ) return; // Skip disabled services
 
 			// Mute sounds
-			tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
+			// tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
+			tab.setAudioMuted(enabled ? true : tab.record.get('muted'), true);
 
 			// Prevent Notifications
-			tab.setNotifications(btn.pressed ? false : tab.record.get('notifications'), true);
+			// tab.setNotifications(btn.pressed ? false : tab.record.get('notifications'), true);
+			tab.setNotifications(enabled ? false : tab.record.get('notifications'), true);
 		});
 
-		localStorage.setItem('dontDisturb', btn.pressed);
+		// localStorage.setItem('dontDisturb', btn.pressed);
+		localStorage.setItem('dontDisturb', enabled);
 
-		ipc.send('setDontDisturb', btn.pressed);
+		// ipc.send('setDontDisturb', btn.pressed);
+		ipc.send('setDontDisturb', enabled);
 
-		btn.setText(locale['app.main[16]']+': ' + ( btn.pressed ? locale['app.window[20]'] : locale['app.window[21]'] ));
+		// btn.setText(locale['app.main[16]']+': ' + ( btn.pressed ? locale['app.window[20]'] : locale['app.window[21]'] ));
 
 		// If this method is called from Lock method, prevent showing toast
-		if ( !e ) return;
-		Ext.toast({
-			 html: btn.pressed ? 'ENABLED' : 'DISABLED'
-			,title: 'Don\'t Disturb'
-			,width: 200
-			,align: 't'
-			,closable: false
-		});
+		// if ( !e ) return;
+		// Ext.toast({
+		// 	 html: btn.pressed ? 'ENABLED' : 'DISABLED'
+		// 	,title: 'Don\'t Disturb'
+		// 	,width: 200
+		// 	,align: 't'
+		// 	,closable: false
+		// });
 	}
 
 	,lockRambox: function(btn) {
@@ -513,6 +519,14 @@ Ext.define('Rambox.view.main.MainController', {
 			break;
 
 			case 'notificationsTab':
+				var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
+				this.dontDisturb(!dontDisturb)
+				dontDisturb = localStorage.getItem('dontDisturb');
+
+				panel.getTabBar().getComponent('notTab').setStyle({
+					opacity: (dontDisturb == 'true') ? 0.2 : 1
+				})
+
 				return false
 			break;
 		}

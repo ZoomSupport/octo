@@ -21,6 +21,7 @@ const notifications = {
 
 	tabConfig: {
 		// cls: 'b-icon n-opacity',
+		id: 'notTab',
 		cls: 'b-icon',
 		handler: 'notButton'
 	},
