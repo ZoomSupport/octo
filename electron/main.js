@@ -275,8 +275,7 @@ function createWindow () {
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
-		// notify1 = setTimeout(timeNotification, 1000 * 60);
-		notify1 = setTimeout(timeNotification, 2000);
+		notify1 = setTimeout(timeNotification, 1000 * 60);
 		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
 		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});
