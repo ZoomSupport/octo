@@ -143,6 +143,20 @@ function handleSquirrelEvent() {
 let mainWindow;
 let isQuitting = false;
 
+function timeNotification() {
+
+	mainWindow.webContents.send('getServiceNum')
+	ipcMain.on('serviceNum', function (e, len) {
+		
+		const n = new Notification({
+			title: "Hello",
+			body: "Number of " + len
+		})
+		n.show()
+
+	})
+}
+
 function createWindow () {
 	// Create the browser window using the state information
 	mainWindow = new BrowserWindow({
@@ -225,22 +239,25 @@ function createWindow () {
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
 
-	let spamN = null;
+	let notify1 = null;
+	let notify15 = null;
+	let notify120 = null;
 
-	// mainWindow.on('blur', function(e) {
-	// 	console.log('Focus Lost')
+	mainWindow.on('blur', function(e) {
+		console.info('[Event] Focus Lost')
 
-	// 	spamN = setInterval(function () {
-	// 		const n = new Notification({
-	// 			title: "Hello",
-	// 			body: "Nice to see you :P"
-	// 		})
-	// 		n.show()
-	// 	}, 10000);
-	// });
-	// mainWindow.on('focus', function(e) {
-	// 	clearInterval(spamN)
-	// });
+		// notify1 = setTimeout(timeNotification, 1000 * 60);
+		notify1 = setTimeout(timeNotification, 60);
+		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
+		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
+	});
+	mainWindow.on('focus', function(e) {
+		console.info('[Event] Focus Gained')
+
+		clearTimeout(notify1)
+		clearTimeout(notify15)
+		clearTimeout(notify120)
+	});
 
 	// Emitted when the window is closed.
 	mainWindow.on('close', function(e) {

@@ -20,7 +20,7 @@ Ext.define('Rambox.util.License', {
                     serial: info.serial,
                     modelId: info.modelId,
                     osVersion: info.osVersion,
-                    softBundle: "com.rambox",
+                    softBundle: "com.inifieder",
                     softVersion: "1.0.0",
                     // signature: Rambox.util.MD5.encypt()
                 }

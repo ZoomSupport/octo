@@ -275,6 +275,14 @@ Ext.define('Rambox.Application', {
 			});
 		}
 
+		ipc.on('getServiceNum', function (e) {
+		// ipc.on('sendIntervalNotification', function (e) {
+			const len = Ext.getStore('Services').data.length;
+			// e.sender.send('serviceNum', len);
+			console.log(len)
+			ipc.send('serviceNum', len);
+		});
+
 		// Remove spinner
 		Ext.get('spinner').destroy();
 	}
