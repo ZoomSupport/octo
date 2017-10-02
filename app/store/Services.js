@@ -290,6 +290,15 @@ Ext.define('Rambox.store.Services', {
 				if (Ext.cq1('app-main').getComponent('settingsTab') === undefined)
 					Ext.cq1('app-main').add(settings)
 			}
+
+			if (store.data.length == 1) {
+				localStorage.setItem('appealingPlus', true)
+
+				const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				tab.setIcon('resources/tools/add_2.png')
+
+
+			}
 		}
 	}
 });

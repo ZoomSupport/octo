@@ -37,9 +37,10 @@ Ext.define('Rambox.view.main.Main', {
 
 	,items: [
 		{
-			 icon: 'resources/tools/add.png'
+			 icon: (localStorage.getItem('appealingPlus') == 'true') ? 'resources/tools/add_2.png' : 'resources/tools/add.png'
 			,title: 'Add Service'
 			,id: 'ramboxTab'
+			,itemId: 'plusTab'
 			,cls: 'main-panel'
 			,closable: false
 			,reorderable: false 

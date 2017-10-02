@@ -42,6 +42,8 @@ Ext.define('Rambox.util.Notifier', {
 		this.dispatchNotification = function(view, count) {
 			var text = getNotificationText(view, count);
 
+			console.log('DISPATCH NOTIFICATION', view, count)
+
 			var notification = new Notification(view.record.get('name'), {
 				body: text,
 				icon: view.tab.icon,

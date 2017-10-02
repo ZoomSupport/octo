@@ -200,6 +200,8 @@ Ext.define('Rambox.Application', {
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
 		ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
 
+		if ( localStorage.getItem('lifetimeNotificationCount') === null ) localStorage.setItem('lifetimeNotificationCount', false);
+
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
 			Ext.cq1('app-main').getController().showLockWindow();
@@ -279,8 +281,9 @@ Ext.define('Rambox.Application', {
 		// ipc.on('sendIntervalNotification', function (e) {
 			const len = Ext.getStore('Services').data.length;
 			// e.sender.send('serviceNum', len);
-			console.log(len)
-			ipc.send('serviceNum', len);
+			// console.log(len)
+			ipc.send('serviceNum', len, !(localStorage.getItem('activated') == 'true') );
+
 		});
 
 		// Remove spinner
@@ -288,6 +291,8 @@ Ext.define('Rambox.Application', {
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {
+		console.log('[EVENT] updateTotalNotifications', newValue, oldValue);
+
 		newValue = parseInt(newValue);
 		if ( newValue > 0 )	{
 			if ( Ext.cq1('app-main').getActiveTab().record ) {

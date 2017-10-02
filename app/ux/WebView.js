@@ -129,13 +129,13 @@ Ext.define('Rambox.ux.WebView',{
 			}
 		});
 
-		// if ( me.record.get('statusbar') ) {
-		// 	Ext.apply(me, {
-		// 		bbar: me.statusBarConstructor(false)
-		// 	});
-		// } else {
-		// 	me.items.push(me.statusBarConstructor(true));
-		// }
+		if ( me.record.get('statusbar') ) {
+			Ext.apply(me, {
+				bbar: me.statusBarConstructor(false)
+			});
+		} else {
+			me.items.push(me.statusBarConstructor(true));
+		}
 
 		me.callParent(config);
 	}
@@ -447,6 +447,8 @@ Ext.define('Rambox.ux.WebView',{
 				count = count === '•' ? count : Ext.isArray(count.match(/\d+/g)) ? count.match(/\d+/g).join("") : count.match(/\d+/g); // Some services have special characters. Example: (•)
 				count = count === null ? '0' : count;
 
+				console.log("page-title-updaed", count, me.record.get('name'))
+
 				me.setUnreadCount(count);
 			});
 		}
@@ -471,6 +473,7 @@ Ext.define('Rambox.ux.WebView',{
 
 		me.setTabBadgeText(Rambox.util.Format.formatNumber(newUnreadCount));
 
+		// console.log('setUnreadCount', newUnreadCount)
 		me.doManualNotification(parseInt(newUnreadCount));
 	}
 
@@ -488,13 +491,40 @@ Ext.define('Rambox.ux.WebView',{
 	 * @param {int} count
 	 */
 	,doManualNotification: function(count) {
+		// console.log("MANUAL DISPATCH", count)
+
 		var me = this;
 
 		if (Ext.getStore('ServicesList').getById(me.type).get('manual_notifications') &&
 			me.currentUnreadCount < count &&
 			me.record.get('notifications') &&
 			!JSON.parse(localStorage.getItem('dontDisturb'))) {
+
+				console.log('doManualNotification', count)
 				Rambox.util.Notifier.dispatchNotification(me, count);
+		} else if (
+			me.currentUnreadCount < count &&
+			me.record.get('notifications') &&
+			!JSON.parse(localStorage.getItem('dontDisturb'))
+		) {
+			console.log('tickNotification', count)
+			
+			var totalCount = parseInt( localStorage.getItem('lifetimeNotificationCount') )
+			totalCount += count
+			localStorage.setItem('lifetimeNotificationCount', totalCount)
+
+			
+
+			if (totalCount >= 50 && Ext.getStore('Services').data.length == 2) {
+
+				console.log('Placeholder for 3rd messenger intersection')
+
+				// var notification = new Notification("Octo", {
+				// 	body: "Add third messenger",
+				// });
+			}
+
+
 		}
 
 		me.currentUnreadCount = count;
