@@ -129,13 +129,13 @@ Ext.define('Rambox.ux.WebView',{
 			}
 		});
 
-		if ( me.record.get('statusbar') ) {
-			Ext.apply(me, {
-				bbar: me.statusBarConstructor(false)
-			});
-		} else {
-			me.items.push(me.statusBarConstructor(true));
-		}
+		// if ( me.record.get('statusbar') ) {
+		// 	Ext.apply(me, {
+		// 		bbar: me.statusBarConstructor(false)
+		// 	});
+		// } else {
+		// 	me.items.push(me.statusBarConstructor(true));
+		// }
 
 		me.callParent(config);
 	}

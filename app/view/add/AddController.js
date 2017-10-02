@@ -36,7 +36,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,align: formValues.align
 				,notifications: formValues.notifications
 				,muted: formValues.muted
-				,statusbar: formValues.statusbar
+				,statusbar: false //formValues.statusbar
 				,tabname: formValues.tabname
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
@@ -95,7 +95,7 @@ Ext.define('Rambox.view.add.AddController', {
 				,notifications: formValues.notifications
 				,muted: formValues.muted
 				,tabname: formValues.tabname
-				,statusbar: formValues.statusbar
+				,statusbar: false //formValues.statusbar
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
