@@ -27,10 +27,14 @@ const notifications = {
 	},
 }
 
+
 const settings = {
-	icon: (localStorage.getItem('appealingSettings') == 'true') ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
+	icon: (localStorage.getItem('appealingSettings') == 'true' || localStorage.getItem('appealingSettings') == null) ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
 	
 	,id: 'settingsTab'
+
+
+
 	,itemId: 'setTab'
 	,cls: 'settings-panel'
 	,closable: false

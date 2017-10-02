@@ -535,7 +535,9 @@ Ext.define('Rambox.view.main.MainController', {
                     return false
                     break;
 
-                case 'settingsTab':
+				case 'settingsTab':
+					// console.log(localStorage.getItem('appealingSettings'))
+				
                     localStorage.setItem('appealingSettings', false)
 
                     const tab = Ext.cq1('app-main').getComponent('setTab')
