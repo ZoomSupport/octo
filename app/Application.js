@@ -200,7 +200,10 @@ Ext.define('Rambox.Application', {
 		if ( localStorage.getItem('dontDisturb') === null ) localStorage.setItem('dontDisturb', false);
 		ipc.send('setDontDisturb', localStorage.getItem('dontDisturb')); // We store it in config
 
-		if ( localStorage.getItem('lifetimeNotificationCount') === null ) localStorage.setItem('lifetimeNotificationCount', false);
+		if ( localStorage.getItem('lifetimeNotificationCount') === null ) localStorage.setItem('lifetimeNotificationCount', '0');
+
+		if ( localStorage.getItem('appealingSettings') === null ) localStorage.setItem('appealingSettings', 'true');
+
 
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
@@ -282,7 +285,14 @@ Ext.define('Rambox.Application', {
 			const len = Ext.getStore('Services').data.length;
 			// e.sender.send('serviceNum', len);
 			// console.log(len)
-			ipc.send('serviceNum', len, !(localStorage.getItem('activated') == 'true') );
+			ipc.send('serviceNum', 
+				len, 
+
+				localStorage.getItem('activated'),
+				(localStorage.getItem('premiumToggle') == 'true'),
+
+				parseInt( localStorage.getItem('lifetimeNotificationCount') )
+			);
 
 		});
 
@@ -306,10 +316,6 @@ Ext.define('Rambox.Application', {
 			} else {
 				document.title = 'Rambox';
 			}
-		}
-
-		if (newValue >= 50) {
-			console.log("Add 3rd Messenger Notifications")
 		}
 	}
 

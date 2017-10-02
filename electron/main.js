@@ -146,18 +146,32 @@ let isQuitting = false;
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
-	ipcMain.on('serviceNum', function (e, len) {
+	ipcMain.on('serviceNum', function (e, len, activated, pToggle, nCnt) {
 
 		let body = ""
 		switch (len) {
 			case 0: 
-				body = "Add your first messenger"
+				body = "Add first messenger"
 				break;
 			case 1:
-				body = "Add your second messenger"
+				body = "Add second messenger"
 				break;
 			case 2:
+
 				body = "Go into settings"
+
+				if (nCnt >= 50 && pToggle) {
+					body = "Time to upgrade"
+					break;
+				}
+
+				// TODO: track if settings opened
+				if (nCnt >= 50) {
+					body = "Add third messenger";
+					break;
+				}
+
+
 				break;
 			default:
 				return;
@@ -275,7 +289,8 @@ function createWindow () {
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
-		notify1 = setTimeout(timeNotification, 1000 * 60);
+		// notify1 = setTimeout(timeNotification, 1000 * 60);
+		notify1 = setTimeout(timeNotification, 1000 * 1);
 		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
 		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});

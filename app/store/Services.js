@@ -28,9 +28,10 @@ const notifications = {
 }
 
 const settings = {
-	icon: 'resources/tools/settings.png'
+	icon: (localStorage.getItem('appealingSettings') == 'true') ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
 	
 	,id: 'settingsTab'
+	,itemId: 'setTab'
 	,cls: 'settings-panel'
 	,closable: false
 	,reorderable: false 
@@ -303,6 +304,7 @@ Ext.define('Rambox.store.Services', {
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add.png')
 			}
+
 		}
 	}
 });

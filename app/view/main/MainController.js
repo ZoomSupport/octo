@@ -529,6 +529,13 @@ Ext.define('Rambox.view.main.MainController', {
 
 				return false
 			break;
+
+			case 'settingsTab':
+				localStorage.setItem('appealingSettings', false)
+
+				const tab = Ext.cq1('app-main').getComponent('setTab') 
+				tab.setIcon('resources/tools/settings.png')
+			break;
 		}
 
 		if (tab.id === "notificationsTab" || tab.id === "upgradeTab") return false;

@@ -510,19 +510,20 @@ Ext.define('Rambox.ux.WebView',{
 			console.log('tickNotification', count)
 			
 			var totalCount = parseInt( localStorage.getItem('lifetimeNotificationCount') )
+
+			console.log('tick Notification', totalCount)
+
 			totalCount += count
 			localStorage.setItem('lifetimeNotificationCount', totalCount)
 
-			
+			// if (totalCount >= 50 && Ext.getStore('Services').data.length == 2) {
 
-			if (totalCount >= 50 && Ext.getStore('Services').data.length == 2) {
+			// 	console.log('Placeholder for 3rd messenger intersection')
 
-				console.log('Placeholder for 3rd messenger intersection')
-
-				// var notification = new Notification("Octo", {
-				// 	body: "Add third messenger",
-				// });
-			}
+			// 	// var notification = new Notification("Octo", {
+			// 	// 	body: "Add third messenger",
+			// 	// });
+			// }
 
 
 		}
