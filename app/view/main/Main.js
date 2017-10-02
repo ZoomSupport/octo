@@ -158,6 +158,8 @@ Ext.define('Rambox.view.main.Main', {
 
 		,{ id: 'tbfill', tabConfig : { xtype : 'tbfill' } }
 
+		
+
 		,{
 			id: 'welcomeTab'
 		   ,cls: 'welcome-panel'

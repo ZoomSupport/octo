@@ -285,10 +285,11 @@ Ext.define('Rambox.store.Services', {
 				// if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)
 				// 	Ext.cq1('app-main').add(upgrade)
 
-				if (Ext.cq1('app-main').getComponent('notificationsTab') === undefined)
+					
+				if (typeof Ext.cq1('app-main').getComponent('notificationsTab') == 'undefined')
 					Ext.cq1('app-main').add(notifications)
 
-				if (Ext.cq1('app-main').getComponent('settingsTab') === undefined)
+				if (typeof Ext.cq1('app-main').getComponent('setTab') == 'undefined')
 					Ext.cq1('app-main').add(settings)
 			}
 
