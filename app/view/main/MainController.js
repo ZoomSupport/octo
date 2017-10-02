@@ -512,36 +512,41 @@ Ext.define('Rambox.view.main.MainController', {
 	setActiveTab: function (panel, tab, oldTab) {
 		console.log("[EVENT] setActiveTab")
 
-		if (typeof tab.id === 'undefined') return false;
+        try {
+            let thisTab = tab || {}
 
-		switch (tab.id) {
-			case 'upgradeTab':
-				Ext.create('Rambox.view.popup.Popup', {})
-				return false
-			break;
+            if (!thisTab || typeof thisTab.id === 'undefined') return false;
 
-			case 'notificationsTab':
-				var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
-				this.dontDisturb(!dontDisturb)
-				dontDisturb = localStorage.getItem('dontDisturb');
+            switch (thisTab.id) {
+                case 'upgradeTab':
+                    Ext.create('Rambox.view.popup.Popup', {})
+                    return false
+                    break;
 
-				panel.getTabBar().getComponent('notTab').setStyle({
-					opacity: (dontDisturb == 'true') ? 0.2 : 1
-				})
+                case 'notificationsTab':
+                    var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
+                    this.dontDisturb(!dontDisturb)
+                    dontDisturb = localStorage.getItem('dontDisturb');
 
-				return false
-			break;
+                    panel.getTabBar().getComponent('notTab').setStyle({
+                        opacity: (dontDisturb == 'true') ? 0.2 : 1
+                    })
 
-			case 'settingsTab':
-				localStorage.setItem('appealingSettings', false)
+                    return false
+                    break;
 
-				const tab = Ext.cq1('app-main').getComponent('setTab')
-				tab.setIcon('resources/tools/settings.png')
-			break;
-		}
+                case 'settingsTab':
+                    localStorage.setItem('appealingSettings', false)
 
-		if (tab.id === "notificationsTab" || tab.id === "upgradeTab") return false;
+                    const tab = Ext.cq1('app-main').getComponent('setTab')
+                    tab.setIcon('resources/tools/settings.png')
+                    break;
+            }
 
-		
+            if (thisTab.id === "notificationsTab" || thisTab.id === "upgradeTab") return false;
+        } catch (err) {
+            console.log(thisTab)
+            console.log(err)
+        }
 	}
 });
