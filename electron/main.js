@@ -147,12 +147,41 @@ function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
 	ipcMain.on('serviceNum', function (e, len) {
+
+		let body = ""
+		switch (len) {
+			case 0: 
+				body = "Add your first messenger"
+				break;
+			case 1:
+				body = "Add your second messenger"
+				break;
+			case 2:
+				body = "Go into settings"
+				break;
+			default:
+				return;
+		}
 		
 		const n = new Notification({
-			title: "Hello",
-			body: "Number of " + len
+			title: "Octo",
+			body: body,
+
+			actions: {
+				type: 'button',
+				text: "Show"
+			}
+			
 		})
 		n.show()
+
+		n.on('click', function () {
+			mainWindow.focus()
+		})
+
+		n.on('close', function () {
+			// return false;
+		})
 
 	})
 }
@@ -247,7 +276,7 @@ function createWindow () {
 		console.info('[Event] Focus Lost')
 
 		// notify1 = setTimeout(timeNotification, 1000 * 60);
-		notify1 = setTimeout(timeNotification, 60);
+		notify1 = setTimeout(timeNotification, 2000);
 		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
 		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});
