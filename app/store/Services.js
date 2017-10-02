@@ -297,6 +297,11 @@ Ext.define('Rambox.store.Services', {
 				// Update within tab
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add_2.png')
+			} else if (store.data.length > 1) {
+				localStorage.setItem('appealingPlus', false)
+
+				const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				tab.setIcon('resources/tools/add.png')
 			}
 		}
 	}
