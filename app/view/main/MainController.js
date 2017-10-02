@@ -512,6 +512,8 @@ Ext.define('Rambox.view.main.MainController', {
 	setActiveTab: function (panel, tab, oldTab) {
 		console.log("[EVENT] setActiveTab")
 
+		if (typeof tab.id === 'undefined') return false;
+
 		switch (tab.id) {
 			case 'upgradeTab':
 				Ext.create('Rambox.view.popup.Popup', {})
@@ -533,7 +535,7 @@ Ext.define('Rambox.view.main.MainController', {
 			case 'settingsTab':
 				localStorage.setItem('appealingSettings', false)
 
-				const tab = Ext.cq1('app-main').getComponent('setTab') 
+				const tab = Ext.cq1('app-main').getComponent('setTab')
 				tab.setIcon('resources/tools/settings.png')
 			break;
 		}
