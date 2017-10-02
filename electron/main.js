@@ -146,7 +146,7 @@ let isQuitting = false;
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
-	ipcMain.on('serviceNum', function (e, len, activated, pToggle, nCnt) {
+	ipcMain.on('serviceNum', function (e, len, aSet, activated, pToggle, nCnt) {
 
 		let body = ""
 		switch (len) {
@@ -158,7 +158,10 @@ function timeNotification() {
 				break;
 			case 2:
 
-				body = "Go into settings"
+				if (aSet) {
+					body = "Go into settings"
+					break;
+				}
 
 				if (nCnt >= 50 && pToggle) {
 					body = "Time to upgrade"
@@ -171,7 +174,7 @@ function timeNotification() {
 					break;
 				}
 
-
+				return;
 				break;
 			default:
 				return;
@@ -289,8 +292,7 @@ function createWindow () {
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
-		// notify1 = setTimeout(timeNotification, 1000 * 60);
-		notify1 = setTimeout(timeNotification, 1000 * 1);
+		notify1 = setTimeout(timeNotification, 1000 * 60);
 		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
 		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});

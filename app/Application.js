@@ -31,6 +31,8 @@ Ext.define('Rambox.Application', {
 		// ga_storage._trackPageview('/index.html', 'main');
 		// ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
+		console.log(Ext.getStore('ServicesList'))
+
 		// Load language for Ext JS library
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
 
@@ -287,6 +289,8 @@ Ext.define('Rambox.Application', {
 			// console.log(len)
 			ipc.send('serviceNum', 
 				len, 
+
+				(localStorage.getItem('appealingSettings') == 'true'),
 
 				localStorage.getItem('activated'),
 				(localStorage.getItem('premiumToggle') == 'true'),
