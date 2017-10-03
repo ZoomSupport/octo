@@ -45,6 +45,8 @@ Ext.define('Rambox.util.License', {
                     // url: this.server,
                     method: "POST",
 
+                    aync: true,
+
                     params: params,
 
                     success: function (res) {
