@@ -183,7 +183,7 @@ const settings = {
 					,items: [
 						{
 							glyph: 0xf1f8
-							,tooltip: locale['app.main[14]']
+							// ,tooltip: locale['app.main[14]']
 							,handler: 'removeService'
 							// ,getClass: function(){ return 'x-hidden-display'; }
 						}

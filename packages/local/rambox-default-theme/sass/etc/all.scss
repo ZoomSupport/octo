@@ -457,11 +457,16 @@ body {
 }
 
 .x-grid-checkcolumn {
+	margin-top: 7px;
+
 	width: 22px !important;
 	height: 22px !important;
 
 	background-image: url(tools/checkbox.png) !important;
 	background-size: 44px !important;
+}
+.x-grid-checkcolumn:hover {
+	cursor: pointer;
 }
 .x-grid-checkcolumn-checked {
 	background-position: 0 -22px !important;
