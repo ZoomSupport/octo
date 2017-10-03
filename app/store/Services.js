@@ -90,7 +90,7 @@ const settings = {
 						'<span class="settings-row-title">{name}</span>'
 					]
 
-					,colCls: "colum-icon"
+					,cls: "column-icon"
 
 					,menuDisabled: true
 					,sortable: false

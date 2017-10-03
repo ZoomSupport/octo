@@ -413,8 +413,12 @@ body {
 
 // Settings styles
 
+.x-grid-with-row-lines .x-grid-item {
+	border-color: #D7DFE6;
+}
+
 .x-grid-td {
-	padding: 10px 5px;
+	padding: 6px 5px;
 }
 
 .x-grid-cell-inner {
@@ -428,6 +432,10 @@ body {
 	// padding: 20px 30px !important;
 }
 
+.column-icon {
+	padding-left: 20px;
+}
+
 .settings-row-icon ,
 .settings-row-title {
 	float: left;
@@ -437,6 +445,24 @@ body {
 	margin-left: 40px;
 }
 .settings-row-title {
-	padding-left: 20px;
+	padding-left: 25px;
 	line-height: 42px;
+}
+
+.x-grid-item-selected ,
+.x-grid-item-over {
+	background: none !important;
+	// border: none;
+	border-color: #D7DFE6;
+}
+
+.x-grid-checkcolumn {
+	width: 22px !important;
+	height: 22px !important;
+
+	background-image: url(tools/checkbox.png) !important;
+	background-size: 44px !important;
+}
+.x-grid-checkcolumn-checked {
+	background-position: 0 -22px !important;
 }
