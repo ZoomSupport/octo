@@ -93,7 +93,7 @@ Ext.define('Rambox.util.License', {
 
             macAddress: info.macAddress,
             serial: info.serial,
-            softBundle: softBundle, //this.softBundle,
+            softBundle: this.softBundle, 
         }
         params.signature = this.genSignature(params)
 
@@ -109,12 +109,13 @@ Ext.define('Rambox.util.License', {
 
             success: function (res) {
                 console.log(res)
-                suc();
+                // suc();
+                // if (suc) suc(r)
             },
 
             err: function (e) {
                 console.log(res)
-                err(e);
+                // err(e);
             }
 
         })
