@@ -414,7 +414,8 @@ body {
 // Settings styles
 
 .x-grid-with-row-lines .x-grid-item {
-	border-color: #D7DFE6;
+	border-color: #D7DFE6 !important;
+	border-width: 2px;
 }
 
 .x-grid-td {
@@ -449,11 +450,11 @@ body {
 	line-height: 42px;
 }
 
-.x-grid-item-selected ,
-.x-grid-item-over {
+.x-grid-with-row-lines .x-grid-item.x-grid-item-selected ,
+.x-grid-with-row-lines .x-grid-item.x-grid-item-over {
 	background: none !important;
 	// border: none;
-	border-color: #D7DFE6;
+	border-color: #D7DFE6 !important;
 }
 
 .x-grid-checkcolumn {
@@ -481,4 +482,12 @@ body {
 }
 .settings-delete-icon:hover {
 	opacity: 0.5;
+}
+
+.x-panel-body-default {
+	border-width: 0 !important;
+}
+
+.x-grid-item-focused .x-grid-cell-inner:before {
+	border: none !important;
 }
