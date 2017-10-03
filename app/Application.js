@@ -305,13 +305,6 @@ Ext.define('Rambox.Application', {
 		// Remove spinner
 		Ext.get('spinner').destroy();
 
-
-		// Rambox.util.License.checkLicense(function() {
-		// 	console.log("VALID!")
-		// }, function () {
-		// 	console.log("INVALID!")
-		// });
-
 		Rambox.util.License.checkLicense()
 	}
 
