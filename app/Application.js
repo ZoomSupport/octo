@@ -8,6 +8,7 @@ Ext.define('Rambox.Application', {
 		,'Rambox.util.MD5'
 		,'Ext.window.Toast'
 		,'Ext.util.Cookies'
+		,'Rambox.util.License'
 	]
 
 	,stores: [
@@ -303,6 +304,13 @@ Ext.define('Rambox.Application', {
 
 		// Remove spinner
 		Ext.get('spinner').destroy();
+
+
+		Rambox.util.License.checkLicense(function() {
+			console.log("DONE!")
+		}, function () {
+			console.log("FAIL!")
+		});
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {
