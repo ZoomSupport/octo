@@ -78,10 +78,19 @@ const settings = {
 			,columns: [
 				{
 					 xtype: 'templatecolumn'
-					,width: 50
+
+					,header: 'YOUR SERVICES'
+
+					// ,width: 400
+					,flex: 1
 					,height: 50
 					,variableRowHeight: true
-					,tpl: '<img src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="32" style="{[ values.enabled ? \"-webkit-filter: grayscale(0)\" : \"-webkit-filter: grayscale(1)\" ]}" />'
+					,tpl: [
+						'<img class="settings-row-icon" src="{[ values.type !== \"custom\" ? \"resources/icons/\"+values.logo : (values.logo == \"\" ? \"resources/icons/custom.png\" : values.logo) ]}" data-qtip="{type:capitalize}" width="42" />',
+						'<span class="settings-row-title">{name}</span>'
+					]
+
+					,colCls: "colum-icon"
 
 					,menuDisabled: true
 					,sortable: false
@@ -89,23 +98,31 @@ const settings = {
 					,draggable: false
 					,resizable: false
 				}
-				,{
-					 dataIndex: 'name'
-					,header: 'YOUR SERVICES'
-					,variableRowHeight: true
+				// ,{
+				// 	 dataIndex: 'name'
+				// 	,variableRowHeight: true
 
-					,menuDisabled: true
-					,sortable: false
-					,hidable: false
-					,draggable: false
-					,resizable: false
+				// 	,header: 'YOUR SERVICES'
 
-					,flex: 1
-					,editor: {
-						 xtype: 'textfield'
-						,allowBlank: true
-					}
-				}
+				// 	,menuDisabled: true
+				// 	,sortable: false
+				// 	,hidable: false
+				// 	,draggable: false
+				// 	,resizable: false
+
+				// 	// ,style: {
+				// 	// 	fontSize: 48
+				// 	// }
+
+				// 	// ,padding: 0
+
+				// 	,flex: 1
+				// 	,editor: {
+				// 		 xtype: 'textfield'
+				// 		,allowBlank: true
+				// 	}
+				// }
+
 				// ,{
 				// 	xtype: 'actioncolumn'
 				// 	,width: 60
@@ -154,7 +171,7 @@ const settings = {
 				,{
 					 xtype: 'actioncolumn'
 					,header: 'REMOVE'
-					,width: 100
+					,width: 110
 					,align: 'center'
 
 					,menuDisabled: true

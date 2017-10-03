@@ -409,3 +409,34 @@ body {
 
 	color: #081F37 !important;
 }
+
+
+// Settings styles
+
+.x-grid-td {
+	padding: 10px 5px;
+}
+
+.x-grid-cell-inner {
+	font-size: 12pt;
+	font-weight: 400;
+
+	color: #4B4F53;
+
+	height: auto;
+
+	// padding: 20px 30px !important;
+}
+
+.settings-row-icon ,
+.settings-row-title {
+	float: left;
+}
+
+.settings-row-icon {
+	margin-left: 40px;
+}
+.settings-row-title {
+	padding-left: 20px;
+	line-height: 42px;
+}
