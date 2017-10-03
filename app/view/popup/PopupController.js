@@ -23,39 +23,53 @@ Ext.define('Rambox.view.popup.PopupController', {
 
         // this.upgradeSuccess();
 
-        ipc.send("openExternalLink", 'https://zeoalliance.com')
+        // ipc.send("openExternalLink", 'https://zeoalliance.com')
 
         // Enable Spinner view
         this.getView().getComponent('buy-popup').setHidden(true)
         this.getView().getComponent('buy-spinner').setHidden(false)
 
-        this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
+        this.requestTimeout = setInterval(this.requestLoop, this.timeoutTime)
 
         console.log("TIME TO UPGRADE");
     },
 
     requestLoop: function () {
         console.log("LOOPING REQUEST")
+        // this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
 
-        Rambox.util.License.checkLicense(function (r) {
+        // Rambox.util.License.checkLicense(this.requestSucess.bind(this), this.requestError.bind(this))
+        Rambox.util.License.checkLicense(this.requestSucess, this.requestError)
 
-            if (r.statusCode == 0 && r.hasLicense) {
-                this.upgradeSuccess()
-            } else {
-                this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
-            }
-        }.bind(this), function (r) {
-            this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
-        }.bind(this))
+        // Rambox.util.License.checkLicense((function (r) {
+
+        //     
+        // }).bind(this), function (r) {
+        //     // this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
+        // }.bind(this))
+    },
+
+    requestSucess: function (r) {
+        console.log("[EVENT] License Server Request Success")
+        if (r.statusCode == 0 && r.hasLicense) {
+            // this.upgradeSuccess()
+        } else {
+            // this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
+        }
+    },
+
+    requestError: function (r) {
+        console.error("[ERROR] License Server Request Error")
+        // this.requestTimeout = setTimeout(this.requestLoop.bind(this), this.timeoutTime)
     },
 
     upgradeSuccess: function() {
         var win = this.getView();
 
         // Save activation
-        localStorage.setItem('activated', true)
+        // localStorage.setItem('activated', true)
 
-        // Remove activation pin
+        // Remove activation tab
         const upTab = Ext.cq1('app-main').getComponent('upgradeTab') 
         Ext.cq1('app-main').remove(upTab)
 

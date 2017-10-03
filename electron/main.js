@@ -566,12 +566,13 @@ ipcMain.on('getSysInfo', function (e) {
 						}
 					});
 
-					e.sender.send('sysInfo', {
+					// e.sender.send('sysInfo', {
+					e.returnValue = {
 						serial: sysData.serial,
 						modelId: sysData.model,
 						osVersion: osData.release,
 						macAddress: macAddr,
-					});
+					}
 				})
 			});
 		});
