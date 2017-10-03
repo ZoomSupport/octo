@@ -2,6 +2,8 @@
 const upgrade = {
 	icon: 'resources/tools/upgrade.png',
 
+	title: 'Upgrade',
+
 	id: 'upgradeTab',
 	closable: false,
 	reorderable: false,
@@ -14,6 +16,8 @@ const upgrade = {
 
 const notifications = {
 	icon: 'resources/tools/notifications.png',
+
+	title: 'Notifications On',
 	
 	id: 'notificationsTab',
 	closable: false,
@@ -33,7 +37,7 @@ const settings = {
 	
 	,id: 'settingsTab'
 
-
+	,title: 'Settings'
 
 	,itemId: 'setTab'
 	,cls: 'settings-panel'
