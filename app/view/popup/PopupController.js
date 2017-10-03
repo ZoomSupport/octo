@@ -42,7 +42,10 @@ Ext.define('Rambox.view.popup.PopupController', {
 
     onClose: function(btn) {
         
-        if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined && !localStorage.getItem('activated')) {
+        if (
+            Ext.cq1('app-main').getComponent('upgradeTab') === undefined && 
+            !(localStorage.getItem('activated') == 'true')
+        ) {
             Ext.cq1('app-main').add(upgrade)
             localStorage.setItem('premiumToggle', true)
         }

@@ -38,7 +38,7 @@ Ext.define('Rambox.Application', {
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
 
 		// Initialize Auth0
-		Rambox.ux.Auth0.init();
+		// Rambox.ux.Auth0.init();
 
 		// Set cookies to help Tooltip.io messages segmentation
 		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
@@ -306,11 +306,13 @@ Ext.define('Rambox.Application', {
 		Ext.get('spinner').destroy();
 
 
-		Rambox.util.License.checkLicense(function() {
-			console.log("DONE!")
-		}, function () {
-			console.log("FAIL!")
-		});
+		// Rambox.util.License.checkLicense(function() {
+		// 	console.log("VALID!")
+		// }, function () {
+		// 	console.log("INVALID!")
+		// });
+
+		Rambox.util.License.checkLicense()
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {

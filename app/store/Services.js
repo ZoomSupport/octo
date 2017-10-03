@@ -276,7 +276,10 @@ Ext.define('Rambox.store.Services', {
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
 
 			if (store.data.length > 1) {
-				if (!localStorage.getItem('activated') && localStorage.getItem('premiumToggle')) Ext.cq1('app-main').add(upgrade)
+				if (
+					!(localStorage.getItem('activated') == 'true') && 
+					localStorage.getItem('premiumToggle')
+				) Ext.cq1('app-main').add(upgrade)
 
 				Ext.cq1('app-main').add(notifications)
 				Ext.cq1('app-main').add(settings)
