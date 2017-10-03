@@ -2,7 +2,8 @@ Ext.define('Rambox.util.License', {
      singleton: true
 
     ,requires: [
-        "Rambox.util.MD5"
+        "Rambox.util.MD5",
+        "Ext.util.JSON",
     ]
 
     ,server: "http://stage-account.getadwarebuster.com/"
@@ -38,7 +39,10 @@ Ext.define('Rambox.util.License', {
                     )
                 }
 
+                const paramsJSON = Ext.util.JSON.encode(params)
+
                 console.log(params)
+                console.log(paramsJSON)
 
                 Ext.Ajax.request({
                     url: "http://stage-account.getadwarebuster.com/api/v1/license/info",
@@ -47,7 +51,7 @@ Ext.define('Rambox.util.License', {
 
                     aync: true,
 
-                    params: params,
+                    params: paramsJSON,
 
                     success: function (res) {
                         console.log(res)
