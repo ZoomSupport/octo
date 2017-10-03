@@ -68,12 +68,45 @@ const settings = {
 			,tools: [
 				
 				{
-					xtype: 'container'
-				   ,margin: '0'
-				   ,tpl: [
-					   '<h3 class="sel-sub-title">Share app:</h3>'
-				   ]
+					xtype: 'container',
+					layout: {
+						type: 'vbox'
+					},
+
+					cls: "social-container",
+
+					items: [
+						{
+							type: "component",
+							html: '<h3 class="sel-sub-title" style="margin-left: 30px; margin-top: 0">Share app:</h3>',
+						},
+
+						{
+							xtype: 'container',
+							layout: {
+								type: 'hbox'
+							},
+
+							cls: "social-icon-container",
+
+							items: [
+								{
+									type: "component",
+									html: '<a href="#" onClick="") " ><img class="social-icon" src="resources/tools/facebook.png"></a>',
+								},
+								{
+									type: "component",
+									html: '<a href="#"><img class="social-icon" src="resources/tools/twitter.png"></a>',
+								},
+								{
+									type: "component",
+									html: '<a href="#"><img class="social-icon" src="resources/tools/google.png"></a>',
+								},
+							]
+						}
+					]
 				}
+			
 			]
 			,columns: [
 				{
