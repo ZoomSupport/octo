@@ -373,7 +373,8 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'custom'
 			,logo: 'custom.png'
-			,name: '_Custom Service'
+			// ,name: '_Custom Service'
+			,name: '_Add New Service'
 			,description: locale['services[38]']
 			,url: '___'
 			,type: 'custom'
