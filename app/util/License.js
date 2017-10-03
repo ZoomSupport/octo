@@ -68,7 +68,7 @@ Ext.define('Rambox.util.License', {
 
                 err: function (res) {
                     console.error("[LICENSE REQUEST ERROR] " + res)
-                    // err(res);
+                    err(res);
                 }
 
             })

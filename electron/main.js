@@ -370,6 +370,10 @@ function updateBadge(title) {
 	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);
 }
 
+ipcMain.on('openExternalLink', function (e, url) {
+	shell.openExternal(url);
+})
+
 ipcMain.on('setBadge', function(event, messageCount, value) {
 	var img = nativeImage.createFromDataURL(value);
 	mainWindow.setOverlayIcon(img, messageCount.toString());
