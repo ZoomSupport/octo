@@ -92,15 +92,15 @@ const settings = {
 							items: [
 								{
 									type: "component",
-									html: '<a href="#" onClick="") " ><img class="social-icon" src="resources/tools/facebook.png"></a>',
+									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/facebook.png"></a>',
 								},
 								{
 									type: "component",
-									html: '<a href="#"><img class="social-icon" src="resources/tools/twitter.png"></a>',
+									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/twitter.png"></a>',
 								},
 								{
 									type: "component",
-									html: '<a href="#"><img class="social-icon" src="resources/tools/google.png"></a>',
+									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/google.png"></a>',
 								},
 							]
 						}

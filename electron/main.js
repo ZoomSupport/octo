@@ -248,6 +248,7 @@ function createWindow () {
 
 	// Open links in default browser
 	mainWindow.webContents.on('new-window', function(e, url, frameName, disposition, options) {
+		console.log("NEW WINDOW")
 		const protocol = require('url').parse(url).protocol;
 		switch ( disposition ) {
 			case 'new-window':
