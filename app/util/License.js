@@ -6,11 +6,25 @@ Ext.define('Rambox.util.License', {
         "Ext.util.JSON",
     ]
 
-    ,server: "http://stage-account.getadwarebuster.com/"
+    ,server: "http://stage-account.getadwarebuster.com"
 
-    ,secret: "TEST"
+    ,secret: "test"
+
     ,softBundle: "com.zoomsupport.octo"
     ,softVersion: "0.1.0"
+
+    ,genSignature: function (obj) {
+        let keys = Object.keys(obj)
+        keys = keys.sort()
+
+        var str = ""
+        keys.forEach(function (i) {
+            str += obj[i]
+        })
+        str += this.secret
+
+        return Rambox.util.MD5.encypt(str)
+    }
 
     ,checkLicense: function (suc, err) {
         console.log("[EVENT] Checking license");
@@ -20,29 +34,23 @@ Ext.define('Rambox.util.License', {
         // Process system info
         console.log("[EVENT] System information received");
 
-        const secret = "test"
-        const softBundle = "com.zoomsupport.octo"
-        const softVersion = "0.1.0"
-
-        const params = {
+        let params = {
             macAddress: info.macAddress,
 
             serial: info.serial,
             modelId: info.modelId,
             osVersion: info.osVersion,
 
-            softBundle: softBundle, //this.softBundle,
-            softVersion: softVersion, //this.softVersion,
-
-            signature: Rambox.util.MD5.encypt(
-                info.macAddress + info.modelId + info.osVersion + info.serial + softBundle + softVersion + secret
-            )
+            softBundle: this.softBundle,
+            softVersion: this.softVersion,
         }
+
+        params.signature = this.genSignature(params)
 
         console.log(params)
 
         Ext.Ajax.request({
-            url: "http://stage-account.getadwarebuster.com/api/v1/license/info",
+            url: this.server + "/api/v1/license/info",
             method: "POST",
 
             aync: true,
@@ -78,49 +86,38 @@ Ext.define('Rambox.util.License', {
 
     activateByKey: function (key, suc, err) {
 
-        ipc.send('getSysInfo') // Request system info from electron
+        const info = ipc.sendSync('getSysInfo') // Request system info from electron
         
-        // Process system info
-        ipc.on('sysInfo', function (e, info) {
+        let params = {
+            activationKey: key,
 
-            const secret = "test"
-            const softBundle = "com.zoomsupport.octo"
-            const softVersion = "0.1.0"
+            macAddress: info.macAddress,
+            serial: info.serial,
+            softBundle: softBundle, //this.softBundle,
+        }
+        params.signature = this.genSignature(params)
 
-            const params = {
-                activationKey: key,
+        console.log(params)
 
-                macAddress: info.macAddress,
-                serial: info.serial,
-                softBundle: softBundle, //this.softBundle,
+        Ext.Ajax.request({
+            url: this.server+"/api/v1/license/createByActivationKey",
+            method: "POST",
 
-                signature: Rambox.util.MD5.encypt(
-                    info.macAddress + info.modelId + info.osVersion + info.serial + softBundle + softVersion + secret
-                )
+            aync: true,
+
+            params: params,
+
+            success: function (res) {
+                console.log(res)
+                suc();
+            },
+
+            err: function (e) {
+                console.log(res)
+                err(e);
             }
 
-            console.log(params)
-
-            Ext.Ajax.request({
-                url: "http://stage-account.getadwarebuster.com/api/v1/license/info",
-                method: "POST",
-
-                aync: true,
-
-                params: params,
-
-                success: function (res) {
-                    console.log(res)
-                    suc();
-                },
-
-                err: function (e) {
-                    console.log(res)
-                    err(e);
-                }
-
-            })
-
         })
+
     }
 })
