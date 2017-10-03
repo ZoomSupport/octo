@@ -98,52 +98,7 @@ const settings = {
 					,draggable: false
 					,resizable: false
 				}
-				// ,{
-				// 	 dataIndex: 'name'
-				// 	,variableRowHeight: true
-
-				// 	,header: 'YOUR SERVICES'
-
-				// 	,menuDisabled: true
-				// 	,sortable: false
-				// 	,hidable: false
-				// 	,draggable: false
-				// 	,resizable: false
-
-				// 	// ,style: {
-				// 	// 	fontSize: 48
-				// 	// }
-
-				// 	// ,padding: 0
-
-				// 	,flex: 1
-				// 	,editor: {
-				// 		 xtype: 'textfield'
-				// 		,allowBlank: true
-				// 	}
-				// }
-
-				// ,{
-				// 	xtype: 'actioncolumn'
-				// 	,width: 60
-				// 	,align: 'right'
-				// 	,items: [
-				// 		{
-				// 				glyph: 0xf1f7
-				// 			,tooltip: locale['app.main[11]']
-				// 			,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-				// 				if ( record.get('notifications') ) return 'x-hidden';
-				// 			}
-				// 		}
-				// 		,{
-				// 				glyph: 0xf026
-				// 			,tooltip: locale['app.main[12]']
-				// 			,getClass: function( value, metaData, record, rowIndex, colIndex, store, view ){
-				// 				if ( !record.get('muted') ) return 'x-hidden';
-				// 			}
-				// 		}
-				// 	]
-				// }
+				
 				,{
 					xtype: 'checkcolumn',
 					header: 'NOTIFICATIONS',
@@ -182,7 +137,9 @@ const settings = {
 
 					,items: [
 						{
-							glyph: 0xf1f8
+							// glyph: 0xf1f8
+							icon: 'resources/tools/delete.png',
+							iconCls: 'settings-delete-icon'
 							// ,tooltip: locale['app.main[14]']
 							,handler: 'removeService'
 							// ,getClass: function(){ return 'x-hidden-display'; }

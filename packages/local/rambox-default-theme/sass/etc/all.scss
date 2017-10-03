@@ -467,7 +467,18 @@ body {
 }
 .x-grid-checkcolumn:hover {
 	cursor: pointer;
+	opacity: 0.5;
 }
 .x-grid-checkcolumn-checked {
 	background-position: 0 -22px !important;
+}
+
+.settings-delete-icon {
+	width: auto !important;
+	height: 22px !important;
+
+	margin-top: 7px;
+}
+.settings-delete-icon:hover {
+	opacity: 0.5;
 }
