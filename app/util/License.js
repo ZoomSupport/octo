@@ -20,7 +20,7 @@ Ext.define('Rambox.util.License', {
             ipc.on('sysInfo', function (e, info) {
                 console.log(e, info)
 
-                const secret = "TEST"
+                const secret = "test"
                 const softBundle = "com.zoomsupport.octo"
                 const softVersion = "0.1.0"
 
@@ -35,23 +35,19 @@ Ext.define('Rambox.util.License', {
                     softVersion: softVersion, //this.softVersion,
 
                     signature: Rambox.util.MD5.encypt(
-                        info.macAddress + info.modelId + info.osVersion + softBundle + softVersion + secret
+                        info.macAddress + info.modelId + info.osVersion + info.serial + softBundle + softVersion + secret
                     )
                 }
 
-                const paramsJSON = Ext.util.JSON.encode(params)
-
                 console.log(params)
-                console.log(paramsJSON)
 
                 Ext.Ajax.request({
                     url: "http://stage-account.getadwarebuster.com/api/v1/license/info",
-                    // url: this.server,
                     method: "POST",
 
                     aync: true,
 
-                    params: paramsJSON,
+                    params: params,
 
                     success: function (res) {
                         console.log(res)
@@ -66,5 +62,9 @@ Ext.define('Rambox.util.License', {
                 })
 
             })
+    },
+
+    activateByKey: function (suc, err) {
+
     }
 })
