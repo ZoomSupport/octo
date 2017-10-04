@@ -24,7 +24,6 @@ const notifications = {
 	reorderable: false,
 
 	tabConfig: {
-		// cls: 'b-icon n-opacity',
 		id: 'notTab',
 		cls: 'b-icon',
 		handler: 'notButton'
@@ -56,14 +55,10 @@ const settings = {
 			 xtype: 'grid'
 			,title: '<h1 class="sel-main-title">Settings</h1> <h3 class="sel-sub-title">Preferences for your services</h3>'
 			,store: 'Services'
-			// ,hideHeaders: true
 			,margin: '0'
 			,flex: 1
 
-			// ,header: { height: 50 }
 			,header: { padding: "30 30" }
-			// ,headerBorders: false 
-			// ,height: 100
 
 			,tools: [
 				
@@ -114,7 +109,6 @@ const settings = {
 
 					,header: 'YOUR SERVICES'
 
-					// ,width: 400
 					,flex: 1
 					,height: 50
 					,variableRowHeight: true
@@ -170,34 +164,19 @@ const settings = {
 
 					,items: [
 						{
-							// glyph: 0xf1f8
 							icon: 'resources/tools/delete.png',
 							iconCls: 'settings-delete-icon'
-							// ,tooltip: locale['app.main[14]']
 							,handler: 'removeService'
-							// ,getClass: function(){ return 'x-hidden-display'; }
 						}
 					]
 				}
-				// ,{
-				// 	 xtype: 'checkcolumn'
-				// 	,width: 40
-				// 	,dataIndex: 'enabled'
-				// 	,renderer: function(value, metaData) {
-				// 		metaData.tdAttr = 'data-qtip="Service '+(value ? 'Enabled' : 'Disabled')+'"';
-				// 		return this.defaultRenderer(value, metaData);
-				// 	}
-				// 	,listeners: {
-				// 		checkchange: 'onEnableDisableService'
-				// 	}
-				// }
+		
 			]
 			,viewConfig: {
 				 emptyText: locale['app.main[15]']
 				,forceFit: true
 				,stripeRows: false 
-				// ,height: 100
-				// ,itemHeight: 100
+			
 			}
 			,listeners: {
 				 edit: 'onRenameService'
@@ -297,6 +276,13 @@ Ext.define('Rambox.store.Services', {
 
 		add: function (store, records, i) {
 
+			console.log("Adding service")
+			const sLen = store.data.length
+			const sName = store.data.items[sLen-1].data.type
+
+			// Google Analytics Tracking
+			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName)
+
 			if (store.data.length > 1) {
 				console.log(Ext.cq1('app-main').getComponent('upgradeTab'));
 
@@ -313,12 +299,14 @@ Ext.define('Rambox.store.Services', {
 
 			if (store.data.length == 1) {
 				localStorage.setItem('appealingPlus', true)
+				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
 				// Update within tab
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add_2.png')
-			} else if (store.data.length > 1) {
+			} else if (store.data.length == 2) {
 				localStorage.setItem('appealingPlus', false)
+				// ga_storage._trackEvent('Application', 'Get Started', 'Add second service on Welcome screen')
 
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add.png')

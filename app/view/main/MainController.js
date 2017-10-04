@@ -292,7 +292,7 @@ Ext.define('Rambox.view.main.MainController', {
 		console.info('Dont Disturb:', enabled ? 'Enabled' : 'Disabled');
 
 		// Google Analytics Event
-		// if ( !called ) ga_storage._trackEvent('Usability', 'dontDisturb', ( btn.pressed ? 'on' : 'off' ));
+		ga_storage._trackEvent('Usability', 'dontDisturb', ( enabled ? 'on' : 'off' ));
 
 		Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 			// Get Tab
