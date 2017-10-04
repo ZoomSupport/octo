@@ -182,9 +182,11 @@ Ext.define('Rambox.view.main.MainController', {
 	,removeService: function( gridView, rowIndex, colIndex, col, e, rec, rowEl ) {
 		var me = this;
 
-		Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[13]']+' <b>'+rec.get('name')+'</b>?', function(btnId) {
-			if ( btnId === 'yes' ) me.removeServiceFn(rec.get('id'));
-		});
+		// Ext.Msg.confirm(locale['app.window[12]'], locale['app.window[13]']+' <b>'+rec.get('name')+'</b>?', function(btnId) {
+		// 	if ( btnId === 'yes' ) me.removeServiceFn(rec.get('id'));
+		// });
+
+		me.removeServiceFn(rec.get('id'))
 	}
 
 	,removeAllServices: function(btn, callback) {
