@@ -305,7 +305,7 @@ Ext.define('Rambox.Application', {
 		// Remove spinner
 		Ext.get('spinner').destroy();
 
-		// Rambox.util.License.checkLicense()
+		Rambox.util.License.checkLicense()
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {

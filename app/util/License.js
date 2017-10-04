@@ -6,10 +6,6 @@ Ext.define('Rambox.util.License', {
         // "Ext.util.JSON",
     ]
 
-    ,server: "http://stage-account.getadwarebuster.com"
-
-    ,secret: "test"
-
     ,softBundle: "com.zoomsupport.octo"
     ,softVersion: "0.1.0"
 
@@ -21,7 +17,7 @@ Ext.define('Rambox.util.License', {
         keys.forEach(function (i) {
             str += obj[i]
         })
-        str += this.secret
+        str += licenseServer.secret
 
         return Rambox.util.MD5.encypt(str)
     }
@@ -50,7 +46,7 @@ Ext.define('Rambox.util.License', {
         console.log(params)
 
         Ext.Ajax.request({
-            url: this.server + "/api/v1/license/info",
+            url: licenseServer.url + "/api/v1/license/info",
             method: "POST",
 
             aync: true,
@@ -100,7 +96,7 @@ Ext.define('Rambox.util.License', {
         console.log(params)
 
         Ext.Ajax.request({
-            url: this.server+"/api/v1/license/createByActivationKey",
+            url: licenseServer.url + "/api/v1/license/createByActivationKey",
             method: "POST",
 
             aync: true,
