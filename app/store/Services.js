@@ -352,9 +352,6 @@ Ext.define('Rambox.store.Services', {
 
 			store.suspendEvent('remove');
 
-			// console.log('Service Store Remove')
-			// console.log(records)
-
 			records.forEach(function (i) {
 				console.log('Remove Service', i.data.name)
 				ga_storage._trackEvent('Application', 'Remove Service', i.data.name)

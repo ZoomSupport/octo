@@ -21,6 +21,7 @@ Ext.define('Rambox.view.popup.PopupController', {
     externalURL: 'https://zeoalliance.com',
 
     doUpgrade: function (btn) {
+        ga_storage._trackEvent('Application', 'Upgrade to PRO Click')
 
         ipc.send("openExternalLink", this.externalURL)
 
@@ -53,6 +54,7 @@ Ext.define('Rambox.view.popup.PopupController', {
 
         // Save activation
         // localStorage.setItem('activated', true)
+        ga_storage._trackEvent('Application', 'Upgrade to PRO Successful')
 
         // Remove activation tab
         const upTab = Ext.cq1('app-main').getComponent('upgradeTab') 
