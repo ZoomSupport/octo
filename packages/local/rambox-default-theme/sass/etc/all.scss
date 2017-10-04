@@ -533,9 +533,20 @@ body {
 }
 
 .welcome-panel .octo-image {
-	width: 60%;
+	width: 50%;
 }
 
 .welcome-panel .octo-text {
-	width: 70%;
+	width: 60%;
+}
+
+.welcome-panel::after {
+
+	content: url(welcome/arrow.png);
+
+	// width: 10%;
+
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }

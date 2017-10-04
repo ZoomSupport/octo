@@ -190,6 +190,18 @@ Ext.define('Rambox.view.main.Main', {
 					margin: "50 0 0 0"
 				},
 
+				// {
+				// 	type: "component",
+				// 	cls: "octo-arrow-ctr",
+				// 	html: '<img class="arrow-image" src="resources/welcome/arrow.png" />',
+					
+				// 	style: {
+				// 		position: "absolute",
+				// 		left: 0,
+				// 		top: 0
+				// 	}
+				// },
+
 		   ]
 		}
 		
