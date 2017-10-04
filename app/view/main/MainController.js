@@ -150,8 +150,6 @@ Ext.define('Rambox.view.main.MainController', {
 			}
 		})
 
-
-
 		/**
 		 * Check if exceded messanger limits
 		 */

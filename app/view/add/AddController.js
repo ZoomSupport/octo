@@ -15,12 +15,13 @@ Ext.define('Rambox.view.add.AddController', {
 	,doSave: function( btn ) {
 		var me = this;
 
-
 		var win = me.getView();
 		if ( !win.down('form').isValid() ) return false;
 
 		var formValues = win.down('form').getValues();
 
+		// console.log(Ext.cq1('app-main').getComponent('plusTab').getComponent('main-tab-header'))
+		// Ext.cq1('app-main').getComponent('search-field').setValue("")
 
 		if ( win.edit ) {
 			// Format data

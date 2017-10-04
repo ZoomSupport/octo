@@ -51,6 +51,7 @@ Ext.define('Rambox.view.main.Main', {
 			,items: [
 				{
 					 xtype: 'panel'
+					,itemId: 'main-tab-header'
 					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' 
 					// ,margin: '0 20'
 					,flex: 1
@@ -87,6 +88,9 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'textfield'
 							,grow: true
 							,cls: "header-search"
+
+							,itemId: "search-field"
+
 							,growMin: 350
 							,growMax: 350
 							,emptyText: "Search"

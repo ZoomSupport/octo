@@ -19,6 +19,8 @@ const os = require('os')
 // System Information
 const si = require('systeminformation')
 
+const ETimer = require('./timer')
+
 // const electronVibrancy = require('electron-vibrancy')
 
 // Initial Config
@@ -290,23 +292,32 @@ function createWindow () {
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
 
-	let notify1 = null;
-	let notify15 = null;
-	let notify120 = null;
+	// let notify1 = null;
+	// let notify15 = null;
+	// let notify120 = null;
+
+	// let timer = ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
+	let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
+
+	// console.log(ETimer)
 
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
-		notify1 = setTimeout(timeNotification, 1000 * 60);
-		notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
-		notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
+		timer.start()
+
+		// notify1 = setTimeout(timeNotification, 1000 * 60);
+		// notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
+		// notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});
 	mainWindow.on('focus', function(e) {
 		console.info('[Event] Focus Gained')
 
-		clearTimeout(notify1)
-		clearTimeout(notify15)
-		clearTimeout(notify120)
+		timer.pause()
+
+		// clearTimeout(notify1)
+		// clearTimeout(notify15)
+		// clearTimeout(notify120)
 	});
 
 	// Emitted when the window is closed.
