@@ -317,8 +317,8 @@ Ext.define('Rambox.store.Services', {
 
 		update: function (store, op, modName, det) {
 
-			console.log('Service Store Update')
-			console.log(modName, det)
+			// console.log('Service Store Update')
+			// console.log(modName, det)
 
 			store.suspendEvent('update');
 			if (modName === "edit") {
@@ -350,8 +350,17 @@ Ext.define('Rambox.store.Services', {
 
 		remove: function (store, records, i) {
 
-			console.log('Service Store Remove')
-			console.log(store, records)
+			store.suspendEvent('remove');
+
+			// console.log('Service Store Remove')
+			// console.log(records)
+
+			records.forEach(function (i) {
+				console.log('Remove Service', i.data.name)
+				ga_storage._trackEvent('Application', 'Remove Service', i.data.name)
+			})
+			
+			store.resumeEvent('remove');
 		}
 	}
 });
