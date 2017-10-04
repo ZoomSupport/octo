@@ -34,7 +34,7 @@ function Timer (intervals, clb) {
      * Starts Timer
      */
     this.start = function () {
-        if (this.intCur < intervals.length) return;
+        if (this.intCur >= intervals.length) return;
 
         this.stepMax = Math.floor( intervals[this.intCur] / this.stepTime )
         this.timeout = setTimeout(this.tick.bind(this), this.stepTime)
