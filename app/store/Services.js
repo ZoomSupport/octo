@@ -140,7 +140,7 @@ const settings = {
 				},
 				{
 					xtype: 'checkcolumn',
-					header: 'SOUND',
+					header: 'MUTED',
 					width: 100,
 					dataIndex: 'muted',
 
@@ -149,6 +149,7 @@ const settings = {
 					,hidable: false
 					,draggable: false
 					,resizable: false
+
 				}
 				,{
 					 xtype: 'actioncolumn'
@@ -312,6 +313,45 @@ Ext.define('Rambox.store.Services', {
 				tab.setIcon('resources/tools/add.png')
 			}
 
+		},
+
+		update: function (store, op, modName, det) {
+
+			console.log('Service Store Update')
+			console.log(modName, det)
+
+			store.suspendEvent('update');
+			if (modName === "edit") {
+				det.forEach(function (i) {
+					console.log(i)
+					switch (i) {
+						case "notifications":
+
+							var oStat = (op.data.notifications) ? "On" : "Off" 
+							console.log(op.data.name, 'Notifications ' + oStat)
+
+							ga_storage._trackEvent('Application', 'Notifications ' + oStat , op.data.name)
+
+						break;
+
+						case "muted":
+						
+							var oStat = (op.data.muted) ? "On" : "Off" 
+							console.log(op.data.name, 'Muted ' + oStat)
+
+							ga_storage._trackEvent('Application', 'Muted ' + oStat, op.data.name)
+						break;
+					}
+				})
+			}
+			store.resumeEvent('update');
+
+		},
+
+		remove: function (store, records, i) {
+
+			console.log('Service Store Remove')
+			console.log(store, records)
 		}
 	}
 });

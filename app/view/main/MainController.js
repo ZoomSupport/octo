@@ -12,7 +12,6 @@ Ext.define('Rambox.view.main.MainController', {
 
 		console.log('[EVENT] onTabChange');
 
-
 		if (
 			newTab.id === 'settingsTab' || 
 			newTab.id === 'notificationsTab' || 
@@ -22,6 +21,19 @@ Ext.define('Rambox.view.main.MainController', {
 		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
+
+			
+			// GA track Plus button clicks
+			if (localStorage.getItem('appealingPlus') === 'true') {
+				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
+			} else {
+				
+				if (Ext.getStore('Services').data.length === 0)
+					ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+				
+			}
+
+
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
@@ -292,7 +304,7 @@ Ext.define('Rambox.view.main.MainController', {
 		console.info('Dont Disturb:', enabled ? 'Enabled' : 'Disabled');
 
 		// Google Analytics Event
-		ga_storage._trackEvent('Usability', 'dontDisturb', ( enabled ? 'on' : 'off' ));
+		ga_storage._trackEvent('Application', "Don't Disturb", ( enabled ? 'on' : 'off' ));
 
 		Ext.Array.each(Ext.getStore('Services').collect('id'), function(serviceId) {
 			// Get Tab
