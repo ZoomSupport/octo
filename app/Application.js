@@ -33,7 +33,10 @@ Ext.define('Rambox.Application', {
 
 		// ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
-		if (!localStorage.getItem('firstRun')) ga_storage._trackEvent('Application', 'First Run')
+		if (!localStorage.getItem('firstRun')) {
+			ga_storage._trackEvent('Application', 'First Run')
+			localStorage.setItem('firstRun', 'true')
+		}
 
 		// Load language for Ext JS library
 		Ext.Loader.loadScript({url: Ext.util.Format.format("ext/packages/ext-locale/build/ext-locale-{0}.js", localStorage.getItem('locale-auth0') || 'en')});
@@ -303,10 +306,16 @@ Ext.define('Rambox.Application', {
 
 		});
 
+		ipc.on('sendGA', function (e, action, label) {
+			ga_storage._trackEvent('Application', action, label)
+		})
+
 		// Remove spinner
 		Ext.get('spinner').destroy();
 
+		// Send request to license server
 		Rambox.util.License.checkLicense()
+
 	}
 
 	,updateTotalNotifications: function( newValue, oldValue ) {

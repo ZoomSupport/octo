@@ -148,6 +148,8 @@ function timeNotification() {
 	mainWindow.webContents.send('getServiceNum')
 	ipcMain.on('serviceNum', function (e, len, aSet, activated, pToggle, nCnt) {
 
+		let nId = '0'
+
 		let body = ""
 		switch (len) {
 			case 0: 
@@ -191,9 +193,11 @@ function timeNotification() {
 			
 		})
 		n.show()
+		mainWindow.webContents.send('sendGA', 'Shown Notification', nId)
 
 		n.on('click', function () {
 			mainWindow.focus()
+			mainWindow.webContents.send('sendGA', 'Click Notification', nId)
 		})
 
 		n.on('close', function () {

@@ -78,6 +78,7 @@ Ext.define('Rambox.view.add.AddController', {
 
 			view.refreshUnreadCount();
 		} else {
+
 			
 			// Format data
 			if ( win.record.get('url').indexOf('___') >= 0 ) {
@@ -121,6 +122,10 @@ Ext.define('Rambox.view.add.AddController', {
 					service: service,
 				}
 			};
+
+			if (win.record.getData('type') === "custom") {
+				ga_storage._trackEvent('Application', 'Add Customer Service', service.url)
+			}
 
 			// if ( formValues.align === 'left' ) {
 			var tbfill = Ext.cq1('app-main').getTabBar().down('tbfill');
