@@ -3,7 +3,7 @@ Ext.define('Rambox.util.License', {
 
     ,requires: [
         "Rambox.util.MD5",
-        "Ext.util.JSON",
+        // "Ext.util.JSON",
     ]
 
     ,server: "http://stage-account.getadwarebuster.com"

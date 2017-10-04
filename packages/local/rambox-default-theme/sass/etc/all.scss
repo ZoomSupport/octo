@@ -508,3 +508,34 @@ body {
 
 .popup-spinner {
 }
+
+
+// Main styles
+
+.welcome-panel {
+
+	// background: none !important;
+
+	background-image: url(welcome/bg.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #092037 !important;
+}
+
+.welcome-panel .x-panel-body-default {
+	background: none !important;
+}
+
+.octo-image-ctr .x-autocontainer-outerCt,
+.octo-text-ctr .x-autocontainer-outerCt {
+	text-align: center;
+}
+
+.welcome-panel .octo-image {
+	width: 60%;
+}
+
+.welcome-panel .octo-text {
+	width: 70%;
+}

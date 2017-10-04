@@ -162,17 +162,34 @@ Ext.define('Rambox.view.main.Main', {
 
 		,{
 			id: 'welcomeTab'
+
 		   ,cls: 'welcome-panel'
+
 		   ,closable: false
 		   ,reorderable: false 
 		   ,hidden: true
-		   ,layout: 'hbox'
+
+		   ,layout: {
+			   type: 'vbox',
+			   align: 'center',
+			   pack: 'center',
+			}
 
 		   ,items: [
-			   {
-				   xtype: "header",
-				   title: "Hello and welcome to octo ^_^ \n This is just a placeholder for future welcome screen"
-			   }
+
+				{
+					type: "component",
+					cls: "octo-image-ctr",
+					html: '<img class="octo-image" src="resources/welcome/octopus.png" />',
+				},
+
+				{
+					type: "component",
+					cls: "octo-text-ctr",
+					html: '<img class="octo-text" src="resources/welcome/text.png" />',
+					margin: "50 0 0 0"
+				},
+
 		   ]
 		}
 		

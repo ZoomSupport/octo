@@ -22,8 +22,6 @@ Ext.define('Rambox.view.popup.PopupController', {
 
     doUpgrade: function (btn) {
 
-        this.upgradeSuccess();
-
         ipc.send("openExternalLink", this.externalURL)
 
         // Enable Spinner view
