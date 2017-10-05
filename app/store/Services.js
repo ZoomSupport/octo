@@ -190,7 +190,7 @@ const settings = {
 
 var plusTimeout = null;
 var stgsTimeout = null;
-var stgTime = 1000*8;
+var stgTime = 1000*60*3;
 
 Ext.define('Rambox.store.Services', {
 	 extend: 'Ext.data.Store'
