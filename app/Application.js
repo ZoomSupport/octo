@@ -209,10 +209,6 @@ Ext.define('Rambox.Application', {
 
 		if ( localStorage.getItem('lifetimeNotificationCount') === null ) localStorage.setItem('lifetimeNotificationCount', '0');
 
-		console.log(localStorage.getItem('appealingSettings'))
-		if ( localStorage.getItem('appealingSettings') === null ) localStorage.setItem('appealingSettings', 'true');
-
-
 		if ( localStorage.getItem('locked') ) {
 			console.info('Lock Rambox:', 'Enabled');
 			Ext.cq1('app-main').getController().showLockWindow();

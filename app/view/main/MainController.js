@@ -35,6 +35,12 @@ Ext.define('Rambox.view.main.MainController', {
 				// if (localStorage.getItem('appealingPlus') === 'true') {
 
 				// } 
+
+				clearTimeout(plusTimeout)
+
+				const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				tab.setIcon('resources/tools/add.png')
+				localStorage.setItem('appealingPlus', false)
 			}
 
 			if (Ext.getStore('Services').data.length === 0)
@@ -171,6 +177,8 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.create('Rambox.view.popup.Popup', {
 				record: rc
 			})
+
+			clearTimeout(stgsTimeout)
 			return;
 		}
 

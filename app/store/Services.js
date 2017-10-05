@@ -343,11 +343,11 @@ Ext.define('Rambox.store.Services', {
 					localStorage.setItem('ntfSecond', true)
 				}
 
-				localStorage.setItem('appealingPlus', false)
+				// localStorage.setItem('appealingPlus', false)
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add second service on Welcome screen')
 
-				const tab = Ext.cq1('app-main').getComponent('plusTab') 
-				tab.setIcon('resources/tools/add.png')
+				// const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				// tab.setIcon('resources/tools/add.png')
 			}
 
 		},
