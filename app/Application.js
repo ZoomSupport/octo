@@ -301,7 +301,8 @@ Ext.define('Rambox.Application', {
 				localStorage.getItem('activated'),
 				(localStorage.getItem('premiumToggle') == 'true'),
 
-				parseInt( localStorage.getItem('lifetimeNotificationCount') )
+				parseInt( localStorage.getItem('lifetimeNotificationCount') ),
+				(localStorage.getItem('plusClicked') == 'true')
 			);
 
 		});
@@ -314,7 +315,7 @@ Ext.define('Rambox.Application', {
 		Ext.get('spinner').destroy();
 
 		// Send request to license server
-		Rambox.util.License.checkLicense()
+		// Rambox.util.License.checkLicense()
 
 	}
 

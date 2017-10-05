@@ -10,9 +10,13 @@ function Timer (intervals, clb) {
 
     this.timeout = null; // Timeout function
 
+    this.prevTime = 0;
+
     this.tick = function () {
-        console.log("TICKED " + this.stepCur + "/" + this.stepMax)
+        console.log("TICKED " + this.stepCur + "/" + this.stepMax + " Delta (ms): " + (Date.now() - this.prevTime) )
+
         this.stepCur++
+        this.prevTime = Date.now()
 
         if (this.stepCur >= this.stepMax) {
             clb()
@@ -38,6 +42,8 @@ function Timer (intervals, clb) {
 
         this.stepMax = Math.floor( intervals[this.intCur] / this.stepTime )
         this.timeout = setTimeout(this.tick.bind(this), this.stepTime)
+
+        this.prevTime = Date.now()
     }
 
     /**
@@ -70,6 +76,14 @@ function Timer (intervals, clb) {
      */
     this.resetInterval = function () {
         this.intCur = 0
+    }
+
+    /**
+     * Fully Resets Timer
+     */
+    this.fullReset = function () {
+        this.reset()
+        this.resetInterval()
     }
    
 }

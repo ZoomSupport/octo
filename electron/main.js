@@ -144,18 +144,20 @@ function handleSquirrelEvent() {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let isQuitting = false;
+// let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
+let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
-	ipcMain.on('serviceNum', function (e, len, aSet, activated, pToggle, nCnt) {
+	ipcMain.on('serviceNum', function (e, len, aSet, activated, pToggle, nCnt, plusClick) {
 
 		let nId = '0'
 
 		let body = ""
 		switch (len) {
 			case 0: 
-				body = "Add first messenger"
+				body = (plusClick) ? "Notification #1" : "Notification #0"
 				break;
 			case 1:
 				body = "Add second messenger"
@@ -296,8 +298,6 @@ function createWindow () {
 	// let notify15 = null;
 	// let notify120 = null;
 
-	let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
-	// let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 	// console.log(ETimer)
 
@@ -384,6 +384,11 @@ function updateBadge(title) {
 
 	if ( messageCount > 0 && !mainWindow.isFocused() && !config.get('dont_disturb') && config.get('flash_frame') ) mainWindow.flashFrame(true);
 }
+
+ipcMain.on('resetNotificationTimer', function (e) {
+	console.log('TIMER RESET')
+	timer.fullReset()
+})
 
 ipcMain.on('openExternalLink', function (e, url) {
 	shell.openExternal(url);

@@ -22,6 +22,12 @@ Ext.define('Rambox.view.main.MainController', {
 
 		if ( newTab.id === 'ramboxTab' ) {
 
+			if (!localStorage.getItem('plusClicked')) {
+				// RESET
+				ipc.send('resetNotificationTimer')
+
+				localStorage.setItem('plusClicked', true)
+			}
 			
 			// GA track Plus button clicks
 			if (localStorage.getItem('appealingPlus') === 'true') {
@@ -139,7 +145,6 @@ Ext.define('Rambox.view.main.MainController', {
 		const maxServices = 2 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
 
-
 		const rec_id = item.getAttribute('id').split('_')[1]
 
 		let rc = {}
@@ -156,6 +161,12 @@ Ext.define('Rambox.view.main.MainController', {
 		// if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 		if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 			ga_storage._trackEvent('Application', 'Upgrade to PRO Shown')
+
+			// RESET
+			if (!localStorage.getItem('ntfPremium')) {
+				ipc.send('resetNotificationTimer')
+				localStorage.setItem('ntfPremium', true)
+			} 
 
 			Ext.create('Rambox.view.popup.Popup', {
 				record: rc
@@ -553,6 +564,9 @@ Ext.define('Rambox.view.main.MainController', {
 
 				case 'settingsTab':
 					// console.log(localStorage.getItem('appealingSettings'))
+
+					// RESET
+					if (localStorage.getItem('appealingSettings') == 'true') ipc.send('resetNotificationTimer')
 				
                     localStorage.setItem('appealingSettings', false)
 

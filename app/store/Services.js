@@ -285,8 +285,6 @@ Ext.define('Rambox.store.Services', {
 			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName)
 
 			if (store.data.length > 1) {
-				console.log(Ext.cq1('app-main').getComponent('upgradeTab'));
-
 				// if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)
 				// 	Ext.cq1('app-main').add(upgrade)
 
@@ -296,9 +294,21 @@ Ext.define('Rambox.store.Services', {
 
 				if (typeof Ext.cq1('app-main').getComponent('setTab') == 'undefined')
 					Ext.cq1('app-main').add(settings)
+				
+				
+				// RESET
+				// ipc.send('resetNotificationTimer')
 			}
 
 			if (store.data.length == 1) {
+
+				// RESET
+				if (!localStorage.getItem('ntfFirst')) {
+
+					ipc.send('resetNotificationTimer')
+					localStorage.setItem('ntfFirst', true)
+				}
+
 				localStorage.setItem('appealingPlus', true)
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
@@ -306,6 +316,14 @@ Ext.define('Rambox.store.Services', {
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add_2.png')
 			} else if (store.data.length == 2) {
+
+				// RESET
+				if (!localStorage.getItem('ntfSecond')) {
+
+					ipc.send('resetNotificationTimer')
+					localStorage.setItem('ntfSecond', true)
+				}
+
 				localStorage.setItem('appealingPlus', false)
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add second service on Welcome screen')
 
