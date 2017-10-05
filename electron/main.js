@@ -294,30 +294,15 @@ function createWindow () {
 		if ( cmd === 'browser-forward' ) mainWindow.webContents.executeJavaScript('if(Ext.cq1("app-main")) Ext.cq1("app-main").getActiveTab().goForward();');
 	});
 
-	// let notify1 = null;
-	// let notify15 = null;
-	// let notify120 = null;
-
-
-	// console.log(ETimer)
-
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
 		timer.start()
-
-		// notify1 = setTimeout(timeNotification, 1000 * 60);
-		// notify15 = setTimeout(timeNotification, 1000 * 60 * 15);
-		// notify120 = setTimeout(timeNotification, 1000 * 60 * 120);
 	});
 	mainWindow.on('focus', function(e) {
 		console.info('[Event] Focus Gained')
 
 		timer.pause()
-
-		// clearTimeout(notify1)
-		// clearTimeout(notify15)
-		// clearTimeout(notify120)
 	});
 
 	// Emitted when the window is closed.
