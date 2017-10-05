@@ -144,8 +144,8 @@ function handleSquirrelEvent() {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let isQuitting = false;
-// let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
-let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
+let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
+// let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 function timeNotification() {
 
