@@ -18,9 +18,9 @@ $include-opera: false;
 .animated-tab .x-tab-wrap {
 	// animation-name: shake;
 	// animation-name: tada;
-	animation-name: flipInY;
+	// animation-name: flipInY;
 
-	animation-duration: 1s;
+	animation-duration: 3s;
 	animation-fill-mode: both;
 
 	animation-iteration-count: infinite;

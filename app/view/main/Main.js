@@ -48,7 +48,6 @@ Ext.define('Rambox.view.main.Main', {
 			,layout: 'hbox'
 			,tabConfig: {
 				// cls: 'animated-tab'
-				cls: 'animated-tab'
 			} 
 			,dock: 'bottom'
 			,items: [
