@@ -46,7 +46,10 @@ Ext.define('Rambox.view.main.Main', {
 			,reorderable: false 
 			,autoScroll: true
 			,layout: 'hbox'
-			,tabConfig: {} // Created empty for Keyboard Shortcuts
+			,tabConfig: {
+				// cls: 'animated-tab'
+				cls: 'animated-tab'
+			} 
 			,dock: 'bottom'
 			,items: [
 				{
