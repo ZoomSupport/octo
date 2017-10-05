@@ -9,8 +9,10 @@ const upgrade = {
 	reorderable: false,
 
 	tabConfig: {
-		cls: 'b-icon',
+		cls: 'upgrade-icon',
 		handler: 'notButton',
+
+		margin: 0
 	},
 }
 
@@ -261,13 +263,15 @@ Ext.define('Rambox.store.Services', {
 			if ( !Ext.isEmpty(servicesRight) ) Ext.cq1('app-main').add(servicesRight);
 
 			if (store.data.length > 1) {
+
+				Ext.cq1('app-main').add(notifications)
+				Ext.cq1('app-main').add(settings)
+
 				if (
 					!(localStorage.getItem('activated') == 'true') && 
 					localStorage.getItem('premiumToggle')
 				) Ext.cq1('app-main').add(upgrade)
 
-				Ext.cq1('app-main').add(notifications)
-				Ext.cq1('app-main').add(settings)
 			}
 
 			const welcomeTab = Ext.cq1('app-main').getComponent('welcomeTab');

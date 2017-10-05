@@ -45,8 +45,8 @@ Ext.define('Rambox.Application', {
 		// Rambox.ux.Auth0.init();
 
 		// Set cookies to help Tooltip.io messages segmentation
-		Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
-		if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
+		// Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
+		// if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);
 
 		// Check for updates
 		// if ( require('electron').remote.process.argv.indexOf('--without-update') === -1 && process.platform !== 'win32' ) Rambox.app.checkUpdate(true);
@@ -312,6 +312,7 @@ Ext.define('Rambox.Application', {
 
 		// Send request to license server
 		// Rambox.util.License.checkLicense()
+		localStorage.setItem('activated', false)
 
 	}
 

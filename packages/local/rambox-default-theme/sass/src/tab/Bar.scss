@@ -105,3 +105,13 @@
 .x-tab.x-tab-active.x-tab-default .x-tab-inner-default {
 	color: white;
 }
+
+.upgrade-icon {
+	background-color: #E3704E !important;
+	border-top-left-radius: 5px;
+}
+
+.x-tab.x-tab-over.x-tab-default.upgrade-icon {
+	background-color: #E45A34 !important;
+	// opacity: 0.8;
+}

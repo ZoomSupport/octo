@@ -580,3 +580,23 @@ body::before {
 	left: 20px;
 	top: 20px;
 }
+
+// Upgrade popup
+.upgrade-popup .x-window-header-default {
+	border-bottom-width: 0 !important;
+}
+
+.upgrade-popup .popup-text {
+	font-family: "Helvetica Neue"
+}
+
+.upgrade-popup .popup-spinner-title {
+	font-weight: normal;
+	font-size: 14pt;
+}
+
+.upgrade-popup .popup-spinner-cancel {
+	font-weight: normal;
+	color: #148AE2;
+	font-size: 10pt;
+}
