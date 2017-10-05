@@ -341,6 +341,8 @@ Ext.define('Rambox.store.Services', {
 
 					ipc.send('resetNotificationTimer')
 					localStorage.setItem('ntfSecond', true)
+
+					localStorage.setItem('startTime', Date.now().toString())
 				}
 
 				// localStorage.setItem('appealingPlus', false)

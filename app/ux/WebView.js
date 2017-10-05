@@ -1,6 +1,19 @@
 /**
  * Default config for all webviews created
  */
+
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return hours+':'+minutes+':'+seconds;
+}
+
 Ext.define('Rambox.ux.WebView',{
 	 extend: 'Ext.panel.Panel'
 	,xtype: 'webview'
@@ -515,6 +528,16 @@ Ext.define('Rambox.ux.WebView',{
 
 			totalCount += count
 			localStorage.setItem('lifetimeNotificationCount', totalCount)
+
+			if (totalCount >= 50 && !localStorage.getItem('timeTracked')) {
+
+				let delta = ( Date.now() - parseInt(localStorage.getItem('startTime')) ) / 1000
+
+				console.log("Time Passed " + delta.toString().toHHMMSS())
+				ga_storage._trackEvent('Application', 'Time', delta.toString().toHHMMSS())
+
+				localStorage.setItem('timeTracked', true)
+			}
 
 			// if (totalCount >= 50 && Ext.getStore('Services').data.length == 2) {
 
