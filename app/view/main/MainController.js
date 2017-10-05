@@ -165,7 +165,8 @@ Ext.define('Rambox.view.main.MainController', {
 		 * Check if exceded messanger limits
 		 */
 		// if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
-		if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
+		// if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
+		if (serviceCnt >= maxServices) {
 			ga_storage._trackEvent('Application', 'Upgrade to PRO Shown')
 
 			// RESET

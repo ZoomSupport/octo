@@ -23,7 +23,7 @@ Ext.define('Rambox.view.popup.PopupController', {
     doUpgrade: function (btn) {
         ga_storage._trackEvent('Application', 'Upgrade to PRO Click')
 
-        ipc.send("openExternalLink", this.externalURL)
+        // ipc.send("openExternalLink", this.externalURL)
 
         // Enable Spinner view
         this.getView().getComponent('buy-popup').setHidden(true)

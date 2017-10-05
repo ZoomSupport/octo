@@ -11,7 +11,8 @@
 
 .sel-main-title {
     // font-size: 30pt;
-    font-weight: 400;
+    // font-weight: 400;
+    font-weight: 600;
     // color: white !important;
 }
 
@@ -30,7 +31,8 @@
     font-size: 12pt;
     font-weight: 400;
 
-    color: #D7DFE6; //rgba(255, 255, 255, 0.9);
+    // color: #D7DFE6; //rgba(255, 255, 255, 0.9);
+    color: #081F37;
     background: none !important;
 }
 
@@ -40,18 +42,24 @@
 
 .x-form-search-trigger {
     background-image: url(tools/search.png);
+    background-size: 20px;
 }
 
-.x-form-search-trigger.x-form-trigger-default.x-form-trigger-focus {
+.x-form-search-trigger.x-form-trigger-default.x-form-trigger-focus,
+.x-form-search-trigger.x-form-trigger-default.x-form-trigger-over {
     background-position: 0 center !important;
 }
 
 .main-panel .x-form-field::-webkit-input-placeholder {
     color: #858F9B;
+    // color: #081F37;
 }
 
 .main-panel .x-form-trigger-wrap {
-    border-color: #34455a !important; // #D7DFE6; // #E1E7EC;
+    background-color: white !important;
+
+    // border-color: #34455a !important; // #D7DFE6; // #E1E7EC;
+    border-color: #D7DFE6 !important; 
     border-width: 1px;
     padding: 0 6px 1px 1px;
 

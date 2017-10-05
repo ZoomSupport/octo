@@ -54,7 +54,8 @@ Ext.define('Rambox.view.main.Main', {
 				{
 					 xtype: 'panel'
 					,itemId: 'main-tab-header'
-					,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' 
+					// ,title: '<h1 class="sel-main-title">Services</h1> <h3 class="sel-sub-title">Select a service you need</h3>' 
+					,title: '<h1 class="sel-main-title">All Services</h1>' 
 					// ,margin: '0 20'
 					,flex: 1
 					,header: { padding: "30 30" }
