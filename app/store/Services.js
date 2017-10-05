@@ -32,7 +32,7 @@ const notifications = {
 
 
 const settings = {
-	icon: (localStorage.getItem('appealingSettings') == 'true' || localStorage.getItem('appealingSettings') == null) ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
+	icon: (localStorage.getItem('appealingSettings') == 'true') ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
 	
 	,id: 'settingsTab'
 
@@ -187,6 +187,11 @@ const settings = {
 	]
 }
 
+
+var plusTimeout = null;
+var stgsTimeout = null;
+var stgTime = 1000*8;
+
 Ext.define('Rambox.store.Services', {
 	 extend: 'Ext.data.Store'
 	,alias: 'store.services'
@@ -292,8 +297,17 @@ Ext.define('Rambox.store.Services', {
 				if (typeof Ext.cq1('app-main').getComponent('notificationsTab') == 'undefined')
 					Ext.cq1('app-main').add(notifications)
 
-				if (typeof Ext.cq1('app-main').getComponent('setTab') == 'undefined')
+				if (typeof Ext.cq1('app-main').getComponent('setTab') == 'undefined') {
+
 					Ext.cq1('app-main').add(settings)
+
+					stgsTimeout = setTimeout(function () {
+						localStorage.setItem('appealingSettings', true)
+						
+						const tab = Ext.cq1('app-main').getComponent('setTab')
+						tab.setIcon('resources/tools/settings_2.png')
+					}, stgTime)
+				}
 				
 				
 				// RESET
@@ -309,12 +323,17 @@ Ext.define('Rambox.store.Services', {
 					localStorage.setItem('ntfFirst', true)
 				}
 
-				localStorage.setItem('appealingPlus', true)
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
 				// Update within tab
-				const tab = Ext.cq1('app-main').getComponent('plusTab') 
-				tab.setIcon('resources/tools/add_2.png')
+				plusTimeout = setTimeout(function () {
+
+					const tab = Ext.cq1('app-main').getComponent('plusTab') 
+					tab.setIcon('resources/tools/add_2.png')
+
+					localStorage.setItem('appealingPlus', true)
+
+				}, stgTime)
 			} else if (store.data.length == 2) {
 
 				// RESET

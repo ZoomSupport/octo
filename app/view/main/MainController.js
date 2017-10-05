@@ -28,18 +28,18 @@ Ext.define('Rambox.view.main.MainController', {
 
 				localStorage.setItem('plusClicked', true)
 			}
-			
-			// GA track Plus button clicks
-			if (localStorage.getItem('appealingPlus') === 'true') {
+
+			if (Ext.getStore('Services').data.length === 1) {
+				// GA track Plus button clicks
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
-			} else {
-				
-				if (Ext.getStore('Services').data.length === 0)
-					ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
-				
+				// if (localStorage.getItem('appealingPlus') === 'true') {
+
+				// } 
 			}
 
-
+			if (Ext.getStore('Services').data.length === 0)
+				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+			
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
@@ -564,14 +564,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 				case 'settingsTab':
 					// console.log(localStorage.getItem('appealingSettings'))
-
-					// RESET
-					if (localStorage.getItem('appealingSettings') == 'true') ipc.send('resetNotificationTimer')
-				
-                    localStorage.setItem('appealingSettings', false)
-
-                    const tab = Ext.cq1('app-main').getComponent('setTab')
-                    tab.setIcon('resources/tools/settings.png')
+					this.clearSettingsState()
+					
                     break;
             }
 
@@ -580,5 +574,17 @@ Ext.define('Rambox.view.main.MainController', {
             console.log(thisTab)
             console.log(err)
         }
+	}
+
+	,clearSettingsState: function () {
+		clearTimeout(stgsTimeout)
+
+		// RESET
+		if (localStorage.getItem('appealingSettings') == 'true') ipc.send('resetNotificationTimer')
+		
+		localStorage.setItem('appealingSettings', false)
+
+		const tab = Ext.cq1('app-main').getComponent('setTab')
+		tab.setIcon('resources/tools/settings.png')
 	}
 });
