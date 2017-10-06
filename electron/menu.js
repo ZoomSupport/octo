@@ -147,14 +147,16 @@ module.exports = function(config) {
 			submenu: [
 				{
 					label: '&'+locale['menu.view[1]'],
-					accelerator: 'CmdOrCtrl+R',
+					// accelerator: 'CmdOrCtrl+R',
+					accelerator: 'CmdOrCtrl+Shift+R',
 					click(item, focusedWindow) {
 						if (focusedWindow) focusedWindow.reload();
 					}
 				},
 				{
 					label: '&Reload current Service',
-					accelerator: 'CmdOrCtrl+Shift+R',
+					// accelerator: 'CmdOrCtrl+Shift+R',
+					accelerator: 'CmdOrCtrl+R',
 					click() {
 						sendAction('reloadCurrentService');
 					}
