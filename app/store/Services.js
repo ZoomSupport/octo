@@ -55,7 +55,8 @@ const settings = {
 	,items: [
 		{
 			 xtype: 'grid'
-			,title: '<h1 class="sel-main-title">Settings</h1> <h3 class="sel-sub-title">Preferences for your services</h3>'
+			// ,title: '<h1 class="sel-main-title">Settings</h1> <h3 class="sel-sub-title">Preferences for your services</h3>'
+			,title: '<h1 class="sel-main-title">Settings</h1>'
 			,store: 'Services'
 			,margin: '0'
 			,flex: 1

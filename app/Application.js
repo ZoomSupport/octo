@@ -311,8 +311,8 @@ Ext.define('Rambox.Application', {
 		Ext.get('spinner').destroy();
 
 		// Send request to license server
-		// Rambox.util.License.checkLicense()
-		localStorage.setItem('activated', false)
+		Rambox.util.License.checkLicense()
+		// localStorage.setItem('activated', false)
 
 	}
 

@@ -28,7 +28,7 @@ Ext.define('Rambox.view.main.Main', {
 	]
 
 	,tabBar: {
-		padding: "18 0 0 0"
+		padding: "25 0 0 0"
 	}
 
 	,autoRender: true

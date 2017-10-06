@@ -275,15 +275,18 @@ body::before {
 //.x-box-scroller-tab-bar { z-index: 9999; }
 
 .service {
-	width: 160px;
+	// width: 160px;
+	width: 120px;
 	display: inline-block;
 	padding: 10px;
 	cursor: pointer;
 
+	border-radius: 3px;
+
 	text-align: center;
 	img {
 		// fwloat: left;
-		width: 50%;
+		width: 70%;
 	}
 	// span {
 	// 	margin-left: 10px;
@@ -293,13 +296,19 @@ body::before {
 	.title {
 		font-weight: 400;
 		color: #787B7E;
+		font-size: 12pt;
 
 		font-family: "Helvetica Neue";
 	}
 
 	&:hover {
-		background-color: lighten($base-color, 55%);
+		// background-color: lighten(base-color, 55%);
+		background-color: rgba(#a2a2a2, 0.34);
 	}
+}
+
+.service.x-view-item-focused {
+	outline: none !important;
 }
 
 // Auth0
@@ -426,8 +435,8 @@ body::before {
 
 
 .services {
-	padding-left: 30px;
-	padding-right: 30px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .hint-image {
