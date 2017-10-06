@@ -123,6 +123,7 @@ Ext.define('Rambox.view.main.Main', {
 					,items: [
 						{
 							 xtype: 'dataview'
+							,itemId: 'main-service-select'
 							,store: 'ServicesList'
 							,itemSelector: 'div.service'
 							,tpl: function () {

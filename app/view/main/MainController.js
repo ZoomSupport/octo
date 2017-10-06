@@ -287,6 +287,9 @@ Ext.define('Rambox.view.main.MainController', {
 	,onSearchServiceChange: function(field, newValue, oldValue) {
 		var me = this;
 
+		var bd = Ext.cq1('app-main').getComponent('plusTab').body.dom//.scrollTop('top', 0)
+		bd.scrollTop = 0
+
 		var cg = field.up().down('checkboxgroup');
 		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
 			field.getTrigger('clear').show();
