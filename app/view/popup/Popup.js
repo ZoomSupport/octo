@@ -41,18 +41,37 @@ Ext.define('Rambox.view.popup.Popup', {
                 hidden: false,
 
                 items: [
-                    {
-                        xtype: "image",
-                        src: "resources/popup/premium.png",
-                        width: 500,
-                        height: 400,
-                    },
+                    // {
+                    //     xtype: "image",
+                    //     src: "resources/popup/premium.png",
+                    //     width: 500,
+                    //     height: 400,
+                    // },
+
+                    // {
+                    //     xtype: "button",
+                    //     text: 'Upgrade to Premium $14.95',
+                    //     handler: "doUpgrade"
+                    // }
 
                     {
-                        xtype: "button",
-                        text: 'Upgrade to Premium $14.95',
-                        handler: "doUpgrade"
-                    }
+                         xtype: 'component'
+                        ,hideMode: 'offsets'
+                        ,autoRender: true
+                        ,autoShow: true
+                        ,autoEl: {
+                             tag: 'webview'
+                            ,src: popupConfig.url
+                            ,style: 'width:498px; height:462px; visibility:visible;'
+                            // ,plugins: 'true'
+                            // ,allowtransparency: 'on'
+                            ,autosize: 'on'
+                        }
+
+                        ,listeners: {
+                            afterrender: "afterRenderWebview",
+                        }
+                   }
                 ]
             },
 
@@ -72,7 +91,7 @@ Ext.define('Rambox.view.popup.Popup', {
                 items: [
                     {
                         type: "component",
-                        html: "<h2 class='popup-text popup-spinner-title'>WAITING FOR ACTIVATION...</h2>"
+                        html: "<h2 class='popup-text popup-spinner-title'>WAITING FOR ACTIVATION...</h2>",
                     },
 
                     {
@@ -83,7 +102,17 @@ Ext.define('Rambox.view.popup.Popup', {
 
                     {
                         type: "component",
-                        html: "<a href='#' class='popup-text popup-spinner-cancel'>Cancel and activate manually</a>"
+                        html: "<a href='#' class='popup-text popup-spinner-cancel'>Cancel and activate manually</a>",
+
+                        listeners: {
+                            render: function (c) {
+                                c.getEl().on({
+                                    click: function() {
+                                        console.log('LINK CLICK')
+                                    }
+                                })
+                            }
+                        }
                     }
                 ]
             },

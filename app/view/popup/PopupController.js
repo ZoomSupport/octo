@@ -77,5 +77,31 @@ Ext.define('Rambox.view.popup.PopupController', {
         }
 
         clearInterval(this.requestTimeout)
+    },
+
+    backClick: function () {
+        console.log('BACK CLICKED')
+    },
+
+    afterRenderWebview: function (c) {
+        var me = this
+        var webview = c.getEl().el.dom
+
+        // Intersect new window event
+        webview.addEventListener('new-window', function (e) {
+            let url = e.url
+            let param = url.split('#')[1]
+
+            switch (param) {
+                case 'buy':
+                    console.log(this)
+                    me.doUpgrade()
+                break;
+
+                case 'manual':
+                    console.log('ACTIVATE MANUALLY ')
+                break;
+            }
+        })
     }
 })
