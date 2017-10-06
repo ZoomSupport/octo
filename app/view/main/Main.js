@@ -188,26 +188,36 @@ Ext.define('Rambox.view.main.Main', {
 					type: "component",
 					cls: "octo-image-ctr",
 					html: '<img class="octo-image" src="resources/welcome/octopus.png" />',
+
+					autoRender: true,
+					autoShow: true,
 				},
 
 				{
+					autoRender: true,
+					autoShow: true,
+
 					type: "component",
 					cls: "octo-text-ctr",
 					html: '<img class="octo-text" src="resources/welcome/text.png" />',
-					margin: "50 0 0 0"
+
+					margin: "50 0 0 0",
 				},
 
-				// {
-				// 	type: "component",
-				// 	cls: "octo-arrow-ctr",
-				// 	html: '<img class="arrow-image" src="resources/welcome/arrow.png" />',
-					
-				// 	style: {
-				// 		position: "absolute",
-				// 		left: 0,
-				// 		top: 0
-				// 	}
-				// },
+			// 	{
+			// 		xtype: 'component'
+			// 	   ,hideMode: 'offsets'
+			// 	   ,autoRender: true
+			// 	   ,autoShow: true
+			// 	   ,autoEl: {
+			// 			tag: 'webview'
+			// 		   ,src: 'welcome.html'
+			// 		   ,style: 'width:100%;height:100%;visibility:visible;'
+			// 		   ,plugins: 'true'
+			// 		   ,allowtransparency: 'on'
+			// 		   ,autosize: 'on'
+			// 	   }
+			//    }
 
 		   ]
 		}
