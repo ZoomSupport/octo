@@ -39,12 +39,25 @@ Ext.define('Rambox.view.add.Add',{
 				,items: [
 					{
 						 xtype: 'textfield'
+
 						,fieldLabel: locale['app.window[2]']
-						,labelWidth: 40
+						,labelWidth: 45
+						,labelCls: 'urlLabel'
+
+						,margin: '0 0 20 0'
+
+						,cls: "urlField nameField"
+						// ,styles: {
+						// 	width: 400
+						// }
+						// ,width: 400
+						// ,flex: 1
+
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('name') : '') : me.record.get('name')
 						,name: 'serviceName'
 						,allowBlank: true
-						,hidden: true 
+						// ,hidden: true 
+						,hidden: me.record.get('type') !== 'custom'
 						,listeners: { specialkey: 'onEnter' }
 					}
 					,{
