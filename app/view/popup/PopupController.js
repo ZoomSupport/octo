@@ -32,6 +32,14 @@ Ext.define('Rambox.view.popup.PopupController', {
         this.requestTimeout = setInterval(this.requestLoop, this.timeoutTime)
     },
 
+    cancelActivation: function () {
+
+        this.getView().getComponent('buy-popup').setHidden(false)
+        this.getView().getComponent('buy-spinner').setHidden(true)
+
+        clearInterval(this.requestTimeout)
+    },
+
     requestLoop: function () {
         console.log("LOOPING REQUEST")
 

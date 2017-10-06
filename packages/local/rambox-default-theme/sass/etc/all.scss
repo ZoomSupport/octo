@@ -588,6 +588,11 @@ body::before {
 // Upgrade popup
 .upgrade-popup .x-window-header-default {
 	border-bottom-width: 0 !important;
+	background: none !important;
+}
+
+.upgrade-popup .x-window-body {
+	top: 0 !important;
 }
 
 .upgrade-popup .popup-text {
