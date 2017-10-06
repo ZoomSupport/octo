@@ -69,7 +69,7 @@ Ext.define('Rambox.view.add.Add',{
 							}
 							,{
 								 xtype: 'textfield'
-								,cls: "urlField"
+								,cls: "urlField "
 								,name: 'url'
 								,value: me.edit && me.service.get('url').indexOf('___') >= 0 ? me.record.get('url').replace(me.service.get('url').split('___')[0], '').replace(me.service.get('url').split('___')[1], '') : (me.record.get('url').indexOf('___') === -1 ? me.record.get('url') : '')
 								,readOnly: me.edit ? (me.service.get('custom_domain') && me.service.get('url') === me.record.get('url') ? true : me.service.get('url').indexOf('___') === -1 && !me.service.get('custom_domain')) : me.record.get('url').indexOf('___') === -1 && me.record.get('custom_domain')
@@ -137,15 +137,24 @@ Ext.define('Rambox.view.add.Add',{
 					}
 					,{
 						 xtype: 'textfield'
+						,cls: "urlField urlLogo"
+
 						,fieldLabel: locale['app.window[18]']
+						,labelWidth: 40
+						,labelCls: 'urlLabel'
+
 						,emptyText: 'http://url.com/image.png'
 						,name: 'logo'
 						,vtype: me.record.get('type') === 'custom' ? 'url' : ''
 						,value: me.record.get('type') === 'custom' ? (me.edit ? me.record.get('logo') : '') : me.record.get('logo')
 						,allowBlank: true
 						,hidden: me.record.get('type') !== 'custom'
-						,labelWidth: 40
-						,margin: '5 0 0 0'
+
+						// ,flex: 1
+						,growMin: 450
+						,growMax: 450
+
+						,margin: '20 0 0 0'
 						,listeners: { specialkey: 'onEnter' }
 					}
 					,{
