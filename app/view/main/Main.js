@@ -95,7 +95,7 @@ Ext.define('Rambox.view.main.Main', {
 							,grow: true
 							,cls: "header-search"
 
-							,itemId: "search-field"
+							,id: "main-search-field"
 
 							,growMin: 350
 							,growMax: 350

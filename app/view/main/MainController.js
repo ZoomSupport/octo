@@ -22,6 +22,10 @@ Ext.define('Rambox.view.main.MainController', {
 
 		if ( newTab.id === 'ramboxTab' ) {
 
+			// TODO: Clear Search Bar
+			// var searchField = newTab.body.el.getCmp()
+			// console.log(searchField)
+
 			if (!localStorage.getItem('plusClicked')) {
 				// RESET
 				ipc.send('resetNotificationTimer')
