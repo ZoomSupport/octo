@@ -183,7 +183,14 @@ Ext.define('Rambox.view.main.Main', {
 		   ,layout: {
 			   type: 'vbox',
 			   align: 'center',
-			   pack: 'center',
+			//    align: 'stretch',
+			//    pack: 'center',
+			}
+
+			,listeners: {
+				afterrender: function () {
+					Ext.cq1('app-main').doLayout()
+				}
 			}
 
 		   ,items: [
@@ -191,10 +198,11 @@ Ext.define('Rambox.view.main.Main', {
 				{
 					type: "component",
 					cls: "octo-image-ctr",
-					html: '<img class="octo-image" src="resources/welcome/octopus.png" />',
+					html: '<img class="octo-image" width="806.34" height="628" src="resources/welcome/octopus.png" />',
 
 					autoRender: true,
 					autoShow: true,
+
 				},
 
 				{
@@ -203,9 +211,9 @@ Ext.define('Rambox.view.main.Main', {
 
 					type: "component",
 					cls: "octo-text-ctr",
-					html: '<img class="octo-text" src="resources/welcome/text.png" />',
+					html: '<img class="octo-text" width="625.75" height="117" src="resources/welcome/text.png" />',
 
-					margin: "-120 0 0 0",
+					margin: "-160 0 0 0",
 				},
 
 				{
@@ -214,7 +222,7 @@ Ext.define('Rambox.view.main.Main', {
 
 					type: "component",
 					cls: "octo-button-ctr",
-					html: '<img class="octo-button" src="resources/welcome/button.png" />',
+					html: '<img class="octo-button" width="324" height="60" src="resources/welcome/button.png" />',
 
 					margin: "30 0 0 0",
 

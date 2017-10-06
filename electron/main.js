@@ -587,6 +587,10 @@ ipcMain.on('getSysInfo', function (e) {
 
 })
 
+ipcMain.on('getDirName', function (e) {
+	e.returnValue = __dirname
+})
+
 // Proxy
 if ( config.get('proxy') ) app.commandLine.appendSwitch('proxy-server', config.get('proxyHost')+':'+config.get('proxyPort'));
 
