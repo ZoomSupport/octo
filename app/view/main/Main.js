@@ -205,7 +205,29 @@ Ext.define('Rambox.view.main.Main', {
 					cls: "octo-text-ctr",
 					html: '<img class="octo-text" src="resources/welcome/text.png" />',
 
-					margin: "50 0 0 0",
+					margin: "-120 0 0 0",
+				},
+
+				{
+					autoRender: true,
+					autoShow: true,
+
+					type: "component",
+					cls: "octo-button-ctr",
+					html: '<img class="octo-button" src="resources/welcome/button.png" />',
+
+					margin: "30 0 0 0",
+
+					listeners: {
+						render: function(c) {
+							c.getEl().on({
+								click: function (e) {
+									let pTab = Ext.cq1('app-main').getComponent('plusTab')
+									Ext.cq1('app-main').setActiveTab(pTab)
+								}
+							})
+						}
+					}
 				},
 
 			// 	{

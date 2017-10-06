@@ -563,11 +563,11 @@ body::before {
 
 	// background: none !important;
 
-	background-image: url(welcome/bg.png) !important;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: #092037 !important;
+	// background-image: url(welcome/bg.png) !important;
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    background-color: #180436 !important;
 }
 
 .welcome-panel .x-panel-body-default {
@@ -575,28 +575,36 @@ body::before {
 }
 
 .octo-image-ctr .x-autocontainer-outerCt,
+.octo-button-ctr .x-autocontainer-outerCt,
 .octo-text-ctr .x-autocontainer-outerCt {
 	text-align: center;
 }
 
 .welcome-panel .octo-image {
-	width: 50%;
+	width: 100%;
 }
 
 .welcome-panel .octo-text {
 	width: 60%;
 }
 
-.welcome-panel::after {
-
-	content: url(welcome/arrow.png);
-
-	// width: 10%;
-
-	position: absolute;
-	left: 20px;
-	top: 20px;
+.welcome-panel .octo-button {
+	width: 60%;
 }
+.octo-button:hover {
+	cursor: pointer;
+}
+
+// .welcome-panel::after {
+
+// 	content: url(welcome/arrow.png);
+
+// 	// width: 10%;
+
+// 	position: absolute;
+// 	left: 20px;
+// 	top: 20px;
+// }
 
 // Upgrade popup
 .upgrade-popup .x-window-header-default {
