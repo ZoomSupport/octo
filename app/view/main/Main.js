@@ -58,7 +58,10 @@ Ext.define('Rambox.view.main.Main', {
 					,title: '<h1 class="sel-main-title">All Services</h1>' 
 					// ,margin: '0 20'
 					,flex: 1
-					,header: { padding: "30 30" }
+					,header: { 
+						docked: 'top',
+						padding: "30 30" 
+					}
 					,tools: [
 						{
 							 xtype: 'checkboxgroup'

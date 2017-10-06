@@ -24,6 +24,12 @@
 
 .main-panel .x-panel-header {
     font-size: 24pt !important;
+
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+
+    left: auto !important;
 }
 
 .main-panel .x-form-text-default {
