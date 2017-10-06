@@ -571,11 +571,14 @@ Ext.define('Rambox.view.main.MainController', {
                 case 'notificationsTab':
                     var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
                     this.dontDisturb(!dontDisturb)
-                    dontDisturb = localStorage.getItem('dontDisturb');
+                    var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
 
-                    panel.getTabBar().getComponent('notTab').setStyle({
-                        opacity: (dontDisturb == 'true') ? 0.2 : 1
-                    })
+					// var notText = (dontDisturb) ? "Notifications " : "Notifications On"
+                    // panel.getTabBar().getComponent('notTab').setStyle({
+                    //     opacity: (dontDisturb == 'true') ? 0.2 : 1
+					// })
+					let dIcon = (dontDisturb) ? "resources/tools/notifications_off.png" : "resources/tools/notifications.png"
+                    panel.getTabBar().getComponent('notTab').setIcon(dIcon)
 
                     return false
                     break;
