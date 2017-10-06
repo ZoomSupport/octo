@@ -290,6 +290,7 @@ Ext.define('Rambox.view.main.MainController', {
 		var cg = field.up().down('checkboxgroup');
 		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
 			field.getTrigger('clear').show();
+			field.getTrigger('search').hide();
 
 			Ext.getStore('ServicesList').getFilters().replaceAll({
 				fn: function(record) {
@@ -300,6 +301,8 @@ Ext.define('Rambox.view.main.MainController', {
 			});
 		} else {
 			field.getTrigger('clear').hide();
+			field.getTrigger('search').show();
+
 			Ext.getStore('ServicesList').getFilters().removeAll();
 			me.doTypeFilter(cg);
 		}
