@@ -2,11 +2,105 @@
 <html>
     <head>
         <title>Hello Popup</title>
+
+        <style>
+            body {
+                font-family: "Helvetica Neue";
+                margin: 0;
+            }
+
+            .header-image {
+                width: 100%;
+            }
+
+            .main {
+                width: 100%;
+            }
+
+            .main-body {
+                width: 100%;
+                text-align: center;
+
+                padding: 20px 0;
+
+                font-size: 11pt;
+                color: #4B4F53;
+
+                font-weight: 400;
+            }
+
+            .title {
+                color: #081F37;
+                margin: 2px 0;
+            }
+
+            .main-title {
+                font-size: 20pt;
+                font-weight: normal;
+
+            }
+            .main-subtitle {
+                font-family: 18pt;
+                font-weight: 500;
+            }
+
+            .color-highlight {
+                color: #0F92FE;
+            }
+
+            .description {
+                line-height: 20px;
+
+                padding: 2px 30px;
+                margin-bottom: 10px;
+            }
+
+            .benefits {
+                /* list-style-image: url('./check.png'); */
+                list-style: none;
+
+                line-height: 25px;
+                text-align: left;
+            }
+
+            .benefits li::before {
+                /* content: url('./check.png'); */
+                display: inline-block;
+
+                width: 12px;
+                height: 10px;
+
+                background: url('./check.png') no-repeat;
+                background-size: 12px;
+
+                padding-right: 9px;
+
+                content: "";
+            }
+        </style>
     </head>
 
     <body>
-        <h1>This is a popup. HELLO</h1>
-        <a href="#buy" target="_blank">Buy now!</a>
-        <a href="#manual" target="_blank">Activate Manualy!</a>
+        <div class="main">
+            <div class="header-ctr">
+                <img class="header-image" src="./header.png" />
+            </div>
+            <div class="main-body">
+                <h1 class="title main-title">Become a Productivity Guru</h1>
+                <h2 class="title main-subtitle">with <span class="color-highlight">PRO-version</span></h2>
+
+                <p class="description">You have reached a free limit of active services. Upgrade to Pro-version and set up unlimited amount of services. </p>
+
+                <ul class="benefits">
+                    <li>All 83 services available to set up</li>
+                    <li>Increased productivity</li>
+                    <li>Lifetime license</li>
+                </ul>
+
+                <!-- <a href="#buy" target="_blank">Buy now!</a>
+                <a href="#manual" target="_blank">Activate Manualy!</a> -->
+            </div>
+        </div>
+        
     </body>
 </html>

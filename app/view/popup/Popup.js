@@ -14,11 +14,13 @@ Ext.define('Rambox.view.popup.Popup', {
 
     // defaults
 	,modal: true
-    ,width: 500
-    ,height: 500
+    ,width: 460 
+    ,height: 532
 	,autoShow: true
 	,resizable: false
     ,draggable: false
+
+    ,frame: false
     
     ,cls: "upgrade-popup"
     // ,bodyPadding: 20
@@ -51,7 +53,7 @@ Ext.define('Rambox.view.popup.Popup', {
                         ,autoEl: {
                              tag: 'webview'
                             ,src: popupConfig.url
-                            ,style: 'width:498px; height:462px; visibility:visible;'
+                            ,style: 'width:458px; height:494px; visibility:visible;'
                             ,autosize: 'on'
                         }
 
