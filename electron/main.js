@@ -158,25 +158,30 @@ function timeNotification() {
 		switch (len) {
 			case 0: 
 				body = (plusClick) ? "Notification #1" : "Notification #0"
+				nId = (plusClick) ? '1' : '0'
 				break;
 			case 1:
 				body = "Add second messenger"
+				nId = '2'
 				break;
 			case 2:
 
 				if (aSet) {
 					body = "Go into settings"
+					nId = '3'
 					break;
 				}
 
 				if (nCnt >= 50 && pToggle) {
 					body = "Time to upgrade"
+					nId = '5'
 					break;
 				}
 
 				// TODO: track if settings opened
 				if (nCnt >= 50) {
 					body = "Add third messenger";
+					nId = '4'
 					break;
 				}
 
