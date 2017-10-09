@@ -56,15 +56,20 @@
             }
 
             .benefits {
-                /* list-style-image: url('./check.png'); */
+                display: inline-block;
+
+                margin-left: auto;
+                margin-right: auto;
+
                 list-style: none;
 
                 line-height: 25px;
                 text-align: left;
+
+                padding: 0;
             }
 
             .benefits li::before {
-                /* content: url('./check.png'); */
                 display: inline-block;
 
                 width: 12px;
@@ -76,6 +81,20 @@
                 padding-right: 9px;
 
                 content: "";
+            }
+
+            .buttons {
+                margin-top: 20px;
+            }
+
+            .button {
+                background-color: #0F92FE;
+                padding: 15px 40px;
+                text-decoration: none;
+                color: white;
+                font-size: 12pt;
+                border-radius: 6px;
+                font-weight: 500;
             }
         </style>
     </head>
@@ -97,8 +116,11 @@
                     <li>Lifetime license</li>
                 </ul>
 
-                <!-- <a href="#buy" target="_blank">Buy now!</a>
-                <a href="#manual" target="_blank">Activate Manualy!</a> -->
+                <div class="buttons">
+                    <a href="#buy" target="_blank" class="button">UPGRADE TO PRO $14.95</a>
+                    <!-- <a href="#manual" target="_blank">Activate Manualy!</a> -->
+                </div>
+
             </div>
         </div>
         
