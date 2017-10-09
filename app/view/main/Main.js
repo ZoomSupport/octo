@@ -198,7 +198,7 @@ Ext.define('Rambox.view.main.Main', {
 				{
 					type: "component",
 					cls: "octo-image-ctr",
-					html: '<img class="octo-image" width="806.34" height="628" src="resources/welcome/octopus.png" />',
+					html: '<img class="octo-image" width="650" height="506.22" src="resources/welcome/octopus.png" />',
 
 					autoRender: true,
 					autoShow: true,
@@ -213,7 +213,7 @@ Ext.define('Rambox.view.main.Main', {
 					cls: "octo-text-ctr",
 					html: '<img class="octo-text" width="625.75" height="117" src="resources/welcome/text.png" />',
 
-					margin: "-160 0 0 0",
+					margin: "-150 0 0 0",
 				},
 
 				{
