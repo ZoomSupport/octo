@@ -8,9 +8,9 @@ Ext.define('Rambox.view.main.MainController', {
 		var me = this;
 
 		// Set Google Analytics event
-		// ga_storage._trackPageview('/index.html', 'main');
 
-		console.log('[EVENT] onTabChange');
+		console.log('[EVENT] onTabChange', newTab);
+		ga_storage._trackPageview('/'+newTab.title, newTab.title);
 
 		if (
 			newTab.id === 'settingsTab' || 
@@ -21,6 +21,7 @@ Ext.define('Rambox.view.main.MainController', {
 		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
+			
 
 			var searchField = Ext.getCmp('main-search-field')
 			searchField.setValue("")
