@@ -97,7 +97,10 @@ Ext.define('Rambox.view.add.AddController', {
 				,notifications: formValues.notifications
 				,muted: formValues.muted
 				,tabname: formValues.tabname
+
 				,statusbar: false //formValues.statusbar
+				// ,statusbar: true //formValues.statusbar
+
 				,displayTabUnreadCounter: formValues.displayTabUnreadCounter
 				,includeInGlobalUnreadCounter: formValues.includeInGlobalUnreadCounter
 				,trust: formValues.trust
