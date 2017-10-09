@@ -44,6 +44,40 @@ Ext.define('Rambox.view.popup.PopupController', {
 
     },
 
+    activateClick: function (c) {
+        var me = this
+
+        var textField = Ext.getCmp('actv-code')
+        var errField = Ext.getCmp('err-field')
+        var code = textField.getValue()
+
+        // Disable textfield and activation button
+        textField.getTrigger('invalid').hide()
+        textField.getTrigger('wait').show()
+        c.disable()
+        textField.disable()
+
+        // Validate License
+            Rambox.util.License.activateByKey(code, 
+            // Handle Success
+            function () {
+                me.upgradeSuccess()
+            },
+
+            // Handle Error
+            function (code, msg) {
+                textField.getTrigger('wait').hide()
+                textField.getTrigger('invalid').show()
+
+                c.enable()
+                textField.enable()
+
+                errField.setHtml("<h2 class='popup-text popup-spinner-subtitle title-err' style='margin-top: 0'>"+msg+"</h2>")
+            })
+
+        console.log(textField)
+    },
+
     requestLoop: function () {
         console.log("LOOPING REQUEST")
 

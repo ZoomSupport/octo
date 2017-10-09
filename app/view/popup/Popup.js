@@ -126,6 +126,9 @@ Ext.define('Rambox.view.popup.Popup', {
 
                     {
                         xtype: "textfield",
+
+                        id: 'actv-code',
+
                         cls: "code-field",
                         grow: true,
 
@@ -147,15 +150,15 @@ Ext.define('Rambox.view.popup.Popup', {
 
                             invalid: {
                                 cls: 'act-invalid',
-                                hidden: false,
+                                hidden: true,
                             }
                        }
                     },
 
                     {
                         type: "component",
-                        // html: "<h2 class='popup-text popup-spinner-subtitle' style='margin-top: 0'>Verifying activation code</h2>",
-                        html: "<h2 class='popup-text popup-spinner-subtitle' style='margin-top: 0'></h2>",
+                        id: "err-field",
+                        html: "<h2 class='popup-text popup-spinner-subtitle' style='margin-top: 2px'></h2>",
                     },
 
                     {
@@ -164,7 +167,9 @@ Ext.define('Rambox.view.popup.Popup', {
                         text: "Activate",
 
                         margin: "35 0",
-                        padding: "18 65"
+                        padding: "18 65",
+
+                        handler: "activateClick"
                     }
                 ]
             },

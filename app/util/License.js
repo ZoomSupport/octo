@@ -105,13 +105,45 @@ Ext.define('Rambox.util.License', {
 
             success: function (res) {
                 console.log(res)
+                const r = Ext.util.JSON.decode(res.responseText)
+
+                switch (r.statusCode) {
+                    case 0:
+                        localStorage.setItem('activated', r.hasLicense)
+                        suc()
+                    break;
+
+                    case 1:
+                        err(1, "Wrong request Signature")
+                    break;
+
+                    case 2:
+                        err(2, "Missing request arguments")
+                    break;
+
+                    case 3:
+                        err(3, "The activation code is INVALID")
+                    break;
+
+                    case 4:
+                        err(4, "Activation key DISABLED")
+                    break;
+
+                    case 5:
+                        err(5, "Activation key is already used")
+                    break;
+
+                    case 6:
+                        err(6, "Activation key is already used on this mac")
+                    break;
+                }
                 // suc();
                 // if (suc) suc(r)
             },
 
             err: function (e) {
                 console.log(res)
-                // err(e);
+                err(-1, "Unexpected error");
             }
 
         })
