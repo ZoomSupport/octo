@@ -651,24 +651,6 @@ body::before {
     background-color: rgba(0, 0, 0, 0);
 }
 
-.code-field .x-form-search-trigger {
-    background-image: url(tools/search.png);
-    background-size: 20px;
-}
-
-.code-field .x-form-search-trigger.x-form-trigger-default.x-form-trigger-focus,
-.code-field .x-form-search-trigger.x-form-trigger-default.x-form-trigger-over,
-
-.code-field .x-action-col-glyph:hover .x-form-clear-trigger.x-form-trigger-default.x-form-trigger-focus,
-.code-field .x-form-clear-trigger.x-form-trigger-default.x-form-trigger-over {
-    background-position: 0 center !important;
-}
-
-.code-field .x-form-clear-trigger {
-    background-image: url(tools/clear.png);
-    background-size: 18px;
-}
-
 .code-field .x-form-field::-webkit-input-placeholder {
     color: #858F9B;
     // color: #081F37;
@@ -697,3 +679,17 @@ body::before {
 
 	font-weight: 500;
 }
+
+.code-field .loading-spinner {
+	background-image: url('tools/wait_spinner.svg');
+	background-size: 40px;
+
+	width: 40px !important;
+}
+
+.code-field .loading-spinner.x-form-trigger-default.x-form-trigger-focus,
+.code-field .loading-spinner.x-form-trigger-default.x-form-trigger-over {
+
+    background-position: 0 center !important;
+}
+

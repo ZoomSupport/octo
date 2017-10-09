@@ -131,6 +131,13 @@ Ext.define('Rambox.view.popup.Popup', {
 
                         growMin: 340,
                         growMax: 340,
+
+                        triggers: {
+                            wait: {
+                                weight: 1,
+                                cls: 'loading-spinner'
+                            }
+                       }
                     },
 
                     {
