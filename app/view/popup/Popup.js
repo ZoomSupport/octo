@@ -137,7 +137,17 @@ Ext.define('Rambox.view.popup.Popup', {
                                 weight: 1,
                                 cls: 'loading-spinner',
 
-                                hidden: false 
+                                hidden: true
+                            },
+
+                            valid: {
+                                cls: 'act-valid',
+                                hidden: true,
+                            },
+
+                            invalid: {
+                                cls: 'act-invalid',
+                                hidden: false,
                             }
                        }
                     },

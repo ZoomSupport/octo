@@ -648,7 +648,9 @@ body::before {
 }
 
 .code-field .x-form-trigger-default {
-    background-color: rgba(0, 0, 0, 0);
+	background-color: rgba(0, 0, 0, 0);
+
+	width: 40px !important;
 }
 
 .code-field .x-form-field::-webkit-input-placeholder {
@@ -684,11 +686,24 @@ body::before {
 	background-image: url('tools/wait_spinner.svg');
 	background-size: 40px;
 
-	width: 40px !important;
 }
 
-.code-field .loading-spinner.x-form-trigger-default.x-form-trigger-focus,
-.code-field .loading-spinner.x-form-trigger-default.x-form-trigger-over {
+.code-field .act-valid {
+	background-image: url('tools/valid_small.png');
+	background-size: 24px;
+
+	width: 30px !important;
+}
+
+.code-field .act-invalid {
+	background-image: url('tools/invalid_small.png');
+	background-size: 24px;
+
+	width: 30px !important;
+}
+
+.code-field .x-form-trigger-default.x-form-trigger-focus,
+.code-field .x-form-trigger-default.x-form-trigger-over {
 
     background-position: 0 center !important;
 }
