@@ -606,19 +606,34 @@ body::before {
 // 	top: 20px;
 // }
 
+.x-css-shadow {
+	box-shadow: none !important;
+}
+
 // Upgrade popup
 .upgrade-popup {
-	border: none !important;
+	width: 457px !important;
+	// border: none !important;
+	background: none !important;
+	border-width: 0px !important;
 }
 
 .upgrade-popup .x-window-header-default {
-	border-bottom-width: 0 !important;
+	// border-bottom-width: 0 !important;
+
 	background: none !important;
+	border: none !important;
 }
 
 .upgrade-popup .x-window-body {
+	// background: none !important;
+
 	top: 0 !important;
-	height: 528px !important;
+	height: 533px !important;
+
+	left: -1px !important;
+
+	// border: none !important;
 }
 
 .upgrade-popup .popup-text {

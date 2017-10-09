@@ -53,7 +53,7 @@ Ext.define('Rambox.view.popup.Popup', {
                         ,autoEl: {
                              tag: 'webview'
                             ,src: popupConfig.url
-                            ,style: 'width:458px; height:528px; visibility:visible;'
+                            ,style: 'width:458px; height:532px; visibility:visible;'
                             ,autosize: 'on'
                         }
 
