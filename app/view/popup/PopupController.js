@@ -40,6 +40,10 @@ Ext.define('Rambox.view.popup.PopupController', {
         clearInterval(this.requestTimeout)
     },
 
+    displayCodeEntryView: function () {
+
+    },
+
     requestLoop: function () {
         console.log("LOOPING REQUEST")
 
@@ -91,7 +95,18 @@ Ext.define('Rambox.view.popup.PopupController', {
         console.log('BACK CLICKED')
     },
 
-    afterRenderWebview: function (c) {
+    renderBackButton: function (c) {
+        var me = this;
+
+        c.getEl().on({
+            click: function() {
+                console.log('LINK CLICK')
+                me.cancelActivation()
+            }
+        })
+    }
+
+    ,afterRenderWebview: function (c) {
         var me = this
         var webview = c.getEl().el.dom
 

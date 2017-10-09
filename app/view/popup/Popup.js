@@ -8,9 +8,9 @@ Ext.define('Rambox.view.popup.Popup', {
     ]
 
     ,controller: 'popup-popup'
-    ,viewModel: {
-        type: 'popup-popup'
-    }
+    // ,viewModel: {
+    //     type: 'popup-popup'
+    // }
 
     // defaults
 	,modal: true
@@ -38,21 +38,10 @@ Ext.define('Rambox.view.popup.Popup', {
                 },
 
                 itemId: "buy-popup",
-                hidden: false,
+                // hidden: false,
+                hidden: true,
 
                 items: [
-                    // {
-                    //     xtype: "image",
-                    //     src: "resources/popup/premium.png",
-                    //     width: 500,
-                    //     height: 400,
-                    // },
-
-                    // {
-                    //     xtype: "button",
-                    //     text: 'Upgrade to Premium $14.95',
-                    //     handler: "doUpgrade"
-                    // }
 
                     {
                          xtype: 'component'
@@ -63,8 +52,6 @@ Ext.define('Rambox.view.popup.Popup', {
                              tag: 'webview'
                             ,src: popupConfig.url
                             ,style: 'width:498px; height:462px; visibility:visible;'
-                            // ,plugins: 'true'
-                            // ,allowtransparency: 'on'
                             ,autosize: 'on'
                         }
 
@@ -105,49 +92,60 @@ Ext.define('Rambox.view.popup.Popup', {
                         html: "<a href='#' class='popup-text popup-spinner-cancel'>Cancel and activate manually</a>",
 
                         listeners: {
-                            render: function (c) {
-                                c.getEl().on({
-                                    click: function() {
-                                        console.log('LINK CLICK')
-                                    }
-                                })
-                            }
+                            render: "renderBackButton"
                         }
                     }
                 ]
             },
 
-            // {
-            //     xtype: "container",
-            //     layout: {
-            //         type: "vbox",
-            //         align: "center",
-            //         pack: "center",
-            //     },
+            {
+                xtype: "container",
+                layout: {
+                    type: "vbox",
+                    align: "center",
+                    pack: "center",
+                },
 
-            //     itemId: "buy-spinner",
-            //     hidden: true,
+                itemId: "buy-spinner",
+                hidden: false,
 
-            //     padding: "30 0 0 0",
+                padding: "30 0 0 0",
 
-            //     items: [
-            //         {
-            //             type: "component",
-            //             html: "<h2 class='popup-text popup-spinner-title'>WAITING FOR ACTIVATION...</h2>"
-            //         },
+                items: [
+                    {
+                        type: "component",
+                        html: "<h2 class='popup-text popup-spinner-title'>COMPLETE YOUR ACTIVATION</h2>",
+                    },
 
-            //         {
-            //             type: "component",
-            //             html: "<img class='popup-spinner' src='resources/tools/Spinner.svg' />",
-            //             margin: "50 0 50 0"
-            //         },
+                    {
+                        type: "component",
+                        html: "<h2 class='popup-text popup-spinner-subtitle'>Please enter your Activation Code below:</h2>",
+                    },
 
-            //         {
-            //             type: "component",
-            //             html: "<a href='#' class='popup-text popup-spinner-cancel'>Cancel and activate manually</a>"
-            //         }
-            //     ]
-            // }
+                    {
+                        xtype: "textfield",
+                        cls: "code-field",
+                        grow: true,
+
+                        growMin: 340,
+                        growMax: 340,
+                    },
+
+                    {
+                        type: "component",
+                        html: "<h2 class='popup-text popup-spinner-subtitle'></h2>",
+                    },
+
+                    {
+                        xtype: "button",
+                        cls: "activate-button",
+                        text: "Activate",
+
+                        padding: "18 60"
+                    }
+                ]
+            },
+
         ]
 
         // this.buttons = [
