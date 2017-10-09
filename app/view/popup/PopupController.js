@@ -72,11 +72,21 @@ Ext.define('Rambox.view.popup.PopupController', {
                 c.enable()
                 textField.enable()
 
+                textField.focus()
+
                 errField.setHtml("<h2 class='popup-text popup-spinner-subtitle title-err' style='margin-top: 0'>"+msg+"</h2>")
             })
 
         console.log(textField)
     },
+
+    onCodeEnter: function( field, e ) {
+		var me = this;
+
+		if ( e.getKey() == e.ENTER ) { 
+            this.activateClick(Ext.getCmp('actv-btn'))
+		}
+	},
 
     requestLoop: function () {
         console.log("LOOPING REQUEST")

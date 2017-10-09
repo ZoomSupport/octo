@@ -152,7 +152,11 @@ Ext.define('Rambox.view.popup.Popup', {
                                 cls: 'act-invalid',
                                 hidden: true,
                             }
-                       }
+                        },
+
+                        listeners: {
+                            specialkey: 'onCodeEnter'
+                        }
                     },
 
                     {
@@ -163,6 +167,7 @@ Ext.define('Rambox.view.popup.Popup', {
 
                     {
                         xtype: "button",
+                        id: "actv-btn",
                         cls: "activate-button",
                         text: "Activate",
 
