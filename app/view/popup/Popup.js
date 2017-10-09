@@ -234,6 +234,7 @@ Ext.define('Rambox.view.popup.Popup', {
     }
 
     ,listeners: {
-        close: 'onClose'
+        close: 'onClose',
+        afterrender: "afterRenderMain"
     }
 })

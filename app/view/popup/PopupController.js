@@ -20,6 +20,13 @@ Ext.define('Rambox.view.popup.PopupController', {
     timeoutTime: 5000,
     externalURL: 'https://zeoalliance.com',
 
+    afterRenderMain: function () {
+        var win = this.getView();
+        
+        if (win.oldTab)
+            Ext.cq1('app-main').setActiveTab(win.oldTab)
+    },
+
     doUpgrade: function (btn) {
         ga_storage._trackEvent('Application', 'Upgrade to PRO Click')
 
@@ -108,7 +115,6 @@ Ext.define('Rambox.view.popup.PopupController', {
     },
 
     upgradeSuccess: function(curViewId) {
-        var win = this.getView();
 
         // Save activation
         // localStorage.setItem('activated', true)
@@ -124,13 +130,16 @@ Ext.define('Rambox.view.popup.PopupController', {
     },
 
     activateFinnish: function () {
+        var win = this.getView();
+
         win.close();
-        
+
         if (win.record)
             Ext.create('Rambox.view.add.Add', { record: win.record });
     },
 
     onClose: function(btn) {
+        
 
         if (
             Ext.cq1('app-main').getComponent('upgradeTab') === undefined && 

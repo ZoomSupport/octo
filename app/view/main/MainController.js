@@ -10,6 +10,15 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 
 		console.log('[EVENT] onTabChange', newTab);
+		
+		if (newTab.id === 'upgradeTab') {
+			Ext.create('Rambox.view.popup.Popup', {
+				oldTab: oldTab,
+			})
+			return;
+		}
+
+		ga_storage._trackPageview('/'+newTab.title, newTab.title);
 
 		if (
 			newTab.id === 'settingsTab' || 
@@ -20,8 +29,6 @@ Ext.define('Rambox.view.main.MainController', {
 			return;
 		}
 		console.log(newTab.id, oldTab.id)
-
-		ga_storage._trackPageview('/'+newTab.title, newTab.title);
 
 		if ( newTab.id === 'ramboxTab' ) {
 			
@@ -566,10 +573,10 @@ Ext.define('Rambox.view.main.MainController', {
             if (!thisTab || typeof thisTab.id === 'undefined') return false;
 
             switch (thisTab.id) {
-                case 'upgradeTab':
-                    Ext.create('Rambox.view.popup.Popup', {})
-                    return false
-                    break;
+                // case 'upgradeTab':
+                //     Ext.create('Rambox.view.popup.Popup')
+                //     return false
+                //     break;
 
                 case 'notificationsTab':
                     var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
@@ -593,7 +600,8 @@ Ext.define('Rambox.view.main.MainController', {
                     break;
             }
 
-            if (thisTab.id === "notificationsTab" || thisTab.id === "upgradeTab") return false;
+            // if (thisTab.id === "notificationsTab" || thisTab.id === "upgradeTab") return false;
+            if (thisTab.id === "notificationsTab") return false;
         } catch (err) {
             console.log(thisTab)
             console.log(err)
