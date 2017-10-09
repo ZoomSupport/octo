@@ -10,21 +10,24 @@ Ext.define('Rambox.view.main.MainController', {
 		// Set Google Analytics event
 
 		console.log('[EVENT] onTabChange', newTab);
-		ga_storage._trackPageview('/'+newTab.title, newTab.title);
 
 		if (
 			newTab.id === 'settingsTab' || 
 			newTab.id === 'notificationsTab' || 
 			newTab.id === 'upgradeTab' ||
 			newTab.id === 'welcomeTab'
-		) return;
+		) {
+			return;
+		}
 		console.log(newTab.id, oldTab.id)
+
+		ga_storage._trackPageview('/'+newTab.title, newTab.title);
 
 		if ( newTab.id === 'ramboxTab' ) {
 			
 
-			var searchField = Ext.getCmp('main-search-field')
-			searchField.setValue("")
+			// var searchField = Ext.getCmp('main-search-field')
+			// searchField.setValue("")
 
 			if (!localStorage.getItem('plusClicked')) {
 				// RESET

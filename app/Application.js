@@ -31,8 +31,6 @@ Ext.define('Rambox.Application', {
 		ga_storage._setAccount('UA-107488309-2');
 		// ga_storage._trackPageview('/index.html', 'main');
 
-		// ga_storage._trackPageview('/'+newTab.title, newTab.title);
-
 		// ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());
 
 		if (!localStorage.getItem('firstRun')) {

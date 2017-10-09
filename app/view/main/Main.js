@@ -264,7 +264,6 @@ Ext.define('Rambox.view.main.Main', {
 	   ,remove: 'updatePositions'
 	   ,childmove: 'updatePositions'
 	   ,beforetabchange: 'setActiveTab'
-	   ,render: 'onRender'
 	   // ,added: 'onShow'
    }
 
