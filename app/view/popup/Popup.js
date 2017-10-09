@@ -135,7 +135,9 @@ Ext.define('Rambox.view.popup.Popup', {
                         triggers: {
                             wait: {
                                 weight: 1,
-                                cls: 'loading-spinner'
+                                cls: 'loading-spinner',
+
+                                hidden: false 
                             }
                        }
                     },
