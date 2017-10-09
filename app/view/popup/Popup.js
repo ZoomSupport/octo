@@ -38,8 +38,8 @@ Ext.define('Rambox.view.popup.Popup', {
                 },
 
                 itemId: "buy-popup",
-                // hidden: false,
-                hidden: true,
+                hidden: false,
+                // hidden: true,
 
                 items: [
 
@@ -79,6 +79,8 @@ Ext.define('Rambox.view.popup.Popup', {
                     {
                         type: "component",
                         html: "<h2 class='popup-text popup-spinner-title'>WAITING FOR ACTIVATION...</h2>",
+
+                        margin: "40 0 0 0"
                     },
 
                     {
@@ -106,8 +108,8 @@ Ext.define('Rambox.view.popup.Popup', {
                     pack: "center",
                 },
 
-                itemId: "buy-spinner",
-                hidden: false,
+                itemId: "manual-activation",
+                hidden: true,
 
                 padding: "30 0 0 0",
 
@@ -179,15 +181,51 @@ Ext.define('Rambox.view.popup.Popup', {
                 ]
             },
 
-        ]
+            {
+                xtype: "container",
+                layout: {
+                    type: "vbox",
+                    align: "center",
+                    pack: "center",
+                },
 
-        // this.buttons = [
-        //     ,{
-        //          text: "Upgrade"
-        //         ,itemId: "submit"
-        //         ,handler: "doUpgrade"
-        //     }
-        // ]
+                itemId: "activation-success",
+                hidden: true,
+
+                padding: "30 0 0 0",
+
+                items: [
+                    {
+                        type: "component",
+                        html: "<h2 class='popup-text popup-spinner-title title-suc'>FULL VERSION ACTIVATED</h2>",
+
+                        margin: "40 0"
+                    },
+
+                    {
+                        type: "component",
+                        html: "<img src='resources/tools/activation_valid.png' width=134 height=134 />",
+
+                        margin: "20 0"
+                    },
+
+                    {
+                        xtype: "button",
+
+                        cls: "activate-button",
+                        text: "Done",
+
+                        margin: "35 0",
+                        padding: "18 65",
+
+                        handler: "activateFinnish"
+                    }
+                ]
+            },
+
+            
+
+        ]
 
         this.callParent(this)
     }

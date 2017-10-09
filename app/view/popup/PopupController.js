@@ -40,8 +40,10 @@ Ext.define('Rambox.view.popup.PopupController', {
         clearInterval(this.requestTimeout)
     },
 
-    displayCodeEntryView: function () {
+    displayManualActivation: function () {
 
+        this.getView().getComponent('buy-popup').hide()
+        this.getView().getComponent('manual-activation').show()
     },
 
     activateClick: function (c) {
@@ -61,7 +63,7 @@ Ext.define('Rambox.view.popup.PopupController', {
             Rambox.util.License.activateByKey(code, 
             // Handle Success
             function () {
-                me.upgradeSuccess()
+                me.upgradeSuccess("manual-activation")
             },
 
             // Handle Error
@@ -97,7 +99,7 @@ Ext.define('Rambox.view.popup.PopupController', {
     requestSucess: function (r) {
         console.log("[EVENT] License Server Request Success")
         if (r.statusCode == 0 && r.hasLicense) {
-            this.upgradeSuccess()
+            this.upgradeSuccess("buy-spinner")
         }
     },
 
@@ -105,7 +107,7 @@ Ext.define('Rambox.view.popup.PopupController', {
         console.error("[ERROR] License Server Request Error")
     },
 
-    upgradeSuccess: function() {
+    upgradeSuccess: function(curViewId) {
         var win = this.getView();
 
         // Save activation
@@ -116,8 +118,14 @@ Ext.define('Rambox.view.popup.PopupController', {
         const upTab = Ext.cq1('app-main').getComponent('upgradeTab') 
         Ext.cq1('app-main').remove(upTab)
 
-        win.close();
+        // Display Finnished Dialog
+        this.getView().getComponent(curViewId).hide()
+        this.getView().getComponent("activation-success").show()
+    },
 
+    activateFinnish: function () {
+        win.close();
+        
         if (win.record)
             Ext.create('Rambox.view.add.Add', { record: win.record });
     },
@@ -135,16 +143,11 @@ Ext.define('Rambox.view.popup.PopupController', {
         clearInterval(this.requestTimeout)
     },
 
-    backClick: function () {
-        console.log('BACK CLICKED')
-    },
-
     renderBackButton: function (c) {
         var me = this;
 
         c.getEl().on({
             click: function() {
-                console.log('LINK CLICK')
                 me.cancelActivation()
             }
         })
@@ -167,6 +170,7 @@ Ext.define('Rambox.view.popup.PopupController', {
 
                 case 'manual':
                     console.log('ACTIVATE MANUALLY ')
+                    me.displayManualActivation()
                 break;
             }
         })
