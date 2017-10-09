@@ -607,6 +607,10 @@ body::before {
 // }
 
 // Upgrade popup
+.upgrade-popup {
+	border: none !important;
+}
+
 .upgrade-popup .x-window-header-default {
 	border-bottom-width: 0 !important;
 	background: none !important;
@@ -614,6 +618,7 @@ body::before {
 
 .upgrade-popup .x-window-body {
 	top: 0 !important;
+	height: 528px !important;
 }
 
 .upgrade-popup .popup-text {
