@@ -115,6 +115,8 @@ Ext.define('Rambox.view.popup.Popup', {
                     {
                         type: "component",
                         html: "<h2 class='popup-text popup-spinner-title'>COMPLETE YOUR ACTIVATION</h2>",
+
+                        margin: "40 0"
                     },
 
                     {
@@ -133,7 +135,8 @@ Ext.define('Rambox.view.popup.Popup', {
 
                     {
                         type: "component",
-                        html: "<h2 class='popup-text popup-spinner-subtitle'></h2>",
+                        // html: "<h2 class='popup-text popup-spinner-subtitle' style='margin-top: 0'>Verifying activation code</h2>",
+                        html: "<h2 class='popup-text popup-spinner-subtitle' style='margin-top: 0'></h2>",
                     },
 
                     {
@@ -141,7 +144,8 @@ Ext.define('Rambox.view.popup.Popup', {
                         cls: "activate-button",
                         text: "Activate",
 
-                        padding: "18 60"
+                        margin: "35 0",
+                        padding: "18 65"
                     }
                 ]
             },
