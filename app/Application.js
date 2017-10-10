@@ -310,6 +310,29 @@ Ext.define('Rambox.Application', {
 			ga_storage._trackEvent('Application', action, label)
 		})
 
+		// Handle timer trigger
+		ipc.on('timerTriggered', function(e) {
+			console.log('TIMER TRIGGERED')
+
+			if (localStorage.getItem('plusTimeout') == 'true') {
+				ipc.send('resetNotificationTimer')
+
+				const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				tab.setIcon('resources/tools/add_2.png')
+
+				localStorage.setItem('appealingPlus', true)
+			}
+
+			if (localStorage.getItem('stgsTimeout') == 'true') {
+				ipc.send('resetNotificationTimer')
+
+				localStorage.setItem('appealingSettings', true)
+				
+				const tab = Ext.cq1('app-main').getComponent('setTab')
+				tab.setIcon('resources/tools/settings_2.png')
+			}
+		})
+
 		// Remove spinner
 		Ext.get('spinner').destroy();
 

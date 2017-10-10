@@ -49,7 +49,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 			// Stop Plus timeout
 			if (localStorage.getItem('plusTimeout') == 'true') {
-				clearTimeout(plusTimeout)
+				// clearTimeout(plusTimeout)
 				localStorage.setItem('plusTimeout', 'false')
 			}
 
@@ -64,7 +64,7 @@ Ext.define('Rambox.view.main.MainController', {
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
 				FB.AppEvents.logEvent('Add second service on Welcome screen');
 
-				clearTimeout(plusTimeout)
+				// clearTimeout(plusTimeout)
 
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add.png')
@@ -224,7 +224,8 @@ Ext.define('Rambox.view.main.MainController', {
 				record: rc
 			})
 
-			clearTimeout(stgsTimeout)
+			// clearTimeout(stgsTimeout)
+			localStorage.setItem('stgsTimeout', false)
 			return;
 		}
 
@@ -641,7 +642,8 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,clearSettingsState: function () {
-		clearTimeout(stgsTimeout)
+		// clearTimeout(stgsTimeout)
+		localStorage.setItem('stgsTimeout', false)
 
 		// RESET
 		if (localStorage.getItem('appealingSettings') == 'true') ipc.send('resetNotificationTimer')

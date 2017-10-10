@@ -147,6 +147,10 @@ let isQuitting = false;
 let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
 // let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
+// Foreground timer
+let timerFG = new ETimer([1000*60*3], notificationFG)
+// let timerFG = new ETimer([1000*10], notificationFG)
+
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
@@ -218,6 +222,17 @@ function timeNotification() {
 
 	})
 }
+
+// Send notification for triggered timer
+function notificationFG() {
+	mainWindow.send('timerTriggered')
+}
+
+ipcMain.on('timerReset', function () {
+	timerFG.stop()
+	timerFG.fullReset()
+	timerFG.start()
+})
 
 function createWindow () {
 	// Create the browser window using the state information
@@ -305,12 +320,14 @@ function createWindow () {
 	mainWindow.on('blur', function(e) {
 		console.info('[Event] Focus Lost')
 
+		timerFG.pause()
 		timer.start()
 	});
 	mainWindow.on('focus', function(e) {
 		console.info('[Event] Focus Gained')
 
 		timer.pause()
+		timerFG.start()
 	});
 
 	// Emitted when the window is closed.

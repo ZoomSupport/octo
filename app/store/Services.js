@@ -308,12 +308,13 @@ Ext.define('Rambox.store.Services', {
 
 					Ext.cq1('app-main').add(settings)
 
-					stgsTimeout = setTimeout(function () {
-						localStorage.setItem('appealingSettings', true)
+					// stgsTimeout = setTimeout(function () {
 						
-						const tab = Ext.cq1('app-main').getComponent('setTab')
-						tab.setIcon('resources/tools/settings_2.png')
-					}, stgTime)
+					// }, stgTime)
+
+					localStorage.setItem('stgsTimeout', true)
+					localStorage.setItem('plusTimeout', false)
+					ipc.send('timerReset')
 				}
 				
 				
@@ -333,15 +334,18 @@ Ext.define('Rambox.store.Services', {
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
 				// Update within tab
-				localStorage.setItem('plusTimeout', true)
-				plusTimeout = setTimeout(function () {
+				if (!localStorage.getItem('plusTimeout')) {
+					localStorage.setItem('plusTimeout', true)
+					ipc.send('timerReset')
+				}
+				// plusTimeout = setTimeout(function () {
 
-					const tab = Ext.cq1('app-main').getComponent('plusTab') 
-					tab.setIcon('resources/tools/add_2.png')
+				// 	const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				// 	tab.setIcon('resources/tools/add_2.png')
 
-					localStorage.setItem('appealingPlus', true)
+				// 	localStorage.setItem('appealingPlus', true)
 
-				}, stgTime)
+				// }, stgTime)
 			} else if (store.data.length == 2) {
 
 				// RESET
