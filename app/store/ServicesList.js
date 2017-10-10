@@ -15,7 +15,7 @@ Ext.define('Rambox.store.ServicesList', {
 	,sorters: [{
 		//  property: 'name'
 		 property: 'rank'
-		,direction: 'ASC'
+		,direction: 'DESC'
 	}]
 
 	,autoLoad: true
