@@ -451,13 +451,13 @@ Ext.define('Rambox.store.ServicesList', {
 			 id: 'custom'
 			,logo: 'custom.png'
 			// ,name: '_Custom Service'
-			,name: '_Add New Service'
+			,name: 'Add New Service'
 			,description: locale['services[38]']
 			,url: '___'
 			,type: 'custom'
 			,allow_popups: true
 
-			,rank: 0
+			,rank: -1
 		},
 		{
 			 id: 'zinc'
@@ -466,6 +466,8 @@ Ext.define('Rambox.store.ServicesList', {
 			,description: locale['services[39]']
 			,url: 'https://zinc-app.com/'
 			,type: 'messaging'
+
+			,rank: 0
 		},
 		{
 			 id: 'freenode'
@@ -940,7 +942,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 
-			,rank: 0
+			,rank: 10
 		},
 		{
 			 id: 'vk'
