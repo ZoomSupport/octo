@@ -295,6 +295,7 @@ Ext.define('Rambox.Application', {
 				len, 
 
 				(localStorage.getItem('appealingSettings') == 'true'),
+				(localStorage.getItem('appealingPlus') == 'true'),
 
 				localStorage.getItem('activated'),
 				(localStorage.getItem('premiumToggle') == 'true'),

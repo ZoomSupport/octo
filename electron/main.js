@@ -150,7 +150,7 @@ let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
-	ipcMain.on('serviceNum', function (e, len, aSet, activated, pToggle, nCnt, plusClick) {
+	ipcMain.on('serviceNum', function (e, len, aSet, aPlus, activated, pToggle, nCnt, plusClick) {
 
 		let nId = '0'
 
@@ -161,8 +161,11 @@ function timeNotification() {
 				nId = (plusClick) ? '1' : '0'
 				break;
 			case 1:
-				body = "Add second messenger"
-				nId = '2'
+				if (aPlus) {
+					body = "Add second messenger"
+					nId = '2'
+				}
+				return;
 				break;
 			case 2:
 

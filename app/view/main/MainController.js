@@ -47,9 +47,18 @@ Ext.define('Rambox.view.main.MainController', {
 				FB.AppEvents.logEvent('Add service on Welcome screen');
 			}
 
+			// Stop Plus timeout
+			if (localStorage.getItem('plusTimeout') == 'true') {
+				clearTimeout(plusTimeout)
+				localStorage.setItem('plusTimeout', 'false')
+			}
+
 			// Track Appealing Plus Click
 			if (localStorage.getItem('appealingPlus') == 'true') {
 				console.log("Highleted Plus Click")
+
+				// RESET TIMEOUT
+				ipc.send('resetNotificationTimer')
 
 				// GA track Plus button clicks
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");

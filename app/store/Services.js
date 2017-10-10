@@ -333,6 +333,7 @@ Ext.define('Rambox.store.Services', {
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
 				// Update within tab
+				localStorage.setItem('plusTimeout', true)
 				plusTimeout = setTimeout(function () {
 
 					const tab = Ext.cq1('app-main').getComponent('plusTab') 
