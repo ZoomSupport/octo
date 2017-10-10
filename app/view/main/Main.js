@@ -125,35 +125,132 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'dataview'
 							,itemId: 'main-service-select'
 							,store: 'ServicesList'
+							// ,store: {
+
+							// 	autoLoad: true,
+
+							// 	fields: [
+							// 		{name: "cats", type: "auto"}
+							// 	],
+								
+							// 	listeners: {
+							// 		load: function (store, records, suc) {
+							// 			console.log('STORE')
+							// 			var ServicesStore = Ext.getStore('ServicesList')
+
+							// 			const types = [
+							// 				{
+							// 					name: "MESSAGING APPS",
+							// 					id: 'messaging'
+							// 				},
+							// 				// {
+							// 				// 	name: "BUSSINESS TOOLS",
+							// 				// 	id: 'tool'
+							// 				// },
+							// 				// {
+							// 				// 	name: "E-MAIL",
+							// 				// 	id: 'email'
+							// 				// },
+							// 				// {
+							// 				// 	name: "CUSTOM",
+							// 				// 	id: 'email'
+							// 				// }
+							// 			]
+
+							// 			types.forEach(function (i) {
+							// 				// var cat = Ext.create({name: "cats", type: "auto"}, )
+							// 				// cat.save()
+							// 				var cat = {
+							// 					name: i.name,
+							// 					items: []
+							// 				}
+							// 				ServicesStore.filter('type', i.id)
+							// 				console.log(ServicesStore.data.items)
+
+							// 				ServicesStore.each(function (y) {
+							// 					// console.log(y)
+							// 					cat.items.push(y)
+							// 				})
+
+							// 				console.log(cat)
+
+							// 				store.add(cat)
+							// 			})
+
+							// 			console.log(store)
+
+							// 			// ServicesStore.filter('type', 'email')
+
+							// 		}
+							// 	}
+							// }
 							,itemSelector: 'div.service'
-							,tpl: function () {
+							,tpl: [
+								"<h3 class=\"main-type-title\">MESSAGING APPS</h3>",
+								"<div class=\"services\">",
+								"<tpl for=\".\">",
+								"<tpl if=\"type == 'messaging' >",
+								"<div class=\"service\" id=\"s_{id}\">",
+								"<img src=\"resources/icons/{logo}\" width=\"48\" /><br />",
+								"<h3 class=\"title\">{name}</h3>",
+								"</div></tpl></tpl></div>",
+								
+								"<h3 class=\"main-type-title\">CUSTOM</h3>",
+								"<div class=\"services\">",
+								"<tpl for='.'>",
+								"<tpl if=\"type == 'email' >",
+								"<div class='service' id='s_{id}'>",
+								"<img src='resources/icons/{logo}' width='48' /><br />",
+								"<h3 class='title'>{name}</h3>",
+								"</div></tpl></tpl></div>",
 
-								var tmp = []
-								const types = [
-									{
-										name: "MESSAGING APPS",
-										id: 'messaging'
-									},
-									{
-										name: "E-MAIL",
-										id: 'email'
-									}
-								]
+								"<h3 class=\"main-type-title\">CUSTOM</h3>",
+								"<div class=\"services\">",
+								"<tpl for='.'>",
+								"<tpl if=\"type == 'tool' >",
+								"<div class='service' id='s_{id}'>",
+								"<img src='resources/icons/{logo}' width='48' /><br />",
+								"<h3 class='title'>{name}</h3>",
+								"</div></tpl></tpl></div>",
+							]
+							// ,tpl: function () {
 
-								types.forEach( function (t) {
-									tmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
-									tmp.push('<div class="services">')
-									tmp.push('<tpl for=".">')
-									tmp.push('<tpl if="type == \''+t.id+'\' || type == \'custom\'">')
-									tmp.push('<div class="service" id="s_{id}">')
-									tmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
-									tmp.push('<h3 class="title">{name}</h3>')
-									tmp.push('</div></tpl></tpl></div>')
+							// 	var tmp = []
+							// 	const types = [
+							// 		{
+							// 			name: "MESSAGING APPS",
+							// 			id: 'tool'
+							// 		},
+							// 		// {
+							// 		// 	name: "BUSSINESS TOOLS",
+							// 		// 	id: 'tool'
+							// 		// },
+							// 		// {
+							// 		// 	name: "E-MAIL",
+							// 		// 	id: 'messaging'
+							// 		// },
+							// 		{
+							// 			name: "CUSTOM",
+							// 			id: 'email'
+							// 		}
+							// 	]
 
-								})
+							// 	types.forEach( function (t) {
+							// 		tmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
+							// 		tmp.push('<div class="services">')
+							// 		tmp.push('<tpl for=".">')
+							// 		tmp.push('<tpl if="type == \''+t.id+'\' || type == \'custom\'">')
+							// 		tmp.push('<div class="service" id="s_{id}">')
+							// 		tmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
+							// 		tmp.push('<h3 class="title">{name}</h3>')
+							// 		tmp.push('</div></tpl></tpl></div>')
 
-								return tmp
-							}()
+							// 	})
+
+							// 	console.log(tmp)
+
+							// 	return tmp
+							// }()
 							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
 							,listeners: {
 								itemclick: 'onNewServiceSelect'

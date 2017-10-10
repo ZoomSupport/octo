@@ -18,6 +18,10 @@ Ext.define('Rambox.store.ServicesList', {
 		,direction: 'DESC'
 	}]
 
+	,config: [{
+		groupField: 'type'
+	}]
+
 	,autoLoad: true
 	,autoSync: true
 	,pageSize: 100000
@@ -420,7 +424,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'mysms'
 			,description: locale['services[34]']
 			,url: 'https://app.mysms.com/'
-			,type: 'messaging'
+			,type: 'tool'
 			,js_unread: 'function checkUnread(){var e=document.getElementsByClassName("unread"),t=0;for(i=0;i<e.length;i++)t+=parseInt(e[i].firstChild.innerHTML.trim());updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}"https://app.mysms.com/#login"===document.baseURI&&(document.getElementsByClassName("innerPanel")[0].rows[0].style.display="none",document.getElementsByClassName("innerPanel")[0].rows[1].cells[0].firstElementChild.style.display="none",document.getElementsByClassName("msisdnLoginPanel")[0].style.display="inline");var originalTitle=document.title;setInterval(checkUnread,3000);'
 			,note: 'You have to use this service by signing in with your mobile number.'
 
@@ -443,7 +447,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'TweetDeck'
 			,description: locale['services[36]']
 			,url: 'https://tweetdeck.twitter.com/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 81.76
 		},
@@ -475,7 +479,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'FreeNode'
 			,description: locale['services[40]']
 			,url: 'https://webchat.freenode.net/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0.05296
 		},
@@ -485,7 +489,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Mighty Text'
 			,description: locale['services[41]']
 			,url: 'https://mightytext.net/web/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 16.22
 		},
@@ -616,7 +620,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Kiwi IRC'
 			,description: 'KiwiIRC makes Web IRC easy. A hand-crafted IRC client that you can enjoy. Designed to be used easily and freely.'
 			,url: 'https://kiwiirc.com/client'
-			,type: 'messaging'
+			,type: 'tool'
 			,js_unread: 'function getUnreadCount(){var a=0;$(".activity").each(function(){a+=parseInt($(this).html())});var b=!1;return $(".panel[style*=\'display:block\'] .msg").each(function(){b?a++:$(this).hasClass("last_seen")&&(b=!0)}),a}function updateTitle(a){count=getUnreadCount(),cleanTitle=a.match(re),null!==cleanTitle&&cleanTitle.length>1?cleanTitle=cleanTitle[1]:cleanTitle=a,a=count>0?"("+getUnreadCount()+") "+cleanTitle:cleanTitle,$("title").text(a)}var re=/\(\d+\)[ ](.*)/;Object.defineProperty(document,"title",{configurable:!0,set:function(a){updateTitle(a)},get:function(){return $("title").text()}}),setInterval(function(){updateTitle(document.title)},3e3);'
 			,custom_domain: true
 
@@ -661,7 +665,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Hootsuite'
 			,description: 'Enhance your social media management with Hootsuite, the leading social media dashboard. Manage multiple networks and profiles and measure your campaign results.'
 			,url: 'https://hootsuite.com/dashboard'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 17.88
 		},
@@ -693,7 +697,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Movim'
 			,description: 'Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.'
 			,url: 'https://___.movim.eu/'
-			,type: 'messaging'
+			,type: 'tool'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("color dark"),b=0;for(i=0;i<a.length;i++){var c=a[i].getElementsByClassName("counter");for(ii=0;ii<c.length;ii++)parseInt(c[ii].textContent.trim())%1===0&&(b+=parseInt(c[ii].textContent.trim()))}updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 			,custom_domain: true
 
@@ -705,7 +709,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Pushbullet'
 			,description: 'Pushbullet connects your devices, making them feel like one.'
 			,url: 'https://www.pushbullet.com/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 7.64
 		},
@@ -727,7 +731,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Socialcast'
 			,description: 'Socialcast is the premier enterprise social networking platform that connects people to the knowledge, ideas and resources they need to work more effectively.'
 			,url: 'https://___.socialcast.com/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0.045355
 		},
@@ -758,7 +762,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Drift'
 			,description: 'Drift is a messaging app that makes it easy for businesses to talk to their website visitors and customers in real-time, from anywhere.'
 			,url: 'https://app.drift.com/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0.027624
 		},
@@ -800,7 +804,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Crisp'
 			,description: 'Connect your customers to your team.'
 			,url: 'https://app.crisp.im/inbox'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0
 		},
@@ -810,7 +814,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Smooch'
 			,description: 'Unified multi-channel messaging for businesses, bots and software makers.'
 			,url: 'https://app.smooch.io/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0
 		},
@@ -820,7 +824,7 @@ Ext.define('Rambox.store.ServicesList', {
 			name: 'XING',
 			description: 'Career-oriented social networking',
 			url: 'https://www.xing.com/messages/conversations',
-			type: 'messaging',
+			type: 'tool',
 			js_unread: '(function() { let originalTitle = document.title; function checkUnread() { let count = null; let notificationElement = document.querySelector(\'[data-update="unread_conversations"]\'); if (notificationElement && notificationElement.style.display !== \'none\') { count = parseInt(notificationElement.textContent.trim(), 10); } updateBadge(count); } function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } } setInterval(checkUnread, 3000); checkUnread(); })();',
 			dont_update_unread_from_title: true,
 
@@ -875,7 +879,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'The Lounge'
 			,description: 'Self-hosted web IRC client.'
 			,url: '___'
-			,type: 'messaging'
+			,type: 'tool'
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("badge highlight"),b=0;for(i=0;i<a.length;i++)parseInt(a[i].textContent.trim())%1===0&&(b+=parseInt(a[i].textContent.trim()));updateBadge(b)}function updateBadge(a){a>=1?document.title="("+a+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,1e3);'
 
 			,rank: 0
@@ -886,7 +890,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'LinkedIn Messaging'
 			,description: 'Manage your professional identity. Build and engage with your professional network. Access knowledge, insights and opportunities.'
 			,url: 'https://www.linkedin.com/messaging'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 969.08
 		},
@@ -939,7 +943,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Messenger for Pages'
 			,description: 'Chat with the people of your Facebook Page.'
 			,url: 'https://facebook.com/___/inbox/'
-			,type: 'messaging'
+			,type: 'tool'
 			,js_unread: 'function remove(e){var r=document.getElementById(e);return r.parentNode.removeChild(r)}remove("pagelet_bluebar"),remove("pages_manager_top_bar_container");'
 
 			,rank: 10
@@ -985,7 +989,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'ClockTweets'
 			,description: 'Schedule your Tweets with love. Save time and manage your social media strategy easily.'
 			,url: 'https://clocktweets.com/dashboard/'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 0
 		},
@@ -995,7 +999,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Intercom'
 			,description: 'Intercom makes it easy to communicate with your customers personally, at scale. Designed to feel like the messaging apps you use every day, Intercom lets you talk to consumers almost anywhere: inside your app, on your website, across social media and via email.'
 			,url: 'https://app.intercom.io'
-			,type: 'messaging'
+			,type: 'tool'
 
 			,rank: 3.73
 		},
