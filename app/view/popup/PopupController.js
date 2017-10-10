@@ -70,6 +70,7 @@ Ext.define('Rambox.view.popup.PopupController', {
             Rambox.util.License.activateByKey(code, 
             // Handle Success
             function () {
+                localStorage.setItem('activated', true)
                 me.upgradeSuccess("manual-activation")
             },
 
