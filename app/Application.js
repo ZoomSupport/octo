@@ -46,6 +46,8 @@ Ext.define('Rambox.Application', {
 		// Initialize Auth0
 		// Rambox.ux.Auth0.init();
 
+		console.log(Ext.getStore('ServicesList'))
+
 		// Set cookies to help Tooltip.io messages segmentation
 		// Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
 		// if ( Ext.util.Cookies.get('auth0') === null ) Ext.util.Cookies.set('auth0', false);

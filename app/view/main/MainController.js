@@ -345,7 +345,7 @@ Ext.define('Rambox.view.main.MainController', {
 			Ext.getStore('ServicesList').getFilters().replaceAll({
 				fn: function(record) {
 					if ( record.get('type') === 'custom' ) return true;
-					if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
+					// if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
 					return record.get('name').toLowerCase().indexOf(newValue.toLowerCase()) > -1 ? true : false;
 				}
 			});
@@ -354,7 +354,7 @@ Ext.define('Rambox.view.main.MainController', {
 			field.getTrigger('search').show();
 
 			Ext.getStore('ServicesList').getFilters().removeAll();
-			me.doTypeFilter(cg);
+			// me.doTypeFilter(cg);
 		}
 		field.updateLayout();
 	}

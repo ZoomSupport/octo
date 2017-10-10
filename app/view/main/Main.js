@@ -147,7 +147,7 @@ Ext.define('Rambox.view.main.Main', {
 							{
 								name: "E-MAIL",
 								id: 'email'
-							}
+							},
 						]
 
 						types.forEach( function (t) {
@@ -163,7 +163,8 @@ Ext.define('Rambox.view.main.Main', {
 							tplTmp.push('</div></tpl></tpl></div>')
 
 							tmp.push(Object.assign({}, objTemplate, {
-								tpl: tplTmp
+								tpl: tplTmp,
+								// itemId: "msg-container-"+t.id,
 							}))
 
 						})

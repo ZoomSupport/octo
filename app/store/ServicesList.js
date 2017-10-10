@@ -18,9 +18,9 @@ Ext.define('Rambox.store.ServicesList', {
 		,direction: 'DESC'
 	}]
 
-	,config: [{
-		groupField: 'type'
-	}]
+	// ,config: {
+	// 	groupField: 'type'
+	// }
 
 	,autoLoad: true
 	,autoSync: true
