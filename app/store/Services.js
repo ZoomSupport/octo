@@ -308,13 +308,11 @@ Ext.define('Rambox.store.Services', {
 
 					Ext.cq1('app-main').add(settings)
 
-					// stgsTimeout = setTimeout(function () {
-						
-					// }, stgTime)
-
-					localStorage.setItem('stgsTimeout', true)
-					localStorage.setItem('plusTimeout', false)
-					ipc.send('timerReset')
+					if (!localStorage.getItem('stgsTimeout')) {
+						localStorage.setItem('stgsTimeout', true)
+						localStorage.setItem('plusTimeout', false)
+						ipc.send('timerReset')
+					}
 				}
 				
 				
