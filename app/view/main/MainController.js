@@ -32,9 +32,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 		if ( newTab.id === 'ramboxTab' ) {
 			
-
-			// var searchField = Ext.getCmp('main-search-field')
-			// searchField.setValue("")
+			var searchField = Ext.getCmp('main-search-field')
+			searchField.setValue("")
 
 			if (!localStorage.getItem('plusClicked')) {
 				// RESET
@@ -161,6 +160,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,onNewServiceSelect: function( view, record, item, index, e ) {
 		// console.log("Element Click", view, record, item, index, e)
+
+		
 		
 		const maxServices = 2 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
@@ -174,6 +175,13 @@ Ext.define('Rambox.view.main.MainController', {
 				return false
 			}
 		})
+
+		// Track search result
+		var searchField = Ext.getCmp('main-search-field')
+		var searchValLen = searchField.getValue().length
+		
+		if (searchValLen > 0)
+			ga_storage._trackEvent('Application', 'Search', rc.name);
 
 		/**
 		 * Check if exceded messanger limits
