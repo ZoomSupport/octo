@@ -5,6 +5,8 @@
 @import 'loadscreen';
 @import 'animate';
 
+$highlight-color: #0F92FE;
+
 $base-color: #2E658E;
 // $font-family: 'Roboto', sans-serif;
 $font-family: 'Helvetica Neue';
@@ -382,11 +384,15 @@ body::before {
 }
 
 .main-cancel {
-	border-color: #2B4266 !important;
+	// border-color: #2B4266 !important;
+
+	border-color: darken($highlight-color, 10%) !important;
+
 	border-width: 1px !important;
 }
 .main-cancel .x-btn-inner {
-	color: #2B4266;
+	// color: #2B4266;
+	color: darken($highlight-color, 10%) !important;
 }
 .main-cancel .x-btn-inner:hover {
 	text-decoration: none;
@@ -404,7 +410,9 @@ body::before {
 // 	text-decoration: none;
 // }
 .main-submit {
-	background-color: #191991 !important;
+	// background-color: #191991 !important;
+
+	background-color: $highlight-color !important;
 	border: none !important;
 }
 
@@ -722,7 +730,9 @@ body::before {
 
 .activate-button {
 	border: none !important;
-	background-color: #191991 !important;
+
+	// background-color: #191991 !important;
+	background-color: $highlight-color !important;
 
 	border-radius: 7px !important;
 }
