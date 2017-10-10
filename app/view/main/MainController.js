@@ -45,6 +45,7 @@ Ext.define('Rambox.view.main.MainController', {
 			if (Ext.getStore('Services').data.length === 1) {
 				// GA track Plus button clicks
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
+				FB.AppEvents.logEvent('Add second service on Welcome screen');
 				// if (localStorage.getItem('appealingPlus') === 'true') {
 
 				// } 
@@ -58,6 +59,7 @@ Ext.define('Rambox.view.main.MainController', {
 
 			if (Ext.getStore('Services').data.length === 0)
 				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+				FB.AppEvents.logEvent('Add service on Welcome screen');
 			
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';

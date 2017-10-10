@@ -292,7 +292,8 @@ Ext.define('Rambox.store.Services', {
 			const sName = store.data.items[sLen-1].data.type
 
 			// Google Analytics Tracking
-			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName)
+			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName) 
+			FB.AppEvents.logEvent('Add Service '+sLen);
 
 			if (store.data.length > 1) {
 				// if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)

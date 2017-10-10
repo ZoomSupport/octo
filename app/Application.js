@@ -35,6 +35,8 @@ Ext.define('Rambox.Application', {
 
 		if (!localStorage.getItem('firstRun')) {
 			ga_storage._trackEvent('Application', 'First Run')
+			FB.AppEvents.logEvent('First Run');
+
 			localStorage.setItem('firstRun', 'true')
 		}
 
