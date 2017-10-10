@@ -1,14 +1,15 @@
 Ext.define('Rambox.view.main.About', {
 	 extend: 'Ext.window.Window'
 	,xtype: 'about'
-	,title: locale['app.about[0]']
+	,title: 'About Octo' //locale['app.about[0]']
+	,cls: 'about-window'
 	,autoShow: true
 	,modal: true
 	,resizable: false
 	,constrain: true
-	,width: 300
-	,height: 450
-	,bodyPadding: 10
+	,width: 352
+	,height: 420
+	,bodyPadding: "10 25"
 	,data: {
 		 version: require('electron').remote.app.getVersion()
 		,platform: process.platform
@@ -19,15 +20,57 @@ Ext.define('Rambox.view.main.About', {
 	}
 	,tpl: [
 		 '<div style="text-align:center;"><img src="resources/Icon.png" width="100" /></div>'
-		,'<h3>'+locale['app.about[1]']+'</h3>'
-		,'<div><b>'+locale['app.about[2]']+':</b> {version}</div>'
-		,'<div><b>'+locale['app.about[3]']+':</b> {platform} ({arch})</div>'
-		,'<div><b>Electron:</b> {electron}</div>'
-		,'<div><b>Chromium:</b> {chromium}</div>'
-		,'<div><b>Node:</b> {node}</div>'
-		,'<br />'
-		,'<div style="text-align:center;"><a href="https://github.com/saenzramiro/rambox" target="_blank">GitHub</a> - <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA" target="_blank">'+locale['app.main[25]']+'</a> - <a href="http://rambox.pro" target="_blank">rambox.pro</a></div>'
-		,'<br />'
-		,'<div style="text-align:center;"><i>'+locale['app.about[4]']+' Ramiro Saenz</i></div>'
-	]
+		,'<h4 style="text-align:center;">Octo {version}</h4>'
+		,'<h3 class="about-desc">Keep all messaging services in one window and create your own set of messengers with Octo.</h3>'
+		,'<div> <a href="mailto:octo.support@bestmacsoft.com" target="_blank">octo.support@bestmacsoft.com</a> </div>'
+	],
+
+	dockedItems:{
+		xtype: 'toolbar',
+		flex: 1,
+
+		dock: 'bottom',
+		ui: 'footer',
+
+		padding: "14 25",
+
+
+		layout: {
+			type: 'vbox',
+			align: 'left',
+		},
+
+		items: [
+			{
+				xtype: "container",
+				layout: {
+					type: 'hbox',
+					align: 'left',
+				},
+
+				margin: "0 0 5 0",
+
+				items: [
+					{
+						xtype: "component",
+						html: '<a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Licensed under GNU GPL v.3</a>',
+
+						margin: "2 45 0 0"
+					},
+
+					{
+						xtype: "component",
+						html: '<img src="resources/tools/github_logo.png" width="80" height="23" />',
+					}
+				]
+
+			},
+
+			{
+				xtype: "component",
+				width: 280,
+				html: '<span class="disclamer">Octo is not affiliated with any of the messaging apps offered. All product names, logos, trademarks, and brands are property of their respective owners.</span>'
+			}
+		]
+	} 
 });

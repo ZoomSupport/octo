@@ -760,3 +760,32 @@ body::before {
     background-position: 0 center !important;
 }
 
+
+// About Window Styles
+.about-window a{
+	color: #148AE2;
+
+	font-size: 10pt;
+	font-weight: 400;
+}
+
+.about-desc {
+	font-family: "Helvetica Neue";
+	color: #4B4F53;
+
+	font-size: 11pt;
+	font-weight: 500;
+
+	line-height: 19px;
+}
+
+.about-window .footer-container {
+	padding-top: 20px;
+	background-color: rgb(38, 60, 78);
+}
+
+.about-window .disclamer {
+	color: #748999;
+	font-size: 8pt;
+	font-weight: 400;
+}
