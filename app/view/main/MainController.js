@@ -191,6 +191,7 @@ Ext.define('Rambox.view.main.MainController', {
 		// if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 		if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 			ga_storage._trackEvent('Application', 'Upgrade to PRO Shown')
+			FB.AppEvents.logEvent('Upgrade to PRO Shown');
 
 			// RESET
 			if (!localStorage.getItem('ntfPremium')) {
