@@ -28,27 +28,32 @@ Ext.define('Rambox.view.main.MainController', {
 		) {
 			return;
 		}
-		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
-			
-			var searchField = Ext.getCmp('main-search-field')
-			searchField.setValue("")
 
+			console.log('Rambox Tab');
+			
+			
+
+			// Resets First Time Plus Click Event
 			if (!localStorage.getItem('plusClicked')) {
+
 				// RESET
 				ipc.send('resetNotificationTimer')
 
 				localStorage.setItem('plusClicked', true)
+
+				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+				FB.AppEvents.logEvent('Add service on Welcome screen');
 			}
 
-			if (Ext.getStore('Services').data.length === 1) {
+			// Track Appealing Plus Click
+			if (localStorage.getItem('appealingPlus') == 'true') {
+				console.log("Highleted Plus Click")
+
 				// GA track Plus button clicks
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
 				FB.AppEvents.logEvent('Add second service on Welcome screen');
-				// if (localStorage.getItem('appealingPlus') === 'true') {
-
-				// } 
 
 				clearTimeout(plusTimeout)
 
@@ -57,15 +62,22 @@ Ext.define('Rambox.view.main.MainController', {
 				localStorage.setItem('appealingPlus', false)
 			}
 
-			if (Ext.getStore('Services').data.length === 0)
-				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
-				FB.AppEvents.logEvent('Add service on Welcome screen');
+			// Tracks First Plus Click
+			// if (Ext.getStore('Services').data.length === 0) {
+			// 	ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+			// 	FB.AppEvents.logEvent('Add service on Welcome screen');
+			// }
 			
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
 				document.title = 'Rambox';
 			}
+
+			// Clears Search Field
+			var searchField = Ext.getCmp('main-search-field')
+			searchField.setValue("")
+
 			return;
 		}
 
