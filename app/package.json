@@ -1,20 +1,20 @@
 {
-	"name": "Rambox",
-	"productName": "Rambox",
+	"name": "Octo",
+	"productName": "Octo",
 	"version": "0.5.12",
-	"description": "Rambox",
+	"description": "Octo",
 	"main": "electron/main.js",
 	"private": true,
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/saenzramiro/rambox.git"
+		"url": "https://github.com/saenzramiro/Octo.git"
 	},
 	"bugs": {
-		"url": "https://github.com/saenzramiro/rambox/issues"
+		"url": "https://github.com/saenzramiro/Octo/issues"
 	},
-	"homepage": "http://rambox.pro",
+	"homepage": "http://Octo.pro",
 	"keywords": [
-		"Rambox",
+		"Octo",
 		"messaging",
 		"app",
 		"slack",

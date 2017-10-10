@@ -20,7 +20,7 @@ module.exports = function(config) {
 	const locale = require('../resources/languages/'+config.get('locale'));
 	const helpSubmenu = [
 		{
-			label: `&`+locale['menu.help[0]'],
+			label: `&`+"Octo",//locale['menu.help[0]'],
 			click() {
 				shell.openExternal('http://rambox.pro');
 			}
@@ -230,7 +230,8 @@ module.exports = function(config) {
 					}
 				},
 				{
-					label: locale['menu.help[6]'],
+					// label: locale['menu.help[6]'],
+					label: "About Octo",
 					click() {
 						sendAction('showAbout')
 					}
