@@ -128,6 +128,8 @@ Ext.define('Rambox.view.main.Main', {
 							 xtype: 'dataview'
 							,store: 'ServicesList'
 
+							,cls: 'service-group-ctr'
+
 							,itemSelector: 'div.service'
 
 							,tpl: [] 
@@ -162,6 +164,11 @@ Ext.define('Rambox.view.main.Main', {
 							{
 								name: "OTHER SERVICES",
 								id: 'others'
+							},
+
+							{
+								name: "SEARCH",
+								id: 'search'
 							}
 						]
 
@@ -176,18 +183,18 @@ Ext.define('Rambox.view.main.Main', {
 							tplTmp.push('<tpl for=".">')
 
 
-							if (t.id !== 'others') {
+							if (t.id !== 'others' && t.id !== 'search') {
 	
 								tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
 								inverse += '(type == \''+t.id+'\' && rank &lt;= '+t.minRank+') ||'
 								
-							} else {
+							} else if (t.id === 'others' && t.id !== 'search') {
 
-								// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
 								tplTmp.push('<tpl if=" '+inverse+' (type == \'custom\') || (type == \'gaming\') ">')
+							} else if (t.id === 'search') {
+
+								tplTmp.push('<tpl>')
 							}
-							// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+') || type == \'custom\'">')
-							// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
 
 
 							tplTmp.push('<div class="service" id="s_{id}">')
@@ -197,10 +204,11 @@ Ext.define('Rambox.view.main.Main', {
 
 							tmp.push(Object.assign({}, objTemplate, {
 								tpl: tplTmp,
-								// itemId: "msg-container-"+t.id,
-							}))
+								id: "msg-container-"+t.id,
 
-							
+								hidden: (t.id === 'search'),
+								// itemId: 'msg'
+							}))
 
 						})
 

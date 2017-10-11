@@ -337,10 +337,28 @@ Ext.define('Rambox.view.main.MainController', {
 		var bd = Ext.cq1('app-main').getComponent('plusTab').body.dom//.scrollTop('top', 0)
 		bd.scrollTop = 0
 
+		// var cmps = Ext.ComponentQuery.query(".service-group-ctr")
+		// console.log(cmps)
+
 		// var cg = field.up().down('checkboxgroup');
 		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
 			field.getTrigger('clear').show();
 			field.getTrigger('search').hide();
+
+			// cmps.forEach(function (i) {
+			// 	if (i.id === 'msg-container-search') {
+			// 		i.style.dispay = 'none'
+			// 	} else {
+			// 		i.style.dispay = 'block'
+			// 		// i.hide()
+			// 	}
+			// })
+
+			Ext.getCmp('msg-container-search').show()
+			Ext.getCmp('msg-container-messaging').hide()
+			Ext.getCmp('msg-container-email').hide()
+			Ext.getCmp('msg-container-others').hide()
+			Ext.getCmp('msg-container-tool').hide()
 
 			Ext.getStore('ServicesList').getFilters().replaceAll({
 				fn: function(record) {
@@ -352,6 +370,12 @@ Ext.define('Rambox.view.main.MainController', {
 		} else {
 			field.getTrigger('clear').hide();
 			field.getTrigger('search').show();
+
+			Ext.getCmp('msg-container-search').hide()
+			Ext.getCmp('msg-container-messaging').show()
+			Ext.getCmp('msg-container-email').show()
+			Ext.getCmp('msg-container-others').show()
+			Ext.getCmp('msg-container-tool').show()
 
 			Ext.getStore('ServicesList').getFilters().removeAll();
 			// me.doTypeFilter(cg);
