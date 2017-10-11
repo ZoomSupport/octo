@@ -345,15 +345,6 @@ Ext.define('Rambox.view.main.MainController', {
 			field.getTrigger('clear').show();
 			field.getTrigger('search').hide();
 
-			// cmps.forEach(function (i) {
-			// 	if (i.id === 'msg-container-search') {
-			// 		i.style.dispay = 'none'
-			// 	} else {
-			// 		i.style.dispay = 'block'
-			// 		// i.hide()
-			// 	}
-			// })
-
 			Ext.getCmp('msg-container-search').show()
 			Ext.getCmp('msg-container-messaging').hide()
 			Ext.getCmp('msg-container-email').hide()
