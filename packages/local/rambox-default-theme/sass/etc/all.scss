@@ -6,6 +6,7 @@
 @import 'animate';
 
 $highlight-color: #0F92FE;
+$url-input-font-size: 11pt;
 
 $base-color: #2E658E;
 // $font-family: 'Roboto', sans-serif;
@@ -389,24 +390,29 @@ body::before {
 	background-color: #F0F7FD !important;
 }
 
+.add-service-window .x-toolbar-footer {
+	background: none !important;
+}
+
 .main-cancel {
 	// border-color: #2B4266 !important;
 
 	border-color: darken($highlight-color, 10%) !important;
 
-	border-width: 1px !important;
+	border-width: 0px !important;
 }
 .main-cancel .x-btn-inner {
 	// color: #2B4266;
-	color: darken($highlight-color, 10%) !important;
+	color: $highlight-color !important;
 }
 .main-cancel .x-btn-inner:hover {
 	text-decoration: none;
 }
 
 .main-submit .x-btn-inner, .main-cancel .x-btn-inner {
-	font-size: 10pt;
+	font-size: 12pt;
 	font-family: "Helvetica Neue";
+
 	font-weight: 500;
 }
 .x-btn-inner-default-small {
@@ -420,12 +426,16 @@ body::before {
 
 	background-color: $highlight-color !important;
 	border: none !important;
+
+	border-radius: 6px !important;
 }
 
+
 .urlLabel {
-	// font-weight: bold;
+	font-weight: bold;
 	color: #4F5357;
-	font-size: 12pt;
+	// font-size: 12pt;
+	font-size: $url-input-font-size;
 
 	line-height: 24px;
 }
@@ -449,7 +459,10 @@ body::before {
 	font-family: "Helvetica Neue" !important;
 
 	color: #3F4244;
-	font-size: 12pt;
+
+	// font-size: 12pt;
+	font-size: $url-input-font-size;
+
 	font-weight: 500;
 }
 .urlField .x-form-text {
@@ -464,7 +477,10 @@ body::before {
 
 .domainField .x-btn-inner-default-small {
 	color: #65696C;
-	font-size: 12pt;
+
+	// font-size: 12pt;
+	font-size: $url-input-font-size;
+
 	font-weight: 500;
 }
 
@@ -486,12 +502,31 @@ body::before {
 }
 
 .hint-text {
-	float: left;
-	width: 80%;
+	// float: left;
+	// width: 80%;
 
-	margin-left: 20px;
+	// margin-left: 20px;
+
+	font-size: 11pt;
+	color: #4B4F53;
+
+	font-weight: 400;
 }
 
+.window-title {
+	text-transform: uppercase;
+	margin-top: 10px;
+	margin-bottom: 30px;
+
+	color: #081F37;
+
+	font-size: 14pt;
+	
+}
+
+.add-service-window .x-window-header {
+	display: none !important;
+}
 
 
 // Table view

@@ -62,7 +62,7 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'messenger'
 			,logo: 'messenger.png'
-			,name: 'Facebook Messenger'
+			,name: 'Messenger'
 			,description: locale['services[3]']
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
