@@ -64,33 +64,7 @@ Ext.define('Rambox.view.main.Main', {
 						margin: "0 0 15 0",
 					}
 					,tools: [
-						// {
-						// 	 xtype: 'checkboxgroup'
-						// 	,items: [
-						// 		{
-						// 			 xtype: 'checkbox'
-						// 			,boxLabel: locale['app.main[1]'] // Messaging
-						// 			,name: 'messaging'
-						// 			,checked: true
-						// 			,uncheckedValue: false
-						// 			,inputValue: true
-						// 			,hidden: true
-						// 		}
-						// 		,{
-						// 			 xtype: 'checkbox'
-						// 			,boxLabel: locale['app.main[2]'] // Email
-						// 			,margin: '0 10 0 10'
-						// 			,name: 'email'
-						// 			,checked: true
-						// 			,uncheckedValue: false
-						// 			,inputValue: true
-						// 			,hidden: true
-						// 		}
-						// 	]
-						// 	,listeners: {
-						// 		change: 'doTypeFilter'
-						// 	}
-						// },
+						
 						{
 							 xtype: 'textfield'
 							,grow: true

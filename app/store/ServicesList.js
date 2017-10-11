@@ -375,7 +375,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.voxer.com/'
 			,type: 'messaging'
 
-			,rank: 0.089907
+			,rank: 1.18 //0.089907
 		},
 		{
 			 id: 'dasher'

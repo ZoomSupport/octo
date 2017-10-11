@@ -46,6 +46,7 @@ const settings = {
 	,reorderable: false 
 	,layout: 'hbox'
 	
+	,autoScroll: true
 	,hidden: false 
 
 	,tabConfig: {
