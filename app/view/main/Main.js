@@ -153,21 +153,43 @@ Ext.define('Rambox.view.main.Main', {
 								minRank: 16,
 							},
 							
+							// {
+							// 	name: "GAMMING",
+							// 	id: 'gaming',
+							// 	minRank: 1,
+							// },
+
 							{
-								name: "GAMMING",
-								id: 'gaming',
-								minRank: 1,
-							},
+								name: "OTHER SERVICES",
+								id: 'others'
+							}
 						]
+
+						var inverse = ""
 
 						types.forEach( function (t) {
 
 							let tplTmp = []
+
 							tplTmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
 							tplTmp.push('<div class="services">')
 							tplTmp.push('<tpl for=".">')
+
+
+							if (t.id !== 'others') {
+	
+								tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
+								inverse += '(type == \''+t.id+'\' && rank &lt;= '+t.minRank+') ||'
+								
+							} else {
+
+								// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
+								tplTmp.push('<tpl if=" '+inverse+' (type == \'custom\') || (type == \'gaming\') ">')
+							}
 							// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+') || type == \'custom\'">')
-							tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
+							// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
+
+
 							tplTmp.push('<div class="service" id="s_{id}">')
 							tplTmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
 							tplTmp.push('<h3 class="title">{name}</h3>')
@@ -177,6 +199,8 @@ Ext.define('Rambox.view.main.Main', {
 								tpl: tplTmp,
 								// itemId: "msg-container-"+t.id,
 							}))
+
+							
 
 						})
 
