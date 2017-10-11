@@ -209,7 +209,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Steam Chat'
 			,description: locale['services[15]']
 			,url: 'https://steamcommunity.com/chat'
-			,type: 'messaging'
+			,type: 'gaming'
 			,note: 'To enable desktop notifications, you have to go to Options inside Steam Chat.'
 			,js_unread: 'CTitleManager.UpdateTitle = function(){};function checkUnread(){var e=document.getElementsByClassName("unread_message_count_value"),t=0;for(i=0;i<e.length;i++)t+=isNaN(parseInt(e[i].innerHTML.trim())) || e[i].parentNode.style.display === "none" ? 0 : parseInt(e[i].innerHTML.trim());updateBadge(t/2)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 
@@ -221,7 +221,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Discord'
 			,description: locale['services[16]']
 			,url: 'https://discordapp.com/login'
-			,type: 'messaging'
+			,type: 'gaming'
 			,titleBlink: true
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("guild unread").length,b=0,c=document.getElementsByClassName("badge");for(i=0;i<c.length;i++)b+=parseInt(c[i].innerHTML.trim());updateBadge(a,b)}function updateBadge(a,b){var c=b>0?"("+b+") ":a>0?"(•) ":"";document.title=c+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 			,note: 'To enable desktop notifications, you have to go to Options inside Discord.'
