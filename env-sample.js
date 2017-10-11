@@ -13,3 +13,8 @@ var licenseServer = {
 var popupConfig = {
 	url: ''
 }
+
+// Keys for analytics
+var analyticsConfig = {
+	google: ""
+}
