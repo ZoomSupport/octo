@@ -148,8 +148,8 @@ let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
 // let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 // Foreground timer
-// let timerFG = new ETimer([1000*60*3], notificationFG)
-let timerFG = new ETimer([1000*3], notificationFG)
+let timerFG = new ETimer([1000*60*3], notificationFG)
+// let timerFG = new ETimer([1000*3], notificationFG)
 
 function timeNotification() {
 

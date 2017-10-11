@@ -37,3 +37,5 @@ rambox_cfg.json
 languages.js
 
 *.log
+
+*.cer
