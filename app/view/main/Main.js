@@ -60,7 +60,8 @@ Ext.define('Rambox.view.main.Main', {
 					,flex: 1
 					,header: { 
 						docked: 'top',
-						padding: "30 30" 
+						padding: "20 30",
+						margin: "0 0 15 0",
 					}
 					,tools: [
 						// {
@@ -137,20 +138,25 @@ Ext.define('Rambox.view.main.Main', {
 						}
 						const types = [
 							{
-								name: "MESSAGING APPS",
-								id: 'messaging'
+								name: "TOP MESSAGING APPS",
+								id: 'messaging',
+								minRank: 10,
 							},
 							{
-								name: "BUSSINESS TOOLS",
-								id: 'tool'
+								name: "TOP E-MAIL SERVICES",
+								id: 'email',
+								minRank: 100,
 							},
 							{
-								name: "E-MAIL",
-								id: 'email'
+								name: "TOP BUSSINESS TOOLS",
+								id: 'tool',
+								minRank: 16,
 							},
+							
 							{
 								name: "GAMMING",
-								id: 'gaming'
+								id: 'gaming',
+								minRank: 1,
 							},
 						]
 
@@ -160,7 +166,8 @@ Ext.define('Rambox.view.main.Main', {
 							tplTmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
 							tplTmp.push('<div class="services">')
 							tplTmp.push('<tpl for=".">')
-							tplTmp.push('<tpl if="type == \''+t.id+'\' || type == \'custom\'">')
+							// tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+') || type == \'custom\'">')
+							tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
 							tplTmp.push('<div class="service" id="s_{id}">')
 							tplTmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
 							tplTmp.push('<h3 class="title">{name}</h3>')

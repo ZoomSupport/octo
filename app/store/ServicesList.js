@@ -44,7 +44,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Slack'
 			,description: locale['services[1]']
 			,url: 'https://___.slack.com/'
-			,type: 'messaging'
+			,type: 'tool' //'messaging'
 			,js_unread: 'function checkUnread(){var e=$(".p-channel_sidebar__channel--unread").length,a=0;$(".p-channel_sidebar__badge").each(function(){a+=isNaN(parseInt($(this).html()))?0:parseInt($(this).html())}),updateBadge(e,a)}function updateBadge(e,a){var n=a>0?"("+a+") ":e>0?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 
 			,rank: 125.07
@@ -62,14 +62,14 @@ Ext.define('Rambox.store.ServicesList', {
 		{
 			 id: 'messenger'
 			,logo: 'messenger.png'
-			,name: 'Messenger'
+			,name: 'Facebook Messenger'
 			,description: locale['services[3]']
 			,url: 'https://www.messenger.com/login/'
 			,type: 'messaging'
 			,titleBlink: true
 			,note: 'To enable desktop notifications, you have to go to Options inside Messenger.'
 
-			,rank: 205.59
+			,rank: 31300 //205.59
 		},
 		{
 			 id: 'skype'
@@ -129,7 +129,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.wechat.com/'
 			,type: 'messaging'
 
-			,rank: 6.49
+			,rank: 18.05 //6.49
 		},
 		{
 			 id: 'gmail'
@@ -164,7 +164,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'ChatWork'
 			,description: locale['services[11]']
 			,url: 'https://www.chatwork.com/login.php'
-			,type: 'messaging'
+			,type: 'tool' //'messaging'
 			,note: 'To enable desktop notifications, you have to go to Options inside ChatWork.'
 
 			,rank: 31.51
@@ -544,7 +544,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,name: 'Zoho Chat'
 			,description: locale['services[46]']
 			,url: 'https://chat.zoho.com/'
-			,type: 'messaging'
+			,type: 'tool' //'messaging'
 			,js_unread: 'NotifyByTitle.show = function(){};NotifyByTitle.start = function(){};NotifyByTitle.stop = function(){};function checkUnread(){var t=0;$(".msgnotify").each(function() { t += isNaN(parseInt($(this).html())) ? 0 : parseInt(parseInt($(this).html())) });updateBadge(t)}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 
 			,rank: 21.26

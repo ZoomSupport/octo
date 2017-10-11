@@ -45,8 +45,8 @@ const config = new Config({
 
 		,x: undefined
 		,y: undefined
-		,width: 1000
-		,height: 800
+		,width: 1074 //1000
+		,height: 660 //800
 		,maximized: false
 	}
 });
@@ -144,12 +144,12 @@ function handleSquirrelEvent() {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let isQuitting = false;
-let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
+// let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
 // let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 // Foreground timer
-let timerFG = new ETimer([1000*60*3], notificationFG)
-// let timerFG = new ETimer([1000*3], notificationFG)
+// let timerFG = new ETimer([1000*60*3], notificationFG)
+let timerFG = new ETimer([1000*3], notificationFG)
 
 function timeNotification() {
 

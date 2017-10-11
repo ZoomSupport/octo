@@ -289,12 +289,12 @@ body::before {
 
 .service {
 	// width: 160px;
-	width: 120px;
+	width: 98px; //120px;
 	// height: 160px;
 	// display: inline-block;
 
 	display: block;
-	padding: 10px;
+	padding: 12px 10px;
 
 	cursor: pointer;
 
@@ -313,9 +313,11 @@ body::before {
 	.title {
 		font-weight: 400;
 		color: #787B7E;
-		font-size: 12pt;
+		font-size: 10pt;
 
 		font-family: "Helvetica Neue";
+
+		margin-bottom: 0;
 	}
 
 	&:hover {
