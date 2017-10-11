@@ -299,7 +299,7 @@ Ext.define('Rambox.Application', {
 				(localStorage.getItem('appealingSettings') == 'true'),
 				(localStorage.getItem('appealingPlus') == 'true'),
 
-				localStorage.getItem('activated'),
+				(localStorage.getItem('activated') == 'true'),
 				(localStorage.getItem('premiumToggle') == 'true'),
 
 				parseInt( localStorage.getItem('lifetimeNotificationCount') ),

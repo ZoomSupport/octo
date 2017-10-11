@@ -144,51 +144,86 @@ function handleSquirrelEvent() {
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let isQuitting = false;
-let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
-// let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
+// let timer = new ETimer([1000*60, 1000*60*15, 1000*60*120], timeNotification)
+let timer = new ETimer([1000*5, 1000*15, 1000*120], timeNotification)
 
 // Foreground timer
-let timerFG = new ETimer([1000*60*3], notificationFG)
-// let timerFG = new ETimer([1000*10], notificationFG)
+// let timerFG = new ETimer([1000*60*3], notificationFG)
+let timerFG = new ETimer([1000*3], notificationFG)
 
 function timeNotification() {
 
 	mainWindow.webContents.send('getServiceNum')
 	ipcMain.on('serviceNum', function (e, len, aSet, aPlus, activated, pToggle, nCnt, plusClick) {
 
-		let nId = '0'
+		// let nId = '0'
 
-		let body = ""
+		let msg = {
+			id: '',
+			title: "",
+			body: ""
+		}
 		switch (len) {
 			case 0: 
-				body = (plusClick) ? "Notification #1" : "Notification #0"
-				nId = (plusClick) ? '1' : '0'
+				msg = (plusClick) ? {
+					id: '1',
+					title: "Add your first messenger to Octo",
+					body: "There are 89 most popular channels of communication"
+				} : {
+					id: '0',
+					title: "Click on \"Add service\" button",
+					body: "Quickly, add your first messenger to Octo!"
+				}
+
+				// nId = (plusClick) ? '1' : '0'
 				break;
 			case 1:
 				if (aPlus) {
-					body = "Add second messenger"
-					nId = '2'
-				}
-				return;
+					// body = "Add second messenger"
+					// nId = '2'
+
+					msg = {
+						id: '2',
+						title: "Time to add your second messenger to Octo",
+						body: "Communicate with everyone in the same window. Become more productive!"
+					}
+				} else return;
 				break;
 			case 2:
 
 				if (aSet) {
-					body = "Go into settings"
-					nId = '3'
+					// body = "Go into settings"
+					// nId = '3'
+
+					msg = {
+						id: '3',
+						title: 'Configure important notifications in Octo',
+						body: 'Stay focused on the important, control everything that can distract you'
+					}
 					break;
 				}
 
 				if (nCnt >= 50 && pToggle) {
-					body = "Time to upgrade"
-					nId = '5'
+					// body = "Time to upgrade"
+					// nId = '5'
+					msg = {
+						id: '5',
+						title: 'Activate Pro Verison of Octo',
+						body: 'Get unlimited access to all 89 services for lifetime',
+					}
 					break;
 				}
 
 				// TODO: track if settings opened
 				if (nCnt >= 50) {
-					body = "Add third messenger";
-					nId = '4'
+					// body = "Add third messenger";
+					// nId = '4'
+
+					msg = {
+						id: '4',
+						title: 'Add rest of messengers into Octo',
+						body: 'Become a productivity guru! Add remaining channels of communication to Octo!'
+					}
 					break;
 				}
 
@@ -199,8 +234,8 @@ function timeNotification() {
 		}
 		
 		const n = new Notification({
-			title: "Octo",
-			body: body,
+			title: msg.title,
+			body: msg.body,
 
 			actions: {
 				type: 'button',
@@ -209,11 +244,11 @@ function timeNotification() {
 			
 		})
 		n.show()
-		mainWindow.webContents.send('sendGA', 'Shown Notification', nId)
+		mainWindow.webContents.send('sendGA', 'Shown Notification', msg.id)
 
 		n.on('click', function () {
 			mainWindow.focus()
-			mainWindow.webContents.send('sendGA', 'Click Notification', nId)
+			mainWindow.webContents.send('sendGA', 'Click Notification', msg.id)
 		})
 
 		n.on('close', function () {
