@@ -290,6 +290,7 @@ body::before {
 .service {
 	// width: 160px;
 	width: 120px;
+	height: 160px;
 	display: inline-block;
 	padding: 10px;
 	cursor: pointer;
@@ -467,6 +468,9 @@ body::before {
 .services {
 	padding-left: 20px;
 	padding-right: 20px;
+
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .hint-image {
