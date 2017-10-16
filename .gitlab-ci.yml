@@ -1,0 +1,93 @@
+variables:
+    PROJECT_NAME:           "Octo"
+    APP_NAME:               "Octo"
+    SCHEME:                 "Distribution"
+    CONFIGURATION:          "Release"
+
+    AWS_S3_UPLOAD_SCRIPT_PATH:  "./Tools/s3_upload"
+    AWS_S3_BUCKET_NAME:         "distribution-octo"
+    AWS_S3_FOLDER_NAME:         "octo"
+
+    BUILD_NUMBER:           $CI_BUILD_ID
+
+    KEYCHAIN_FILENAME:      "ibuilds.keychain"
+
+    GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+    - build
+    - deploy
+
+before_script:
+    - echo "------------ Before script ------------"
+    - echo "Product name:" ${PROJECT_NAME}
+    - echo "Build ID:" ${BUILD_NUMBER}
+    - echo "Node version:" $(node -version)
+
+     # Time sync is a MUST for runners that will code sign applications
+    - echo ${SUDO_PSWD} | sudo -S ntpdate -u dc2.zeo.lcl
+
+    - npm -q install
+
+build:
+    stage: build
+
+    variables:
+
+    before_script:
+        - export LC_CTYPE=en_US.UTF-8
+        - security list-keychains
+        - security -qq unlock-keychain -p $KEYCHAIN_PASSWORD ~/Library/Keychains/$KEYCHAIN_FILENAME # Unlock keychain to have access to codesign keys
+        - security find-identity -p codesigning -v
+
+    script:
+        - echo "==================="
+        - echo "Executing build job"
+        - echo "==================="
+
+        # Remove app which may come from artifact
+        - rm -rf ${APP_NAME}.app
+        - rm -rf DerivedData
+
+        - npm run setup:osx
+
+    only:
+        - master
+    when: manual
+
+    tags:
+        - macosx
+        - awscli
+
+    artifacts:
+        expire_in: 3 days
+        when: on_success
+        paths:
+            - ${APP_NAME}.app
+            - ${APP_NAME}.pkg
+            - ${APP_NAME}.source.pkg
+
+
+deploy:
+    stage: deploy
+
+    script:
+        - echo "==================="
+        - echo "Executing Deploy Job"
+        - echo "==================="
+
+        - AWS_SOFT_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ${APP_NAME}.app/Contents/Info.plist)
+        - M4_PREPROCESSOR_DEFINITIONS="-D AWS_S3_ACCESS_KEY_ID_M4=${AWS_S3_ACCESS_KEY_ID} -D AWS_S3_SECRET_ACCESS_KEY_M4=${AWS_S3_SECRET_ACCESS_KEY} -D AWS_S3_CF_DISTRIBUTION_ID_M4=${AWS_S3_CF_DISTRIBUTION_ID} -D AWS_APP_NAME_M4=${APP_NAME} -D AWS_S3_BUCKET_NAME_M4=${AWS_S3_BUCKET_NAME} -D AWS_S3_FOLDER_NAME_M4=${AWS_S3_FOLDER_NAME} -D AWS_SOFT_VERSION_M4=${AWS_SOFT_VERSION}"
+        - /usr/bin/m4 ${M4_PREPROCESSOR_DEFINITIONS} ${AWS_S3_UPLOAD_SCRIPT_PATH}.m4 > ${AWS_S3_UPLOAD_SCRIPT_PATH}
+        - sh ${AWS_S3_UPLOAD_SCRIPT_PATH}
+
+        # Clean up upload scipt
+        - rm ${AWS_S3_UPLOAD_SCRIPT_PATH}
+
+    only:
+        - master
+    when: manual
+
+    tags:
+        - macosx
+        - awscli
