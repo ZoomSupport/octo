@@ -46,6 +46,7 @@ const settings = {
 	,reorderable: false 
 	,layout: 'hbox'
 	
+	,autoScroll: true
 	,hidden: false 
 
 	,tabConfig: {
@@ -193,7 +194,8 @@ const settings = {
 
 var plusTimeout = null;
 var stgsTimeout = null;
-var stgTime = 1000*60*3;
+// var stgTime = 1000*60*3;
+var stgTime = 1000*5;
 
 Ext.define('Rambox.store.Services', {
 	 extend: 'Ext.data.Store'
@@ -292,7 +294,8 @@ Ext.define('Rambox.store.Services', {
 			const sName = store.data.items[sLen-1].data.type
 
 			// Google Analytics Tracking
-			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName)
+			ga_storage._trackEvent('Application', 'Add Service #'+sLen, sName) 
+			FB.AppEvents.logEvent('Add Service '+sLen);
 
 			if (store.data.length > 1) {
 				// if (Ext.cq1('app-main').getComponent('upgradeTab') === undefined)
@@ -306,12 +309,11 @@ Ext.define('Rambox.store.Services', {
 
 					Ext.cq1('app-main').add(settings)
 
-					stgsTimeout = setTimeout(function () {
-						localStorage.setItem('appealingSettings', true)
-						
-						const tab = Ext.cq1('app-main').getComponent('setTab')
-						tab.setIcon('resources/tools/settings_2.png')
-					}, stgTime)
+					if (!localStorage.getItem('stgsTimeout')) {
+						localStorage.setItem('stgsTimeout', true)
+						localStorage.setItem('plusTimeout', false)
+						ipc.send('timerReset')
+					}
 				}
 				
 				
@@ -331,14 +333,18 @@ Ext.define('Rambox.store.Services', {
 				// ga_storage._trackEvent('Application', 'Get Started', 'Add service on Welcome screen')
 
 				// Update within tab
-				plusTimeout = setTimeout(function () {
+				if (!localStorage.getItem('plusTimeout')) {
+					localStorage.setItem('plusTimeout', true)
+					ipc.send('timerReset')
+				}
+				// plusTimeout = setTimeout(function () {
 
-					const tab = Ext.cq1('app-main').getComponent('plusTab') 
-					tab.setIcon('resources/tools/add_2.png')
+				// 	const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				// 	tab.setIcon('resources/tools/add_2.png')
 
-					localStorage.setItem('appealingPlus', true)
+				// 	localStorage.setItem('appealingPlus', true)
 
-				}, stgTime)
+				// }, stgTime)
 			} else if (store.data.length == 2) {
 
 				// RESET

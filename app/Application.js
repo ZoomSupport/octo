@@ -35,6 +35,8 @@ Ext.define('Rambox.Application', {
 
 		if (!localStorage.getItem('firstRun')) {
 			ga_storage._trackEvent('Application', 'First Run')
+			FB.AppEvents.logEvent('First Run');
+
 			localStorage.setItem('firstRun', 'true')
 		}
 
@@ -43,6 +45,8 @@ Ext.define('Rambox.Application', {
 
 		// Initialize Auth0
 		// Rambox.ux.Auth0.init();
+
+		console.log(Ext.getStore('ServicesList'))
 
 		// Set cookies to help Tooltip.io messages segmentation
 		// Ext.util.Cookies.set('version', require('electron').remote.app.getVersion());
@@ -293,8 +297,9 @@ Ext.define('Rambox.Application', {
 				len, 
 
 				(localStorage.getItem('appealingSettings') == 'true'),
+				(localStorage.getItem('appealingPlus') == 'true'),
 
-				localStorage.getItem('activated'),
+				(localStorage.getItem('activated') == 'true'),
 				(localStorage.getItem('premiumToggle') == 'true'),
 
 				parseInt( localStorage.getItem('lifetimeNotificationCount') ),
@@ -305,6 +310,29 @@ Ext.define('Rambox.Application', {
 
 		ipc.on('sendGA', function (e, action, label) {
 			ga_storage._trackEvent('Application', action, label)
+		})
+
+		// Handle timer trigger
+		ipc.on('timerTriggered', function(e) {
+			console.log('TIMER TRIGGERED')
+
+			if (localStorage.getItem('plusTimeout') == 'true') {
+				ipc.send('resetNotificationTimer')
+
+				const tab = Ext.cq1('app-main').getComponent('plusTab') 
+				tab.setIcon('resources/tools/add_2.png')
+
+				localStorage.setItem('appealingPlus', true)
+			}
+
+			if (localStorage.getItem('stgsTimeout') == 'true') {
+				ipc.send('resetNotificationTimer')
+
+				localStorage.setItem('appealingSettings', true)
+				
+				const tab = Ext.cq1('app-main').getComponent('setTab')
+				tab.setIcon('resources/tools/settings_2.png')
+			}
 		})
 
 		// Remove spinner

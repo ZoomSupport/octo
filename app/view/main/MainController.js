@@ -28,43 +28,65 @@ Ext.define('Rambox.view.main.MainController', {
 		) {
 			return;
 		}
-		console.log(newTab.id, oldTab.id)
 
 		if ( newTab.id === 'ramboxTab' ) {
+
+			console.log('Rambox Tab');
+			
 			
 
-			// var searchField = Ext.getCmp('main-search-field')
-			// searchField.setValue("")
-
+			// Resets First Time Plus Click Event
 			if (!localStorage.getItem('plusClicked')) {
+
 				// RESET
 				ipc.send('resetNotificationTimer')
 
 				localStorage.setItem('plusClicked', true)
+
+				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+				FB.AppEvents.logEvent('Add service on Welcome screen');
 			}
 
-			if (Ext.getStore('Services').data.length === 1) {
+			// Stop Plus timeout
+			if (localStorage.getItem('plusTimeout') == 'true') {
+				// clearTimeout(plusTimeout)
+				localStorage.setItem('plusTimeout', 'false')
+			}
+
+			// Track Appealing Plus Click
+			if (localStorage.getItem('appealingPlus') == 'true') {
+				console.log("Highleted Plus Click")
+
+				// RESET TIMEOUT
+				ipc.send('resetNotificationTimer')
+
 				// GA track Plus button clicks
 				ga_storage._trackEvent('Application', 'Get Started', "Add second service on Welcome screen ");
-				// if (localStorage.getItem('appealingPlus') === 'true') {
+				FB.AppEvents.logEvent('Add second service on Welcome screen');
 
-				// } 
-
-				clearTimeout(plusTimeout)
+				// clearTimeout(plusTimeout)
 
 				const tab = Ext.cq1('app-main').getComponent('plusTab') 
 				tab.setIcon('resources/tools/add.png')
 				localStorage.setItem('appealingPlus', false)
 			}
 
-			if (Ext.getStore('Services').data.length === 0)
-				ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+			// Tracks First Plus Click
+			// if (Ext.getStore('Services').data.length === 0) {
+			// 	ga_storage._trackEvent('Application', 'Get Started', "Add service on Welcome screen ");
+			// 	FB.AppEvents.logEvent('Add service on Welcome screen');
+			// }
 			
 			if ( Rambox.app.getTotalNotifications() > 0 ) {
 				document.title = 'Rambox ('+ Rambox.app.getTotalNotifications() +')';
 			} else {
 				document.title = 'Rambox';
 			}
+
+			// Clears Search Field
+			var searchField = Ext.getCmp('main-search-field')
+			searchField.setValue("")
+
 			return;
 		}
 
@@ -161,6 +183,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 	,onNewServiceSelect: function( view, record, item, index, e ) {
 		// console.log("Element Click", view, record, item, index, e)
+
+		
 		
 		const maxServices = 2 // Maximum ammount of non premium services
 		const serviceCnt = Ext.getStore('Services').data.length // Current service number
@@ -175,12 +199,20 @@ Ext.define('Rambox.view.main.MainController', {
 			}
 		})
 
+		// Track search result
+		var searchField = Ext.getCmp('main-search-field')
+		var searchValLen = searchField.getValue().length
+		
+		if (searchValLen > 0)
+			ga_storage._trackEvent('Application', 'Search', rc.name);
+
 		/**
 		 * Check if exceded messanger limits
 		 */
 		// if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 		if (serviceCnt >= maxServices && !(localStorage.getItem('activated') == 'true')) {
 			ga_storage._trackEvent('Application', 'Upgrade to PRO Shown')
+			FB.AppEvents.logEvent('Upgrade to PRO Shown');
 
 			// RESET
 			if (!localStorage.getItem('ntfPremium')) {
@@ -192,7 +224,8 @@ Ext.define('Rambox.view.main.MainController', {
 				record: rc
 			})
 
-			clearTimeout(stgsTimeout)
+			// clearTimeout(stgsTimeout)
+			localStorage.setItem('stgsTimeout', false)
 			return;
 		}
 
@@ -304,15 +337,24 @@ Ext.define('Rambox.view.main.MainController', {
 		var bd = Ext.cq1('app-main').getComponent('plusTab').body.dom//.scrollTop('top', 0)
 		bd.scrollTop = 0
 
-		var cg = field.up().down('checkboxgroup');
+		// var cmps = Ext.ComponentQuery.query(".service-group-ctr")
+		// console.log(cmps)
+
+		// var cg = field.up().down('checkboxgroup');
 		if ( !Ext.isEmpty(newValue) && newValue.length > 0 ) {
 			field.getTrigger('clear').show();
 			field.getTrigger('search').hide();
 
+			Ext.getCmp('msg-container-search').show()
+			Ext.getCmp('msg-container-messaging').hide()
+			Ext.getCmp('msg-container-email').hide()
+			Ext.getCmp('msg-container-others').hide()
+			Ext.getCmp('msg-container-tool').hide()
+
 			Ext.getStore('ServicesList').getFilters().replaceAll({
 				fn: function(record) {
 					if ( record.get('type') === 'custom' ) return true;
-					if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
+					// if ( !Ext.Array.contains(Ext.Object.getKeys(cg.getValue()), record.get('type')) ) return false;
 					return record.get('name').toLowerCase().indexOf(newValue.toLowerCase()) > -1 ? true : false;
 				}
 			});
@@ -320,8 +362,14 @@ Ext.define('Rambox.view.main.MainController', {
 			field.getTrigger('clear').hide();
 			field.getTrigger('search').show();
 
+			Ext.getCmp('msg-container-search').hide()
+			Ext.getCmp('msg-container-messaging').show()
+			Ext.getCmp('msg-container-email').show()
+			Ext.getCmp('msg-container-others').show()
+			Ext.getCmp('msg-container-tool').show()
+
 			Ext.getStore('ServicesList').getFilters().removeAll();
-			me.doTypeFilter(cg);
+			// me.doTypeFilter(cg);
 		}
 		field.updateLayout();
 	}
@@ -329,14 +377,14 @@ Ext.define('Rambox.view.main.MainController', {
 	,onClearClick: function(field, trigger, e) {
 		var me = this;
 
-		var cg = field.up().down('checkboxgroup');
+		// var cg = field.up().down('checkboxgroup');
 
 		field.reset();
 		field.getTrigger('clear').hide();
 		field.updateLayout();
 
 		Ext.getStore('ServicesList').getFilters().removeAll();
-		me.doTypeFilter(cg);
+		// me.doTypeFilter(cg);
 	}
 
 	// ,dontDisturb: function(btn, e, called) {
@@ -609,7 +657,8 @@ Ext.define('Rambox.view.main.MainController', {
 	}
 
 	,clearSettingsState: function () {
-		clearTimeout(stgsTimeout)
+		// clearTimeout(stgsTimeout)
+		localStorage.setItem('stgsTimeout', false)
 
 		// RESET
 		if (localStorage.getItem('appealingSettings') == 'true') ipc.send('resetNotificationTimer')

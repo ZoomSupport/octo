@@ -23,7 +23,11 @@ Ext.define('Rambox.view.add.Add',{
 	,autoShow: true
 	,resizable: false
 	,draggable: false
-	,bodyPadding: "40px 20px"
+	,bodyPadding: "0 20px 15px 20px"
+
+	,padding: "10px 10px 10px 10px"
+
+	,cls: 'add-service-window'
 
 	,titleAlign: 'center'
 	// ,iconAlign: 'right'
@@ -35,6 +39,18 @@ Ext.define('Rambox.view.add.Add',{
 		me.icon = me.record.get('type') === 'custom' ? (!me.edit ? 'resources/icons/custom.png' : (me.record.get('logo') === '' ? 'resources/icons/custom.png' : me.record.get('logo'))) : 'resources/icons/'+me.record.get('logo');
 		me.items = [
 			{
+				xtype: "component",
+				html: "<h3 class='window-title'>"+me.title+"</h3>"
+			},
+			{
+				xtype: "component",
+				html: "<span class='hint-text'>Enter required params to set up this service:</span>",
+
+				margin: "0 0 20px 0",
+
+				hidden: !(me.edit ? Ext.getStore('ServicesList').getById(me.record.get('type')).get('note') === '' : me.record.get('note') === '')
+			},
+			{
 				 xtype: 'form'
 				,items: [
 					{
@@ -44,7 +60,7 @@ Ext.define('Rambox.view.add.Add',{
 						,labelWidth: 45
 						,labelCls: 'urlLabel'
 
-						,margin: '0 0 20 0'
+						,margin: '0 0 30 0'
 
 						,cls: "urlField nameField"
 						// ,styles: {
@@ -293,9 +309,10 @@ Ext.define('Rambox.view.add.Add',{
 						,style: 'color: #4B4F53; font-size: 14pt; font-weight: 400;'
 						,tpl: [
 							// ,'<div class="notice">'
-							,'<img class="hint-image" src="resources/tools/info.png">'
+							// ,'<img class="hint-image" src="resources/tools/info.png">'
 							// ,'<i class="fa fa-info-circle" aria-hidden="true" style="font-size:40px;margin:20px;"></i>'
-							,'<span class="hint-text" style="font-size: 15px; padding: 10px 10px 10px 0;">{note}</span>'
+							// ,'<span class="hint-text" style="font-size: 15px; padding: 10px 10px 10px 0;">{note}</span>'
+							,'<span class="hint-text">{note}</span>'
 							// ,'</div>'
 							,
 						]
@@ -305,22 +322,24 @@ Ext.define('Rambox.view.add.Add',{
 		];
 
 		me.buttons = [
-			{
+			'->'
+			,{
 				 text: locale['button[1]']
 				,ui: 'decline'
 				,handler: 'doCancel'
 				,cls: 'main-cancel'
-				,padding: '10 20'
-				,margin: '15 20'
+				,padding: '12 15' 
+
+				,margin: '0 0 20 0'
 			}
-			,'->'
 			,{
 				 text: me.title
 				,itemId: 'submit'
 				,handler: 'doSave'
 				,cls: 'main-submit'
-				,padding: '10 20'
-				,margin: '15 20'
+				,padding: '12 15'
+
+				,margin: '0 20 20 5'
 			}
 		];
 

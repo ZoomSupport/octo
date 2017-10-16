@@ -60,36 +60,11 @@ Ext.define('Rambox.view.main.Main', {
 					,flex: 1
 					,header: { 
 						docked: 'top',
-						padding: "30 30" 
+						padding: "20 30",
+						margin: "0 0 15 0",
 					}
 					,tools: [
-						{
-							 xtype: 'checkboxgroup'
-							,items: [
-								{
-									 xtype: 'checkbox'
-									,boxLabel: locale['app.main[1]'] // Messaging
-									,name: 'messaging'
-									,checked: true
-									,uncheckedValue: false
-									,inputValue: true
-									,hidden: true
-								}
-								,{
-									 xtype: 'checkbox'
-									,boxLabel: locale['app.main[2]'] // Email
-									,margin: '0 10 0 10'
-									,name: 'email'
-									,checked: true
-									,uncheckedValue: false
-									,inputValue: true
-									,hidden: true
-								}
-							]
-							,listeners: {
-								change: 'doTypeFilter'
-							}
-						},
+						
 						{
 							 xtype: 'textfield'
 							,grow: true
@@ -120,46 +95,100 @@ Ext.define('Rambox.view.main.Main', {
 						}
 					]
 					// Renders messages 
-					,items: [
-						{
+					,items: function () {
+						
+						var tmp = []
+						var objTemplate = {
 							 xtype: 'dataview'
-							,itemId: 'main-service-select'
 							,store: 'ServicesList'
+
+							,cls: 'service-group-ctr'
+
 							,itemSelector: 'div.service'
-							,tpl: function () {
 
-								var tmp = []
-								const types = [
-									{
-										name: "MESSAGING APPS",
-										id: 'messaging'
-									},
-									{
-										name: "E-MAIL",
-										id: 'email'
-									}
-								]
-
-								types.forEach( function (t) {
-									tmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
-									tmp.push('<div class="services">')
-									tmp.push('<tpl for=".">')
-									tmp.push('<tpl if="type == \''+t.id+'\' || type == \'custom\'">')
-									tmp.push('<div class="service" id="s_{id}">')
-									tmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
-									tmp.push('<h3 class="title">{name}</h3>')
-									tmp.push('</div></tpl></tpl></div>')
-
-								})
-
-								return tmp
-							}()
+							,tpl: [] 
 							,emptyText: '<div style="padding: 20px;">'+locale['app.main[3]']+'</div>'
 							,listeners: {
 								itemclick: 'onNewServiceSelect'
 							}
 						}
-					]
+						const types = [
+							{
+								name: "TOP MESSAGING APPS",
+								id: 'messaging',
+								minRank: 10,
+							},
+							{
+								name: "TOP E-MAIL SERVICES",
+								id: 'email',
+								minRank: 100,
+							},
+							{
+								name: "TOP BUSSINESS TOOLS",
+								id: 'tool',
+								minRank: 16,
+							},
+							
+							// {
+							// 	name: "GAMMING",
+							// 	id: 'gaming',
+							// 	minRank: 1,
+							// },
+
+							{
+								name: "OTHER SERVICES",
+								id: 'others'
+							},
+
+							{
+								name: "SEARCH",
+								id: 'search'
+							}
+						]
+
+						var inverse = ""
+
+						types.forEach( function (t) {
+
+							let tplTmp = []
+
+							tplTmp.push('<h3 class="main-type-title">'+t.name+'</h3>')
+							tplTmp.push('<div class="services">')
+							tplTmp.push('<tpl for=".">')
+
+
+							if (t.id !== 'others' && t.id !== 'search') {
+	
+								tplTmp.push('<tpl if="(type == \''+t.id+'\' && rank &gt; '+t.minRank+')">')
+								inverse += '(type == \''+t.id+'\' && rank &lt;= '+t.minRank+') ||'
+								
+							} else if (t.id === 'others' && t.id !== 'search') {
+
+								tplTmp.push('<tpl if=" '+inverse+' (type == \'custom\') || (type == \'gaming\') ">')
+							} else if (t.id === 'search') {
+
+								tplTmp.push('<tpl>')
+							}
+
+
+							tplTmp.push('<div class="service" id="s_{id}">')
+							tplTmp.push('<img src="resources/icons/{logo}" width="48" /><br />')
+							tplTmp.push('<h3 class="title">{name}</h3>')
+							tplTmp.push('</div></tpl></tpl></div>')
+
+							tmp.push(Object.assign({}, objTemplate, {
+								tpl: tplTmp,
+								id: "msg-container-"+t.id,
+
+								hidden: (t.id === 'search'),
+								// itemId: 'msg'
+							}))
+
+						})
+
+						console.log(tmp)
+						return tmp
+					}()
 					
 				}
 				

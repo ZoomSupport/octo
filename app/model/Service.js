@@ -69,5 +69,9 @@ Ext.define('Rambox.model.Service', {
 		 name: 'zoomLevel'
 		,type: 'number'
 		,defaultValue: 0
-	}]
+	},{
+		name: 'rank'
+	   ,type: 'number'
+	   ,defaultValue: 0
+   }]
 });

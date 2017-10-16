@@ -38,7 +38,8 @@
 
 	padding: 2px 5px;
 
-	background-color: #E4714A;
+	// background-color: #E4714A;
+	background-color: $highlight-color;
 }
 
 .x-tab-inner {
@@ -108,11 +109,13 @@
 }
 
 .upgrade-icon {
-	background-color: #E3704E !important;
+	// background-color: #E3704E !important;
+	background-color: $highlight-color !important;
 	border-top-left-radius: 5px;
 }
 
 .x-tab.x-tab-over.x-tab-default.upgrade-icon {
-	background-color: #E45A34 !important;
+	// background-color: #E45A34 !important;
+	background-color: darken($highlight-color, 10%) !important;
 	// opacity: 0.8;
 }

@@ -33,7 +33,7 @@
 }
 
 .main-panel .x-form-text-default {
-    padding: 15px 20px;
+    padding: 10px 20px;
     font-size: 12pt;
     font-weight: 400;
 
@@ -83,12 +83,13 @@
 .main-type-title {
     font-weight: bold;
     font-family: "Helvetica Neue";
-    font-size: 14pt;
+    font-size: 11pt;
 
     // border-bottom: 1px solid #E1E7EC;
-    padding-bottom: 14px;
 
-    padding: 15px 30px;
+    padding: 7px 30px;
+    margin: 7px 0;
+    // padding-bottom: 0px;
 
     color: #4C5054;
 }
