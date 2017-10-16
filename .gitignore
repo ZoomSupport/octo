@@ -6,6 +6,8 @@
 .sass_cache/
 /dist
 
+/Installers/*/build
+
 # OS generated files #
 ######################
 .DS_Store
