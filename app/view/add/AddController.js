@@ -55,6 +55,7 @@ Ext.define('Rambox.view.add.AddController', {
 			view.setStatusBar(formValues.statusbar);
 			// Change notifications of the Tab
 			view.setNotifications(formValues.notifications);
+
 			// Change the icon of the Tab
 			if ( win.record.get('type') === 'custom' && oldData.logo !== formValues.logo ) Ext.getCmp('tab_'+win.record.get('id')).setConfig('icon', formValues.logo === '' ? 'resources/icons/custom.png' : formValues.logo);
 			// Change the URL of the Tab

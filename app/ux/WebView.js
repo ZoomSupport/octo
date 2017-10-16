@@ -127,12 +127,12 @@ Ext.define('Rambox.ux.WebView',{
 							,handler: me.reloadService
 						}
 						,'-'
-						,{
-							 text: locale['app.webview[3]']
-							,glyph: 'xf121@FontAwesome'
-							,scope: me
-							,handler: me.toggleDevTools
-						}
+						// ,{
+						// 	 text: locale['app.webview[3]']
+						// 	,glyph: 'xf121@FontAwesome'
+						// 	,scope: me
+						// 	,handler: me.toggleDevTools
+						// }
 					]
 				}
 			}

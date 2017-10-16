@@ -141,6 +141,12 @@ const settings = {
 					,hidable: false
 					,draggable: false
 					,resizable: false
+
+					// ,listeners: {
+					// 	change: function(el, newVal, oldVal) {
+					// 		console.log(el, newVal, oldVal)
+					// 	}
+					// }
 				},
 				{
 					xtype: 'checkcolumn',
@@ -153,6 +159,12 @@ const settings = {
 					,hidable: false
 					,draggable: false
 					,resizable: false
+
+					// ,listeners: {
+					// 	change: function(el, newVal, oldVal) {
+					// 		console.log(el, newVal, oldVal)
+					// 	}
+					// }
 
 				}
 				,{
@@ -186,6 +198,11 @@ const settings = {
 			,listeners: {
 				 edit: 'onRenameService'
 				,rowdblclick: 'showServiceTab'
+
+				// ,change: function(el, newVal, oldVal) {
+				// 	console.log(el, newVal, oldVal)
+				// }
+
 			}
 		}
 	]
@@ -258,6 +275,8 @@ Ext.define('Rambox.store.Services', {
 						service: service,
 					}
 				};
+
+				console.log("Service: ", cfg.title, " Muted: ", cfg.muted)
 
 				service.get('align') === 'left' ? servicesLeft.push(cfg) : servicesRight.push(cfg);
 			});
@@ -377,6 +396,11 @@ Ext.define('Rambox.store.Services', {
 					switch (i) {
 						case "notifications":
 
+							var view = Ext.getCmp('tab_'+op.data.id);
+							
+							// Change notifications of the Tab
+							view.setNotifications(op.data.notifications);
+
 							var oStat = (op.data.notifications) ? "On" : "Off" 
 							console.log(op.data.name, 'Notifications ' + oStat)
 
@@ -385,6 +409,11 @@ Ext.define('Rambox.store.Services', {
 						break;
 
 						case "muted":
+
+							var view = Ext.getCmp('tab_'+op.data.id);
+							
+							// Change sound of the Tab
+							view.setAudioMuted(op.data.muted);
 						
 							var oStat = (op.data.muted) ? "On" : "Off" 
 							console.log(op.data.name, 'Muted ' + oStat)
