@@ -207,8 +207,9 @@ Ext.define('Rambox.view.add.Add',{
 									,{
 										 xtype: 'checkbox'
 										,boxLabel: locale['app.window[6]']
-										,name: 'muted'
-										,checked: me.edit ? me.record.get('muted') : false
+										// ,name: 'muted'
+										,name: 'sound'
+										,checked: me.edit ? me.record.get('muted') : true //false
 										,uncheckedValue: false
 										,inputValue: true
 									}

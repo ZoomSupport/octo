@@ -136,23 +136,36 @@ const settings = {
 					width: 150,
 					dataIndex: 'notifications',
 
+					// itemId: 'notifications_{id}',
+
 					menuDisabled: true,
 					sortable: false
 					,hidable: false
 					,draggable: false
 					,resizable: false
 
+					// ,disabled: true
+
 					// ,listeners: {
 					// 	change: function(el, newVal, oldVal) {
 					// 		console.log(el, newVal, oldVal)
 					// 	}
 					// }
+
+					,listeners: {
+						checkchange: function(el, idx, check) {
+							console.log(el, idx, check);
+						}
+					}
 				},
 				{
 					xtype: 'checkcolumn',
-					header: 'MUTED',
+					header: 'SOUND',
 					width: 100,
-					dataIndex: 'muted',
+					// dataIndex: 'muted',
+					dataIndex: 'sound',
+
+					// checked: true,
 
 					menuDisabled: true,
 					sortable: false
@@ -160,11 +173,21 @@ const settings = {
 					,draggable: false
 					,resizable: false
 
+					// ,convert: function(v) {
+					// 	console.log(v)
+					// }
+
 					// ,listeners: {
 					// 	change: function(el, newVal, oldVal) {
 					// 		console.log(el, newVal, oldVal)
 					// 	}
 					// }
+
+					,listeners: {
+						checkchange: function(el, idx, check) {
+							console.log(el, idx, check);
+						}
+					}
 
 				}
 				,{
@@ -266,7 +289,8 @@ Ext.define('Rambox.store.Services', {
 					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : ( service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo'))
 					,src: service.get('url')
 					,type: service.get('type')
-					,muted: service.get('muted')
+					// ,muted: service.get('muted')
+					,sound: service.get('sound')
 					,includeInGlobalUnreadCounter: service.get('includeInGlobalUnreadCounter')
 					,displayTabUnreadCounter: service.get('displayTabUnreadCounter')
 					,enabled: service.get('enabled')
@@ -387,7 +411,7 @@ Ext.define('Rambox.store.Services', {
 		update: function (store, op, modName, det) {
 
 			// console.log('Service Store Update')
-			// console.log(modName, det)
+			// console.log(op)
 
 			store.suspendEvent('update');
 			if (modName === "edit") {
@@ -408,17 +432,17 @@ Ext.define('Rambox.store.Services', {
 
 						break;
 
-						case "muted":
+						case "sound":
 
 							var view = Ext.getCmp('tab_'+op.data.id);
 							
 							// Change sound of the Tab
-							view.setAudioMuted(op.data.muted);
+							view.setAudioMuted(!op.data.sound);
 						
-							var oStat = (op.data.muted) ? "On" : "Off" 
-							console.log(op.data.name, 'Muted ' + oStat)
+							var oStat = (op.data.sound) ? "On" : "Off" 
+							console.log(op.data.name, 'Sound ' + oStat)
 
-							ga_storage._trackEvent('Application', 'Muted ' + oStat, op.data.name)
+							ga_storage._trackEvent('Application', 'Sound ' + oStat, op.data.name)
 						break;
 					}
 				})

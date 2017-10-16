@@ -169,7 +169,8 @@ Ext.define('Rambox.view.main.MainController', {
 				,icon: rec.get('type') !== 'custom' ? 'resources/icons/'+rec.get('logo') : ( rec.get('logo') === '' ? 'resources/icons/custom.png' : rec.get('logo'))
 				,src: rec.get('url')
 				,type: rec.get('type')
-				,muted: rec.get('muted')
+				// ,muted: rec.get('muted')
+				,sound: rec.get('sound')
 				,includeInGlobalUnreadCounter: rec.get('includeInGlobalUnreadCounter')
 				,displayTabUnreadCounter: rec.get('displayTabUnreadCounter')
 				,enabled: rec.get('enabled')
@@ -403,7 +404,8 @@ Ext.define('Rambox.view.main.MainController', {
 
 			// Mute sounds
 			// tab.setAudioMuted(btn.pressed ? true : tab.record.get('muted'), true);
-			tab.setAudioMuted(enabled ? true : tab.record.get('muted'), true);
+			// tab.setAudioMuted(enabled ? true : tab.record.get('muted'), true);
+			tab.setAudioMuted(enabled ? true : !tab.record.get('sound'), true);
 
 			// Prevent Notifications
 			// tab.setNotifications(btn.pressed ? false : tab.record.get('notifications'), true);

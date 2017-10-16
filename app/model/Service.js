@@ -34,7 +34,8 @@ Ext.define('Rambox.model.Service', {
 		,type: 'boolean'
 		,defaultValue: true
 	},{
-		 name: 'muted'
+		//  name: 'muted'
+		 name: 'sound'
 		,type: 'boolean'
 		,defaultValue: false
 	},{
