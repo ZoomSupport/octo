@@ -150,6 +150,7 @@ const settings = {
 					header: 'SOUND',
 					width: 100,
 					dataIndex: 'sound',
+					align: 'center',
 
 					// checked: true,
 					id: 'sound-col',
@@ -157,15 +158,16 @@ const settings = {
 					renderer: function (value, meta, record, rowIndex, colIndex) {
 
 						var checked = (record.get('sound') ? "checked" : "")
-						return '<input id="sound_c_'+record.get('id')+'" '+checked+' type="checkbox" class="tools_checkbox" onclick="Ext.getStore(\'Services\').getAt(s.findExact(\'id\',' + record.get('id') + ')).set(\'sound\', this.checked);" />';
+						var disabled = (record.get('notifications') ? "" : "disabled")
+						return '<center><input id="sound_c_'+record.get('id')+'" '+checked+' '+disabled+' type="checkbox" class="tools_checkbox" onclick="var s = Ext.getStore(\'Services\'); s.getAt(s.findExact(\'id\',' + record.get('id') + ')).set(\'sound\', this.checked);" /><label for="sound_c_'+record.get('id')+'"></label></center>';
 
 					},
 
 					menuDisabled: true,
-					sortable: false
-					,hidable: false
-					,draggable: false
-					,resizable: false
+					sortable: false,
+					hidable: false,
+					draggable: false,
+					resizable: false,
 
 				}
 				,{
