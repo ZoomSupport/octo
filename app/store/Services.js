@@ -144,26 +144,6 @@ const settings = {
 					,draggable: false
 					,resizable: false
 
-					// ,disabled: true
-
-					// ,listeners: {
-					// 	change: function(el, newVal, oldVal) {
-					// 		console.log(el, newVal, oldVal)
-					// 	}
-					// }
-
-					,listeners: {
-						checkchange: function(el, idx, check) {
-							console.log(el, idx, check);
-
-							console.log(Ext.getCmp('sound-col').getChildEls())
-
-						},
-
-						// beforecheckchange: function(el, idx, val, rec, o) {
-						// 	console.log(el, idx, val, rec, o)
-						// }
-					}
 				},
 				{
 					// xtype: 'checkcolumn',
@@ -186,24 +166,6 @@ const settings = {
 					,hidable: false
 					,draggable: false
 					,resizable: false
-
-					// ,convert: function(v) {
-					// 	console.log(v)
-					// }
-
-					// ,listeners: {
-					// 	change: function(el, newVal, oldVal) {
-					// 		console.log(el, newVal, oldVal)
-					// 	}
-					// }
-
-					,listeners: {
-						// checkchange: function(el, idx, check) {
-						// 	console.log(el, idx, check);
-
-						// 	document.getElementById('sound_c_'+)
-						// }
-					}
 
 				}
 				,{
