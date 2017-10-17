@@ -633,6 +633,7 @@ body::before {
 
 .tools_checkbox:disabled + label {
 	opacity: 0.4;
+	// background-position: 0 0 !important;
 }
 
 .settings-delete-icon {
