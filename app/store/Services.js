@@ -53,6 +53,25 @@ const settings = {
 		cls: 'b-icon',
 	}
 
+	,bbar: {
+		xtype: 'container',
+		layout: {
+			type: 'hbox',
+			pack: 'end',
+		},
+
+		padding: 10,
+
+		// align: 'right',
+
+		items: [
+			{
+				type: "component",
+				html: '<a class="feedback_url" href="https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform" target="_blank">Leave Feedback</a>',
+			}
+		]
+	}
+
 	,items: [
 		{
 			 xtype: 'grid'
