@@ -57,7 +57,8 @@ Ext.define('Rambox.ux.WebView',{
 			,type: me.record.get('type')
 			,align: me.record.get('align')
 			,notifications: me.record.get('notifications')
-			,muted: me.record.get('muted')
+			// ,muted: me.record.get('muted')
+			,sound: me.record.get('sound')
 			,tabConfig: {
 				listeners: {
 					afterrender : function( btn ) {
@@ -127,12 +128,12 @@ Ext.define('Rambox.ux.WebView',{
 							,handler: me.reloadService
 						}
 						,'-'
-						,{
-							 text: locale['app.webview[3]']
-							,glyph: 'xf121@FontAwesome'
-							,scope: me
-							,handler: me.toggleDevTools
-						}
+						// ,{
+						// 	 text: locale['app.webview[3]']
+						// 	,glyph: 'xf121@FontAwesome'
+						// 	,scope: me
+						// 	,handler: me.toggleDevTools
+						// }
 					]
 				}
 			}
@@ -358,7 +359,8 @@ Ext.define('Rambox.ux.WebView',{
 
 		webview.addEventListener("dom-ready", function(e) {
 			// Mute Webview
-			if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
+			// if ( me.record.get('muted') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
+			if ( !me.record.get('sound') || localStorage.getItem('locked') || JSON.parse(localStorage.getItem('dontDisturb')) ) me.setAudioMuted(true, true);
 
 			var js_inject = '';
 			// Injected code to detect new messages
@@ -609,7 +611,8 @@ Ext.define('Rambox.ux.WebView',{
 		var me = this;
 		var webview = me.down('component').el.dom;
 
-		me.muted = muted;
+		// me.muted = muted;
+		me.sound = !muted;
 
 		if ( !muted && !calledFromDisturb && JSON.parse(localStorage.getItem('dontDisturb')) ) return;
 

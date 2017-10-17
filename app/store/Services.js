@@ -136,23 +136,58 @@ const settings = {
 					width: 150,
 					dataIndex: 'notifications',
 
-					menuDisabled: true,
-					sortable: false
-					,hidable: false
-					,draggable: false
-					,resizable: false
-				},
-				{
-					xtype: 'checkcolumn',
-					header: 'MUTED',
-					width: 100,
-					dataIndex: 'muted',
+					// itemId: 'notifications_{id}',
 
 					menuDisabled: true,
 					sortable: false
 					,hidable: false
 					,draggable: false
 					,resizable: false
+
+					// ,disabled: true
+
+					// ,listeners: {
+					// 	change: function(el, newVal, oldVal) {
+					// 		console.log(el, newVal, oldVal)
+					// 	}
+					// }
+
+					,listeners: {
+						checkchange: function(el, idx, check) {
+							console.log(el, idx, check);
+						}
+					}
+				},
+				{
+					xtype: 'checkcolumn',
+					header: 'SOUND',
+					width: 100,
+					// dataIndex: 'muted',
+					dataIndex: 'sound',
+
+					// checked: true,
+
+					menuDisabled: true,
+					sortable: false
+					,hidable: false
+					,draggable: false
+					,resizable: false
+
+					// ,convert: function(v) {
+					// 	console.log(v)
+					// }
+
+					// ,listeners: {
+					// 	change: function(el, newVal, oldVal) {
+					// 		console.log(el, newVal, oldVal)
+					// 	}
+					// }
+
+					,listeners: {
+						checkchange: function(el, idx, check) {
+							console.log(el, idx, check);
+						}
+					}
 
 				}
 				,{
@@ -186,6 +221,11 @@ const settings = {
 			,listeners: {
 				 edit: 'onRenameService'
 				,rowdblclick: 'showServiceTab'
+
+				// ,change: function(el, newVal, oldVal) {
+				// 	console.log(el, newVal, oldVal)
+				// }
+
 			}
 		}
 	]
@@ -249,7 +289,8 @@ Ext.define('Rambox.store.Services', {
 					,icon: service.get('type') !== 'custom' ? 'resources/icons/'+service.get('logo') : ( service.get('logo') === '' ? 'resources/icons/custom.png' : service.get('logo'))
 					,src: service.get('url')
 					,type: service.get('type')
-					,muted: service.get('muted')
+					// ,muted: service.get('muted')
+					,sound: service.get('sound')
 					,includeInGlobalUnreadCounter: service.get('includeInGlobalUnreadCounter')
 					,displayTabUnreadCounter: service.get('displayTabUnreadCounter')
 					,enabled: service.get('enabled')
@@ -258,6 +299,8 @@ Ext.define('Rambox.store.Services', {
 						service: service,
 					}
 				};
+
+				console.log("Service: ", cfg.title, " Muted: ", cfg.muted)
 
 				service.get('align') === 'left' ? servicesLeft.push(cfg) : servicesRight.push(cfg);
 			});
@@ -368,7 +411,7 @@ Ext.define('Rambox.store.Services', {
 		update: function (store, op, modName, det) {
 
 			// console.log('Service Store Update')
-			// console.log(modName, det)
+			// console.log(op)
 
 			store.suspendEvent('update');
 			if (modName === "edit") {
@@ -377,6 +420,11 @@ Ext.define('Rambox.store.Services', {
 					switch (i) {
 						case "notifications":
 
+							var view = Ext.getCmp('tab_'+op.data.id);
+							
+							// Change notifications of the Tab
+							view.setNotifications(op.data.notifications);
+
 							var oStat = (op.data.notifications) ? "On" : "Off" 
 							console.log(op.data.name, 'Notifications ' + oStat)
 
@@ -384,12 +432,17 @@ Ext.define('Rambox.store.Services', {
 
 						break;
 
-						case "muted":
-						
-							var oStat = (op.data.muted) ? "On" : "Off" 
-							console.log(op.data.name, 'Muted ' + oStat)
+						case "sound":
 
-							ga_storage._trackEvent('Application', 'Muted ' + oStat, op.data.name)
+							var view = Ext.getCmp('tab_'+op.data.id);
+							
+							// Change sound of the Tab
+							view.setAudioMuted(!op.data.sound);
+						
+							var oStat = (op.data.sound) ? "On" : "Off" 
+							console.log(op.data.name, 'Sound ' + oStat)
+
+							ga_storage._trackEvent('Application', 'Sound ' + oStat, op.data.name)
 						break;
 					}
 				})

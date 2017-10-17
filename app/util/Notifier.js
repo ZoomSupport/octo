@@ -47,7 +47,8 @@ Ext.define('Rambox.util.Notifier', {
 			var notification = new Notification(view.record.get('name'), {
 				body: text,
 				icon: view.tab.icon,
-				silent: view.record.get('muted')
+				// silent: view.record.get('muted')
+				silent: !view.record.get('sound')
 			});
 
 			notification.onclick = function() {
