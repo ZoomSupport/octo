@@ -136,7 +136,7 @@ const settings = {
 					width: 150,
 					dataIndex: 'notifications',
 
-					// itemId: 'notifications_{id}',
+					id: 'ntf-col',
 
 					menuDisabled: true,
 					sortable: false
@@ -155,17 +155,32 @@ const settings = {
 					,listeners: {
 						checkchange: function(el, idx, check) {
 							console.log(el, idx, check);
-						}
+
+							console.log(Ext.getCmp('sound-col').getChildEls())
+						},
+
+						// beforecheckchange: function(el, idx, val, rec, o) {
+						// 	console.log(el, idx, val, rec, o)
+						// }
 					}
 				},
 				{
-					xtype: 'checkcolumn',
+					// xtype: 'checkcolumn',
 					header: 'SOUND',
 					width: 100,
-					// dataIndex: 'muted',
 					dataIndex: 'sound',
 
 					// checked: true,
+					id: 'sound-col',
+
+					renderer: function (value, meta, record, rowIndex, colIndex) {
+						// var s = Ext.getStore('Services');
+						console.log( value, record.get('sound') )
+
+						var checked = (record.get('sound') ? "checked" : "")
+
+						return '<input '+checked+' type="checkbox" onclick="var s = Ext.getStore(\'Services\'); var r = s.getAt(s.findExact(\'id\',' + record.get('id') + ')); r.set(\'sound\', this.checked);" />';
+					},
 
 					menuDisabled: true,
 					sortable: false
@@ -410,7 +425,7 @@ Ext.define('Rambox.store.Services', {
 
 		update: function (store, op, modName, det) {
 
-			// console.log('Service Store Update')
+			console.log('Service Store Update')
 			// console.log(op)
 
 			store.suspendEvent('update');
