@@ -157,6 +157,7 @@ const settings = {
 							console.log(el, idx, check);
 
 							console.log(Ext.getCmp('sound-col').getChildEls())
+
 						},
 
 						// beforecheckchange: function(el, idx, val, rec, o) {
@@ -174,12 +175,10 @@ const settings = {
 					id: 'sound-col',
 
 					renderer: function (value, meta, record, rowIndex, colIndex) {
-						// var s = Ext.getStore('Services');
-						console.log( value, record.get('sound') )
 
 						var checked = (record.get('sound') ? "checked" : "")
+						return '<input id="sound_c_'+record.get('id')+'" '+checked+' type="checkbox" class="tools_checkbox" onclick="Ext.getStore(\'Services\').getAt(s.findExact(\'id\',' + record.get('id') + ')).set(\'sound\', this.checked);" />';
 
-						return '<input '+checked+' type="checkbox" onclick="var s = Ext.getStore(\'Services\'); var r = s.getAt(s.findExact(\'id\',' + record.get('id') + ')); r.set(\'sound\', this.checked);" />';
 					},
 
 					menuDisabled: true,
@@ -199,9 +198,11 @@ const settings = {
 					// }
 
 					,listeners: {
-						checkchange: function(el, idx, check) {
-							console.log(el, idx, check);
-						}
+						// checkchange: function(el, idx, check) {
+						// 	console.log(el, idx, check);
+
+						// 	document.getElementById('sound_c_'+)
+						// }
 					}
 
 				}
@@ -440,6 +441,8 @@ Ext.define('Rambox.store.Services', {
 							// Change notifications of the Tab
 							view.setNotifications(op.data.notifications);
 
+							document.getElementById('sound_c_'+op.data.id).disabled = !op.data.notifications
+
 							var oStat = (op.data.notifications) ? "On" : "Off" 
 							console.log(op.data.name, 'Notifications ' + oStat)
 
@@ -453,6 +456,7 @@ Ext.define('Rambox.store.Services', {
 							
 							// Change sound of the Tab
 							view.setAudioMuted(!op.data.sound);
+
 						
 							var oStat = (op.data.sound) ? "On" : "Off" 
 							console.log(op.data.name, 'Sound ' + oStat)
