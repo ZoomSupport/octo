@@ -37,7 +37,7 @@ Ext.define('Rambox.view.popup.PopupController', {
         this.getView().getComponent('buy-popup').setHidden(true)
         this.getView().getComponent('buy-spinner').setHidden(false)
 
-        this.requestTimeout = setInterval(this.requestLoop, this.timeoutTime)
+        this.requestTimeout = setInterval(this.requestLoop.bind(this), this.timeoutTime)
     },
 
     patchParams: function(url) {
@@ -85,25 +85,25 @@ Ext.define('Rambox.view.popup.PopupController', {
         textField.disable()
 
         // Validate License
-            Rambox.util.License.activateByKey(code, 
-            // Handle Success
-            function () {
-                localStorage.setItem('activated', true)
-                me.upgradeSuccess("manual-activation")
-            },
+        Rambox.util.License.activateByKey(code, 
+        // Handle Success
+        function () {
+            localStorage.setItem('activated', true)
+            me.upgradeSuccess("manual-activation")
+        },
 
-            // Handle Error
-            function (code, msg) {
-                textField.getTrigger('wait').hide()
-                textField.getTrigger('invalid').show()
+        // Handle Error
+        function (code, msg) {
+            textField.getTrigger('wait').hide()
+            textField.getTrigger('invalid').show()
 
-                c.enable()
-                textField.enable()
+            c.enable()
+            textField.enable()
 
-                textField.focus()
+            textField.focus()
 
-                errField.setHtml("<h2 class='popup-text popup-spinner-subtitle title-err' style='margin-top: 0'>"+msg+"</h2>")
-            })
+            errField.setHtml("<h2 class='popup-text popup-spinner-subtitle title-err' style='margin-top: 0'>"+msg+"</h2>")
+        })
 
         console.log(textField)
     },
@@ -119,11 +119,13 @@ Ext.define('Rambox.view.popup.PopupController', {
     requestLoop: function () {
         console.log("LOOPING REQUEST")
 
-        Rambox.util.License.checkLicense(this.requestSucess, this.requestError)
+        console.log(this.requestSucess)
+
+        Rambox.util.License.checkLicense(this.requestSucess.bind(this), this.requestError)
     },
 
     requestSucess: function (r) {
-        console.log("[EVENT] License Server Request Success")
+        console.log("[EVENT] License Server Request Success", r)
         if (r.statusCode == 0 && r.hasLicense) {
             this.upgradeSuccess("buy-spinner")
         }
