@@ -1,20 +1,18 @@
 var auth0Cfg = {
-	 clientID: ''
-	,domain: ''
+	clientID: ''
+   ,domain: ''
 };
 
-// License Server URL and Secret
 var licenseServer = {
-	url: '',
-	secret: '',
+   url: '', // License server url
+   secret: '', // License server secret
 }
 
-// URL For "Buy Now" popup window
 var popupConfig = {
-	url: ''
+   url: '' // URL for external Buy Now popup
 }
 
-// Keys for analytics
 var analyticsConfig = {
-	google: ""
+   google: '', // Google Analytics Tracking Code
+   facebook: '', // Facebook App ID
 }
