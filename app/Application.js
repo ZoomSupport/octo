@@ -365,6 +365,8 @@ Ext.define('Rambox.Application', {
 
 	,checkUpdate: function(silence) {
 		console.info('Checking for updates...');
+		if (!updateServer.url) return;
+
 		Ext.Ajax.request({
 			 url: updateServer.url
 			,method: 'GET'
