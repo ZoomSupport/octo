@@ -63,12 +63,12 @@ module.exports = function(config) {
 				shell.openExternal(`https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform`);
 			}
 		},
-		{
-			label: `&`+locale['menu.help[2]'],
-			click() {
-				shell.openExternal('https://gitter.im/saenzramiro/rambox');
-			}
-		},
+		// {
+		// 	label: `&`+locale['menu.help[2]'],
+		// 	click() {
+		// 		shell.openExternal('https://gitter.im/saenzramiro/rambox');
+		// 	}
+		// },
 		{
 			label: `&Tools`,
 			submenu: [
@@ -92,15 +92,15 @@ module.exports = function(config) {
 				}
 			]
 		},
-		{
-			type: 'separator'
-		},
-		{
-			label: `&`+locale['menu.help[3]'],
-			click() {
-				shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
-			}
-		}
+		// {
+		// 	type: 'separator'
+		// },
+		// {
+		// 	label: `&`+locale['menu.help[3]'],
+		// 	click() {
+		// 		shell.openExternal('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WU75QWS7LH2CA');
+		// 	}
+		// }
 	];
 
 	let tpl = [
