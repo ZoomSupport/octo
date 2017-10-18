@@ -71,73 +71,73 @@ Ext.define('Rambox.ux.WebView',{
 				}
 				,clickEvent: ''
 				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
-				,menu:  {
-					 plain: true
-					,padding: "5"
-					// ,margin: "0 10"
-					,items: [
-						{
-							 xtype: 'toolbar'
-							,items: [
-								{
-									 xtype: 'segmentedbutton'
-									,allowToggle: false
-									,flex: 1
-									,items: [
-										{
-											 text: 'Back'
-											,glyph: 'xf053@FontAwesome'
-											,flex: 1
-											,scope: me
-											,handler: me.goBack
-										}
-										,{
-											 text: 'Forward'
-											,glyph: 'xf054@FontAwesome'
-											,iconAlign: 'right'
-											,flex: 1
-											,scope: me
-											,handler: me.goForward
-										}
-									]
-								}
-							]
-						}
-						,'-'
-						,{
-							 text: 'Zoom In'
-							,glyph: 'xf00e@FontAwesome'
-							,scope: me
-							,handler: me.zoomIn
-						}
-						,{
-							 text: 'Zoom Out'
-							,glyph: 'xf010@FontAwesome'
-							,scope: me
-							,handler: me.zoomOut
-						}
-						,{
-							 text: 'Reset Zoom'
-							,glyph: 'xf002@FontAwesome'
-							,scope: me
-							,handler: me.resetZoom
-						}
-						,'-'
-						,{
-							 text: locale['app.webview[0]']
-							,glyph: 'xf021@FontAwesome'
-							,scope: me
-							,handler: me.reloadService
-						}
-						// ,'-'
-						// ,{
-						// 	 text: locale['app.webview[3]']
-						// 	,glyph: 'xf121@FontAwesome'
-						// 	,scope: me
-						// 	,handler: me.toggleDevTools
-						// }
-					]
-				}
+				// ,menu:  {
+				// 	 plain: true
+				// 	,padding: "5"
+				// 	// ,margin: "0 10"
+				// 	,items: [
+				// 		{
+				// 			 xtype: 'toolbar'
+				// 			,items: [
+				// 				{
+				// 					 xtype: 'segmentedbutton'
+				// 					,allowToggle: false
+				// 					,flex: 1
+				// 					,items: [
+				// 						{
+				// 							 text: 'Back'
+				// 							,glyph: 'xf053@FontAwesome'
+				// 							,flex: 1
+				// 							,scope: me
+				// 							,handler: me.goBack
+				// 						}
+				// 						,{
+				// 							 text: 'Forward'
+				// 							,glyph: 'xf054@FontAwesome'
+				// 							,iconAlign: 'right'
+				// 							,flex: 1
+				// 							,scope: me
+				// 							,handler: me.goForward
+				// 						}
+				// 					]
+				// 				}
+				// 			]
+				// 		}
+				// 		,'-'
+				// 		,{
+				// 			 text: 'Zoom In'
+				// 			,glyph: 'xf00e@FontAwesome'
+				// 			,scope: me
+				// 			,handler: me.zoomIn
+				// 		}
+				// 		,{
+				// 			 text: 'Zoom Out'
+				// 			,glyph: 'xf010@FontAwesome'
+				// 			,scope: me
+				// 			,handler: me.zoomOut
+				// 		}
+				// 		,{
+				// 			 text: 'Reset Zoom'
+				// 			,glyph: 'xf002@FontAwesome'
+				// 			,scope: me
+				// 			,handler: me.resetZoom
+				// 		}
+				// 		,'-'
+				// 		,{
+				// 			 text: locale['app.webview[0]']
+				// 			,glyph: 'xf021@FontAwesome'
+				// 			,scope: me
+				// 			,handler: me.reloadService
+				// 		}
+				// 		// ,'-'
+				// 		// ,{
+				// 		// 	 text: locale['app.webview[3]']
+				// 		// 	,glyph: 'xf121@FontAwesome'
+				// 		// 	,scope: me
+				// 		// 	,handler: me.toggleDevTools
+				// 		// }
+				// 	]
+				// }
 			}
 			,listeners: {
 				 afterrender: me.onAfterRender
