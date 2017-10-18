@@ -36,7 +36,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,js_unread: 'function checkUnread(){var a=document.getElementsByClassName("infinite-list-item"),b=0;for(i=0;i<a.length;i++)if(!(a[i].getElementsByClassName("icon-muted").length>0||0===a[i].getElementsByClassName("unread-count").length)){var c=parseInt(a[i].getElementsByClassName("unread-count")[0].innerHTML.trim());b+=isNaN(c)?0:c}updateBadge(b)}function updateBadge(count) { if (count && count >= 1) { rambox.setUnreadCount(count); } else { rambox.clearUnreadCount(); } }setInterval(checkUnread,1e3);'
 			,dont_update_unread_from_title: true
 			
-			,rank: 897.81
+			,rank: 41300 //897.81
 		},
 		{
 			 id: 'slack'
@@ -47,7 +47,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'tool' //'messaging'
 			,js_unread: 'function checkUnread(){var e=$(".p-channel_sidebar__channel--unread").length,a=0;$(".p-channel_sidebar__badge").each(function(){a+=isNaN(parseInt($(this).html()))?0:parseInt($(this).html())}),updateBadge(e,a)}function updateBadge(e,a){var n=a>0?"("+a+") ":e>0?"(•) ":"";document.title=n+originalTitle}var originalTitle=document.title;setInterval(checkUnread,3e3);'
 
-			,rank: 125.07
+			,rank: 1205.07
 		},
 		{
 			 id: 'noysi'
@@ -81,7 +81,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586'
 			,note: 'Text and Audio calls are supported only. <a href="https://github.com/saenzramiro/rambox/wiki/Skype" target="_blank">Read more...</a>'
 
-			,rank: 89.77
+			,rank: 20300//89.77
 		},
 		{
 			 id: 'hangouts'
@@ -129,7 +129,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,url: 'https://web.wechat.com/'
 			,type: 'messaging'
 
-			,rank: 18.05 //6.49
+			,rank: 21300 //18.05 //6.49
 		},
 		{
 			 id: 'gmail'
@@ -957,7 +957,7 @@ Ext.define('Rambox.store.ServicesList', {
 			,type: 'messaging'
 			,js_unread: 'function checkUnread(){updateBadge(parseInt(document.getElementById("l_msg").innerText.replace(/\D+/g,"")))}function updateBadge(e){e>=1?document.title="("+e+") "+originalTitle:document.title=originalTitle}var originalTitle=document.title;setInterval(checkUnread,3000);'
 
-			,rank: 2890
+			,rank: 12.10 //2890
 		},
 		{
 			 id: 'mastodon'

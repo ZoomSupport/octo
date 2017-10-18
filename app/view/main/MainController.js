@@ -641,7 +641,7 @@ Ext.define('Rambox.view.main.MainController', {
 					let txt = (dontDisturb) ? "Don't Disturb: On" : "Don't Disturb: Off"
 
                     panel.getTabBar().getComponent('notTab').setIcon(dIcon)
-					Ext.getCmp('notificationsTab').setTitle(txt)
+					// Ext.getCmp('notificationsTab').setTitle(txt)
 
 					// Ext.getCmp('notificationsTab').setStyle({
 					// 	opacity: (dontDisturb) ? 1 : 0.8
