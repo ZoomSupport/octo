@@ -121,6 +121,9 @@
             "path": "env.js"
         },
         {
+            "path": "resources/social.js"
+        },
+        {
             "path": "app.js",
             "bundle": true
         }

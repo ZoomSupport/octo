@@ -32,7 +32,6 @@ const notifications = {
 	},
 }
 
-
 const settings = {
 	icon: (localStorage.getItem('appealingSettings') == 'true') ? 'resources/tools/settings_2.png' : 'resources/tools/settings.png'
 	
@@ -88,7 +87,9 @@ const settings = {
 				{
 					xtype: 'container',
 					layout: {
-						type: 'vbox'
+						type: 'vbox',
+
+						align: 'right',
 					},
 
 					cls: "social-container",
@@ -96,29 +97,28 @@ const settings = {
 					items: [
 						{
 							type: "component",
-							html: '<h3 class="sel-sub-title" style="margin-left: 30px; margin-top: 0">Share app:</h3>',
+							html: '<h3 class="sel-sub-title" style="margin-left: 0px; margin-top: 0">Share app:</h3>',
 						},
 
 						{
 							xtype: 'container',
 							layout: {
-								type: 'hbox'
+								type: 'hbox',
+								pack: 'end',
 							},
+							
+							padding: "0 5 0 0",
 
 							cls: "social-icon-container",
 
 							items: [
 								{
 									type: "component",
-									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/facebook.png"></a>',
+									html: '<a target="_blank" href="'+socialEncoded.facebook+'"><img class="social-icon" src="resources/tools/facebook.png"></a>',
 								},
 								{
 									type: "component",
-									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/twitter.png"></a>',
-								},
-								{
-									type: "component",
-									html: '<a target="_blank" href="https://zeoalliance.com/"><img class="social-icon" src="resources/tools/google.png"></a>',
+									html: '<a target="_blank" href="'+socialEncoded.twitter+'"><img class="social-icon" src="resources/tools/twitter.png"></a>',
 								},
 							]
 						}
