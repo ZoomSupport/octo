@@ -22,27 +22,27 @@ module.exports = function(config) {
 		{
 			label: `&`+"Octo",//locale['menu.help[0]'],
 			click() {
-				shell.openExternal('http://rambox.pro');
+				shell.openExternal('https://octo.bestmacsoft.com/landings/01');
 			}
 		},
 		{
 			label: `&Facebook`,
 			click() {
-				shell.openExternal('https://www.facebook.com/ramboxapp');
+				shell.openExternal('https://www.facebook.com/octomessenger/');
 			}
 		},
 		{
 			label: `&Twitter`,
 			click() {
-				shell.openExternal('https://www.twitter.com/ramboxapp');
+				shell.openExternal('https://twitter.com/Octo_messenger');
 			}
 		},
-		{
-			label: `&GitHub`,
-			click() {
-				shell.openExternal('https://www.github.com/saenzramiro/rambox');
-			}
-		},
+		// {
+		// 	label: `&GitHub`,
+		// 	click() {
+		// 		shell.openExternal('');
+		// 	}
+		// },
 		{
 			type: 'separator'
 		},
@@ -60,7 +60,7 @@ module.exports = function(config) {
 	> Electron ${process.versions.electron}
 	> ${process.platform} ${process.arch} ${os.release()}`;
 
-				shell.openExternal(`https://github.com/saenzramiro/rambox/issues/new?body=${encodeURIComponent(body)}`);
+				shell.openExternal(`https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform`);
 			}
 		},
 		{
