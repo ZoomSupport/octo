@@ -16,3 +16,7 @@ var analyticsConfig = {
    google: '', // Google Analytics Tracking Code
    facebook: '', // Facebook App ID
 }
+
+var updateServer = {
+	url: ''
+}
