@@ -28,7 +28,7 @@ Ext.define('Rambox.Application', {
 
 	,launch: function () {
 		// Set Google Analytics events
-		ga_storage._setAccount('UA-108248383-1');
+		ga_storage._setAccount(analyticsConfig.google);
 		// ga_storage._trackPageview('/index.html', 'main');
 
 		// ga_storage._trackEvent('Versions', require('electron').remote.app.getVersion());

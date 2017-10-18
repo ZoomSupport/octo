@@ -121,6 +121,9 @@
             "path": "env.js"
         },
         {
+            "path": "resources/js/facebook.js"
+        },
+        {
             "path": "resources/social.js"
         },
         {

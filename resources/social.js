@@ -2,11 +2,13 @@ var social = {
 
     facebook: {
 
-        url: "https://www.facebook.com/sharer/sharer.php",
+        url: "https://www.facebook.com/dialog/share",
 
         params: {
+            app_id: '',
             u: "https://octo.com",
             quote: "Hello GB",
+            redirect_uri: "",
         }
 
     },
