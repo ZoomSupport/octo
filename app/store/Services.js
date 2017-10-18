@@ -19,7 +19,7 @@ const upgrade = {
 const notifications = {
 	icon: 'resources/tools/notifications.png',
 
-	title: 'Don\'t Disturb',
+	title: 'Don\'t Disturb: Off',
 	
 	id: 'notificationsTab',
 	closable: false,

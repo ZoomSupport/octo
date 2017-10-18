@@ -638,7 +638,14 @@ Ext.define('Rambox.view.main.MainController', {
                     //     opacity: (dontDisturb == 'true') ? 0.2 : 1
 					// })
 					let dIcon = (dontDisturb) ? "resources/tools/notifications_off.png" : "resources/tools/notifications.png"
+					let txt = (dontDisturb) ? "Don't Disturb: On" : "Don't Disturb: Off"
+
                     panel.getTabBar().getComponent('notTab').setIcon(dIcon)
+					Ext.getCmp('notificationsTab').setTitle(txt)
+
+					// Ext.getCmp('notificationsTab').setStyle({
+					// 	opacity: (dontDisturb) ? 1 : 0.8
+					// })
 
                     return false
                     break;
