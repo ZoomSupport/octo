@@ -633,7 +633,7 @@ body::before {
 
 .tools_checkbox:disabled + label {
 	opacity: 0.4;
-	// background-position: 0 0 !important;
+	background-position: 0 0 !important;
 }
 
 .settings-delete-icon {
@@ -885,4 +885,35 @@ body::before {
 	font-size: 12pt;
 
 	text-decoration: none;
+}
+
+
+// Side Menu Styles
+.x-menu {
+	background-color: rgba(#fff, 0.95) !important;
+	border-width: 0 !important;
+
+	border-radius: 5px;
+	// backdrop-filter: blur(5px);
+}
+
+.x-menu .x-menu-body {
+	background: none !important;
+}
+
+.x-menu .x-toolbar {
+	background: none !important;
+}
+
+.x-menu-item-default.x-menu-item-separator {
+	background: none !important;
+}
+
+.x-menu-item-icon-default.x-menu-item-glyph {
+	color: #3a3a3a !important;
+	opacity: 1.0 !important;
+}
+
+.x-menu-item-text-default {
+	color: #3a3a3a !important;
 }

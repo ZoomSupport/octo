@@ -73,6 +73,8 @@ Ext.define('Rambox.ux.WebView',{
 				,style: !me.record.get('enabled') ? '-webkit-filter: grayscale(1)' : ''
 				,menu:  {
 					 plain: true
+					,padding: "5"
+					// ,margin: "0 10"
 					,items: [
 						{
 							 xtype: 'toolbar'
@@ -127,7 +129,7 @@ Ext.define('Rambox.ux.WebView',{
 							,scope: me
 							,handler: me.reloadService
 						}
-						,'-'
+						// ,'-'
 						// ,{
 						// 	 text: locale['app.webview[3]']
 						// 	,glyph: 'xf121@FontAwesome'
