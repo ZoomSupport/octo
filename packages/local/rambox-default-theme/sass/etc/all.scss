@@ -917,3 +917,9 @@ body::before {
 .x-menu-item-text-default {
 	color: #3a3a3a !important;
 }
+
+
+.x-toolbar-newversion-docked-top {
+	position: absolute !important;
+	z-index: 999 !important;
+}
