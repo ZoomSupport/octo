@@ -163,6 +163,12 @@ const settings = {
 					,draggable: false
 					,resizable: false
 
+					// ,listeners: {
+					// 	checkchange: function() {
+
+					// 	}
+					// }
+
 				},
 				{
 					// xtype: 'checkcolumn',
