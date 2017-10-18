@@ -423,6 +423,7 @@ Ext.define('Rambox.store.Services', {
 							
 							// Change notifications of the Tab
 							view.setNotifications(op.data.notifications);
+							view.setAudioMuted(!op.data.notifications);
 
 							document.getElementById('sound_c_'+op.data.id).disabled = !op.data.notifications
 
