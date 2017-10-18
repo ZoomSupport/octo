@@ -18,7 +18,7 @@ Ext.define('Rambox.view.popup.PopupController', {
 
     requestTimeout: null,
     timeoutTime: 5000,
-    externalURL: 'https://zeoalliance.com',
+    // externalURL: 'https://zeoalliance.com',
 
     afterRenderMain: function () {
         var win = this.getView();
@@ -27,17 +27,34 @@ Ext.define('Rambox.view.popup.PopupController', {
             Ext.cq1('app-main').setActiveTab(win.oldTab)
     },
 
-    doUpgrade: function (btn) {
+    doUpgrade: function (url) {
         ga_storage._trackEvent('Application', 'Upgrade to PRO Click')
         FB.AppEvents.logEvent('Upgrade to PRO Click');
 
-        // ipc.send("openExternalLink", this.externalURL)
+        ipc.send("openExternalLink", this.patchParams(url))
 
         // Enable Spinner view
         this.getView().getComponent('buy-popup').setHidden(true)
         this.getView().getComponent('buy-spinner').setHidden(false)
 
         this.requestTimeout = setInterval(this.requestLoop, this.timeoutTime)
+    },
+
+    patchParams: function(url) {
+        var u = url.repeat(1) + "?"
+
+        const info = ipc.sendSync('getSysInfo') 
+        const prm = {
+            "x-macaddress": info.macAddress,
+            "x-serial": info.serial,
+            "x-prepay": "bn_octo_def"
+        }
+
+        for (var k in prm) {
+            u += `${k}=${encodeURIComponent(prm[k])}&`
+        }
+
+        return u
     },
 
     cancelActivation: function () {
@@ -172,12 +189,14 @@ Ext.define('Rambox.view.popup.PopupController', {
         // Intersect new window event
         webview.addEventListener('new-window', function (e) {
             let url = e.url
-            let param = url.split('#')[1]
+            let param = url.split('#')[1].split('=')
 
-            switch (param) {
+            console.log(param)
+
+            switch (param[0]) {
                 case 'buy':
                     console.log(this)
-                    me.doUpgrade()
+                    me.doUpgrade(param[1])
                 break;
 
                 case 'manual':
