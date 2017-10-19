@@ -6,7 +6,7 @@ var social = {
 
         params: {
             app_id: analyticsConfig.facebook,
-            href: "https://octo.bestmacsoft.com/landings/01",
+            href: "https://octo.bestmacsoft.com",
             redirect_uri: "",
             display: "popup",
             mobile_iframe: "false",
@@ -21,7 +21,7 @@ var social = {
         url: "https://twitter.com/intent/tweet",
 
         params: {
-            url: "https://octo.bestmacsoft.com/landings/01",
+            url: "https://octo.bestmacsoft.com",
             via: "Ocoto_messenger",
 
             text: "<3 Octo. Simply the best",

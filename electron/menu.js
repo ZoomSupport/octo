@@ -22,7 +22,7 @@ module.exports = function(config) {
 		{
 			label: `&`+"Octo",//locale['menu.help[0]'],
 			click() {
-				shell.openExternal('https://octo.bestmacsoft.com/landings/01');
+				shell.openExternal('https://octo.bestmacsoft.com');
 			}
 		},
 		{
@@ -221,14 +221,14 @@ module.exports = function(config) {
 						sendAction('showPreferences')
 					}
 				},
-				{
-					label: locale['menu.help[5]'],
-					click(item, win) {
-						const webContents = win.webContents;
-						const send = webContents.send.bind(win.webContents);
-						send('autoUpdater:check-update');
-					}
-				},
+				// {
+				// 	label: locale['menu.help[5]'],
+				// 	click(item, win) {
+				// 		const webContents = win.webContents;
+				// 		const send = webContents.send.bind(win.webContents);
+				// 		send('autoUpdater:check-update');
+				// 	}
+				// },
 				{
 					// label: locale['menu.help[6]'],
 					label: "About Octo",

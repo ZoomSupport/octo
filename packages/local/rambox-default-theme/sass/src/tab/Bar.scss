@@ -96,6 +96,11 @@
 	opacity: 1;
 }
 
+.x-tab.active.x-tab-default.b-icon .x-tab-icon-el, 
+.x-tab.active.x-tab-default.b-icon .x-tab-inner-default {
+	opacity: 1;
+}
+
 .x-tab.x-tab-active.x-tab-default {
 	border: none;
 	background-color: rgba(0,0,0,0.2);

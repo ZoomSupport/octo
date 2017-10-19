@@ -642,6 +642,11 @@ Ext.define('Rambox.view.main.MainController', {
 
                     panel.getTabBar().getComponent('notTab').setIcon(dIcon)
 					// Ext.getCmp('notificationsTab').setTitle(txt)
+					if (dontDisturb) {
+						Ext.getCmp('notTab').addCls('active')
+					} else {
+						Ext.getCmp('notTab').removeCls('active')
+					}
 
 					// Ext.getCmp('notificationsTab').setStyle({
 					// 	opacity: (dontDisturb) ? 1 : 0.8
