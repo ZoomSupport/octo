@@ -52,24 +52,24 @@ const settings = {
 		cls: 'b-icon',
 	}
 
-	,bbar: {
-		xtype: 'container',
-		layout: {
-			type: 'hbox',
-			pack: 'end',
-		},
+	// ,bbar: {
+	// 	xtype: 'container',
+	// 	layout: {
+	// 		type: 'hbox',
+	// 		pack: 'end',
+	// 	},
 
-		padding: 10,
+	// 	padding: 10,
 
-		// align: 'right',
+	// 	// align: 'right',
 
-		items: [
-			{
-				type: "component",
-				html: '<a class="feedback_url" href="https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform" target="_blank">Leave Feedback</a>',
-			}
-		]
-	}
+	// 	items: [
+	// 		{
+	// 			type: "component",
+	// 			html: '<a class="feedback_url" href="https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform" target="_blank">Leave Feedback</a>',
+	// 		}
+	// 	]
+	// }
 
 	,items: [
 		{
@@ -80,16 +80,17 @@ const settings = {
 			,margin: '0'
 			,flex: 1
 
-			,header: { padding: "30 30" }
+			,header: { padding: "23 30" }
 
 			,tools: [
 				
 				{
 					xtype: 'container',
 					layout: {
-						type: 'vbox',
-
+						// type: 'vbox',
+						type: 'hbox',
 						align: 'right',
+						pack: 'end',
 					},
 
 					cls: "social-container",
@@ -97,31 +98,42 @@ const settings = {
 					items: [
 						{
 							type: "component",
-							html: '<h3 class="sel-sub-title" style="margin-left: 0px; margin-top: 0">Share app:</h3>',
+							html: '<h3 class="sel-sub-title" style="margin-left: 0px; margin-top: 0">Leave Feedback:</h3>',
 						},
 
 						{
-							xtype: 'container',
-							layout: {
-								type: 'hbox',
-								pack: 'end',
-							},
+							type: "component",
+							html: '<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdVjkQsxwIXkffYXvlBfzTkhhyp5lgAL9vra_AfapwHl1P6bw/viewform"><img class="social-icon" src="resources/tools/feedback.png"></a>',
+						},
+
+						{
+							type: "component",
+							html: '<h3 class="sel-sub-title" style="margin-left: 50px; margin-top: 0">Share app:</h3>',
+						},
+						{
+							type: "component",
+							html: '<a target="_blank" href="'+socialEncoded.facebook+'"><img class="social-icon" src="resources/tools/facebook.png"></a>',
+						},
+						{
+							type: "component",
+							html: '<a target="_blank" href="'+socialEncoded.twitter+'"><img class="social-icon" src="resources/tools/twitter.png"></a>',
+						},
+
+						// {
+						// 	xtype: 'container',
+						// 	layout: {
+						// 		type: 'hbox',
+						// 		pack: 'end',
+						// 	},
 							
-							padding: "0 5 0 0",
+						// 	// padding: "0 5 0 0",
 
-							cls: "social-icon-container",
+						// 	cls: "social-icon-container",
 
-							items: [
-								{
-									type: "component",
-									html: '<a target="_blank" href="'+socialEncoded.facebook+'"><img class="social-icon" src="resources/tools/facebook.png"></a>',
-								},
-								{
-									type: "component",
-									html: '<a target="_blank" href="'+socialEncoded.twitter+'"><img class="social-icon" src="resources/tools/twitter.png"></a>',
-								},
-							]
-						}
+						// 	items: [
+								
+						// 	]
+						// }
 					]
 				}
 			
