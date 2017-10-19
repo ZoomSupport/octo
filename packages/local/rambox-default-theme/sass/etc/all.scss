@@ -697,6 +697,7 @@ body::before {
 // }
 .octo-button:hover {
 	cursor: pointer;
+	filter: unquote("saturate(2)");
 }
 
 // .welcome-panel::after {
