@@ -1,7 +1,7 @@
 {
 	"name": "Octo",
 	"productName": "Octo",
-	"version": "1.0.1",
+	"version": "1.0.3",
 	"description": "Octo",
 	"main": "electron/main.js",
 	"private": true,

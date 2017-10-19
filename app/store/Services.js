@@ -315,8 +315,15 @@ Ext.define('Rambox.store.Services', {
 
 			if (store.data.length > 1) {
 
+				var dontDisturb = (localStorage.getItem('dontDisturb') == 'true');
+				let dIcon = (dontDisturb) ? "resources/tools/notifications_off.png" : "resources/tools/notifications.png"
+
+				notifications.icon = dIcon
+
 				Ext.cq1('app-main').add(notifications)
 				Ext.cq1('app-main').add(settings)
+
+				
 
 				if (
 					!(localStorage.getItem('activated') == 'true') && 
