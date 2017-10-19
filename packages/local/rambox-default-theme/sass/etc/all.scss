@@ -924,3 +924,21 @@ body::before {
 	position: absolute !important;
 	z-index: 999 !important;
 }
+
+.update-download-btn {
+	background: #fff !important;
+	border: none !important;
+}
+
+.update-download-btn .x-btn-inner-default-toolbar-small {
+	font-weight: 500;
+
+	color: $highlight-color !important;
+	// text-decoration: underline;
+
+    text-transform: uppercase;
+}
+
+.new-version-popup .x-btn-icon-el-default-toolbar-small.x-btn-glyph {
+	color: #fff !important;
+}

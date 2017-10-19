@@ -374,6 +374,8 @@ Ext.define('Rambox.Application', {
 				var json = Ext.decode(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
 
+				json.version = "2.0.5"
+
 				console.log(json, appVersion)
 
 				if ( appVersion.isLessThan(json.version) ) {
@@ -383,17 +385,20 @@ Ext.define('Rambox.Application', {
 						,dock: 'top'
 						,ui: 'newversion'
 						,cls: 'new-version-popup'
+						,padding: "10 0"
 						,items: [
 							'->'
 							,{
 								 xtype: 'label'
-								,html: '<b>'+locale['app.update[0]']+'</b> ('+json.version+')' + ( process.platform === 'win32' ? ' Is downloading in the background and you will notify when is ready to install it.' : '' )
+								,html: '<b>'+locale['app.update[0]']+'</b>'
 							}
 							,{
 								 xtype: 'button'
 								,text: locale['app.update[1]']
+								,cls: 'update-download-btn'
 								,href: process.platform === 'darwin' ? 'https://getrambox.herokuapp.com/download/'+process.platform+'_'+process.arch : 'https://github.com/saenzramiro/rambox/releases/latest'
-								,hidden: process.platform === 'win32'
+								,padding: "5"
+								,margin: "0 0 0 20"
 							}
 							// ,{
 							// 	 xtype: 'button'

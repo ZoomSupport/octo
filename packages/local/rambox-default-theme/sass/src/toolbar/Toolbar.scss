@@ -8,11 +8,11 @@
 
 @include extjs-toolbar-ui(
 	$ui: 'newversion',
-	$background-color: #31B96E
+	$background-color: $highlight-color //#31B96E
 );
 
 .x-toolbar-newversion {
 	label {
-		color: #1B1112;
+		color: #fff;
 	}
 }
