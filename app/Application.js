@@ -374,7 +374,7 @@ Ext.define('Rambox.Application', {
 				var json = Ext.decode(response.responseText);
 				var appVersion = new Ext.Version(require('electron').remote.app.getVersion());
 
-				json.version = "2.0.5"
+				// json.version = "2.0.5"
 
 				console.log(json, appVersion)
 
