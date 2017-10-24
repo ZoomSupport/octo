@@ -65,8 +65,8 @@ if [ -f "$MK_USER_INSTALLATION_INFO_FILE" ]; then # file exists and it is a regu
 	local MK_INSTALLATION_INFO_BASE64
 	MK_INSTALLATION_INFO_BASE64=$(mktemp -t SP) # temp file for base64-decoded INSTALLATION_INFO
 	openssl base64 -A -d -in ${MK_USER_INSTALLATION_INFO_FILE} > $MK_INSTALLATION_INFO_BASE64
-	for ((i=0; i<=1023; i++)) {
-		CHUNK=$(cat ${MK_INSTALLATION_INFO_BASE64} | dd bs=128 count=1 skip=$i 2>/dev/null | openssl rsautl -verify -pubin -inkey $MK_INSTALLATION_INFO_PUBLIC_KEY_FILE 2>/dev/null)
+	for ((i=0; i<=4096; i++)) {
+		CHUNK=$(cat ${MK_INSTALLATION_INFO_BASE64} | dd bs=512 count=1 skip=$i 2>/dev/null | openssl rsautl -verify -pubin -inkey $MK_INSTALLATION_INFO_PUBLIC_KEY_FILE 2>/dev/null)
 		if [ $? -ne 0 ]; then
 			break
 		fi

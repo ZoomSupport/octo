@@ -47,7 +47,8 @@ Ext.define('Rambox.view.popup.PopupController', {
         const prm = {
             "x-macaddress": info.macAddress,
             "x-serial": info.serial,
-            "x-prepay": "bn_octo_def"
+            "x-prepay": "bn_octo_def",
+            "x-affid": localStorage.getItem('affid'),
         }
 
         for (var k in prm) {

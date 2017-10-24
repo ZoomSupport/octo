@@ -21,7 +21,7 @@ const si = require('systeminformation')
 
 const ETimer = require('./timer')
 
-// const electronVibrancy = require('electron-vibrancy')
+
 
 // Initial Config
 const config = new Config({
@@ -400,6 +400,7 @@ function createWindow () {
 		mainWindow = null;
 	});
 	mainWindow.once('focus', () => mainWindow.flashFrame(false));
+
 }
 
 let mainMasterPasswordWindow;
@@ -437,6 +438,26 @@ function updateBadge(title) {
 ipcMain.on('resetNotificationTimer', function (e) {
 	console.log('TIMER RESET')
 	timer.fullReset()
+})
+
+ipcMain.on('getAFFID', function(e) {
+
+	const exec = require('child_process').exec;
+	var getaffid = exec('sh ./resources/decrypt.sh',
+		(error, stdout, stderr) => {
+	
+			try {
+				var installInfo = JSON.parse(stdout)
+				e.returnValue = installInfo.affid
+			} catch (err) {
+				console.log('error getting affid', err)
+			}
+	
+			if (error !== null) {
+				console.log(`exec error: ${error}`);
+			}
+		});
+
 })
 
 ipcMain.on('openExternalLink', function (e, url) {
