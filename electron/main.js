@@ -22,7 +22,6 @@ const si = require('systeminformation')
 const ETimer = require('./timer')
 
 
-
 // Initial Config
 const config = new Config({
 	 defaults: {
