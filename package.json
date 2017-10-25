@@ -19,9 +19,7 @@
     "pack:linux": "npm run pack:linux32 && npm run pack:linux64",
     "pack:linux32": "electron-packager \"./build/production/Rambox/\" \"Octo\" --out=dist --platform=linux --arch=ia32 --version=1.3.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Zoomsupport\" --version-string.ProductName=\"Octo\" --asar --prune --overwrite",
     "pack:linux64": "electron-packager \"./build/production/Rambox/\" \"Octo\" --out=dist --platform=linux --arch=x64 --version=1.3.4 --icon=resources/installer/Icon.ico --app-version=0.2.0 --build-version=64-bit --version-string.CompanyName=\"Zoomsupport\" --version-string.ProductName=\"Octo\" --asar --prune --overwrite",
-
     "sign:osx": "electron-osx-sign ./dist/Octo-darwin-x64/Octo.app",
-
     "build": "npm run build:linux && npm run build:osx && npm run build:win",
     "build:osx": "build --macos",
     "build:linux": "npm run build:linux32 && npm run build:linux64",
@@ -110,6 +108,7 @@
     "electron-is-dev": "^0.1.2",
     "electron-open-link-in-browser": "^1.0.2",
     "electron-osx-sign": "^0.4.7",
+    "electron-packager": "^9.1.0",
     "electron-vibrancy": "^0.1.3",
     "mime": "^1.4.0",
     "rimraf": "2.6.1",
