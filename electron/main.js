@@ -10,7 +10,7 @@ const Config = require('electron-config');
 // Development
 const isDev = require('electron-is-dev');
 // Updater
-const updater = require('./updater');
+// const updater = require('./updater');
 // File System
 var fs = require("fs");
 const path = require('path');
@@ -441,20 +441,43 @@ ipcMain.on('resetNotificationTimer', function (e) {
 
 ipcMain.on('getAFFID', function(e) {
 
-	const exec = require('child_process').exec;
-	var getaffid = exec('sh ./resources/decrypt.sh',
+	// Excract file from ASAR
+	var dc = fs.readFileSync(__dirname+'/../resources/decrypt.sh')
+	fs.writeFileSync('/tmp/decrypt.sh', dc)
+
+	const exec = require('child_process').execFile;
+	var getaffid = exec('sh', ['/tmp/decrypt.sh'],
 		(error, stdout, stderr) => {
-	
+
+			fs.unlinkSync("/tmp/decrypt.sh")
+
 			try {
 				var installInfo = JSON.parse(stdout)
 				e.returnValue = installInfo.affid
+				return;
 			} catch (err) {
 				console.log('error getting affid', err)
+				// e.returnValue = {
+				// 	e: err,
+				// 	s: stdout
+				// }
 			}
 	
 			if (error !== null) {
+				// e.returnValue = {
+				// 	e: error,
+				// 	s: stdout
+				// }
 				console.log(`exec error: ${error}`);
 			}
+
+			e.returnValue = {
+				e: error,
+				out: stdout,
+				err: stderr,
+			}
+
+			// e.returnValue = 0;
 		});
 
 })
