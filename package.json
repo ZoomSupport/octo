@@ -5,8 +5,8 @@
     "start:debug": "electron electron/main.js --enable-logging",
     "test": "./node_modules/.bin/mocha test/tests/**/*.spec.js",
     "sencha:clean": "rm -rf ./build/production",
-    "sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
-    "sencha:watch": "sencha app watch && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/",
+    "sencha:compile": "sencha app build && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/ && npm run scripts:patch",
+    "sencha:watch": "sencha app watch && cp app/package.json build/production/Rambox/ && npm --prefix ./build/production/Rambox/ install ./build/production/Rambox/ && npm run scripts:patch",
     "sencha:compile:build": "sencha app build && cp app/package.json build/production/Rambox/ && cp -R build/production/Rambox/* ../rambox-build",
     "clean": "rm -rf ./dist",
     "clean:osx": "rm -rf ./dist/Rambox-darwin-*",
@@ -27,10 +27,11 @@
     "build:linux64": "build --linux --x64",
     "build:win32": "build --win --ia32",
     "build:win64": "build --win --x64",
-    "setup:osx": "npm run sencha:clean && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run sign:osx && npm run build:osx",
+    "setup:osx": "npm run sencha:clean && npm run scripts:patch && npm run sencha:compile && npm run clean:osx && npm run pack:osx && npm run sign:osx && npm run build:osx",
     "setup:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run build:win",
     "all:win": "npm run sencha:clean && npm run sencha:compile && npm run clean:win && npm run pack:win && npm run zip:win32 && npm run zip:win64 && npm run build:win",
-    "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux"
+    "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
+    "scripts:patch": "node Tools/patch_scripts.js"
   },
   "build": {
     "productName": "Octo",

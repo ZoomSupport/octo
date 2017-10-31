@@ -35,8 +35,9 @@ These instructions were tested with Ubuntu 17.04.
 4. Clone repository: `git clone gitlab@gitlab.zeo.lcl:kromtech-web-team/unifieder.git`
 5. Install npm dependencies: `npm install`
 6. Configure `env-sample.js` and rename it to `env.js`.
-7. Compile: `npm run sencha:compile`
-8. Start program: `npm start`
+7. Patch scripts: `npm run scripts:patch`
+8. Compile: `npm run sencha:compile`
+9. Start program: `npm start`
 
 
 Source Licence !!!
