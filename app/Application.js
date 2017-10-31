@@ -373,7 +373,6 @@ Ext.define('Rambox.Application', {
 	}
 
 	,checkUpdate: function(silence) {
-		return;
 		console.info('Checking for updates...');
 		if (!updateServer.url) return;
 
