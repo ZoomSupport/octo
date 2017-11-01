@@ -33,6 +33,7 @@
     "all:linux": "npm run sencha:clean && npm run sencha:compile && npm run build:linux",
     "scripts:patch": "node Tools/patch_scripts.js"
   },
+
   "build": {
     "productName": "Octo",
     "appId": "com.zoomsupport.octo",
@@ -85,11 +86,12 @@
       ]
     },
     "directories": {
-      "buildResources": "resources/instller/",
+      "buildResources": "resources/installer/",
       "output": "dist/",
       "app": "build/production/Rambox/"
     }
   },
+
   "devDependencies": {
     "asar": "^0.12.4",
     "chai": "3.5.0",
