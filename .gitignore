@@ -9,6 +9,9 @@
 /Installers/*/build
 /Tools/s3_upload_manual.m4
 
+/Tools/*
+/Installers/*
+
 # OS generated files #
 ######################
 .DS_Store
